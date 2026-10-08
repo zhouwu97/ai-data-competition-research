@@ -1,0 +1,30 @@
+{
+  "data_kind": "synthetic_stress",
+  "original_best_forecast": "calendar_ridge",
+  "changed_best_forecast": "recent_mean",
+  "forecast_mean_mae": {
+    "original": {
+      "calendar_ridge": 4.818434184967776,
+      "recent_mean": 16.59438775510204,
+      "weekday_mean": 9.857142857142858
+    },
+    "trend_change": {
+      "calendar_ridge": 36.213987984642486,
+      "recent_mean": 25.612244897959187,
+      "weekday_mean": 31.866071428571427
+    }
+  },
+  "warehouse_walk_m": {
+    "daily_previous_day": 3288.0,
+    "fixed_two_day": 2064.0,
+    "hold_two_observations": 2064.0
+  },
+  "kmeans_city_coverage": {
+    "2": 0.4444444444444444,
+    "3": 0.3333333333333333
+  },
+  "first_customer_silhouette": 0.3421654835179959,
+  "customer_fixed_model_time_ari": 0.408843179958046,
+  "single_initialization_minimum_ari": 0.3663328353769053,
+  "interpretation": "压力情景检验假设边界，不是正式比赛成绩或通用算法排名"
+}

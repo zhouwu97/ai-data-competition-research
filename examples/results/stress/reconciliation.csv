@@ -1,0 +1,6 @@
+customer_id,waybill_period,waybill_quantity,waybill_unit,external_period,external_quantity,external_unit,review_status,known_unit_factor,review_note
+R0,Jan,120,kg,Jan,12.000000,10kg,教学可换算,10.000000,单位已知时120=12*10；转换另存字段，保留原值
+R1,Jan,190,kg,Jan,180.000000,kg,待核实,,同周期同单位仍差10；检查退货和截单，不能直接覆盖
+R2,Jan,75,kg,Jan,,kg,待核实,,缺值不是0；记录缺失原因，暂不作为完整业务量
+R3,Jan,90,kg,Jan-Feb,210.000000,kg,待核实,,先取相同统计周期，不能把两个周期强行对齐
+R4,Jan,40,kg,Jan,40.000000,kg,教学一致,1.000000,本行一致；仍保留两个来源及原始字段

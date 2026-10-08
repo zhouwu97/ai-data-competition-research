@@ -1,0 +1,9 @@
+period,method,k,silhouette,ari_to_first_period,ari_to_volume_refit
+first,kmeans_fixed,3,0.342165,1.000000,0.379218
+first,kmeans_refit,3,0.342165,1.000000,0.379218
+first,volume_fixed,3,0.123277,1.000000,1.000000
+first,volume_refit,3,0.123277,1.000000,1.000000
+later,kmeans_fixed,3,0.289443,0.408843,0.261759
+later,kmeans_refit,3,0.319444,0.317211,0.279841
+later,volume_fixed,3,0.108344,0.337937,0.613095
+later,volume_refit,3,0.120874,0.323691,1.000000

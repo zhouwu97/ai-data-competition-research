@@ -1,0 +1,19 @@
+{
+  "near_distance_m": 2.0,
+  "far_distance_m": 10.0,
+  "swap_distance_m": 60.0,
+  "initial_near_sku": "A",
+  "observation_days": [
+    1,
+    2
+  ],
+  "evaluation_days": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "pick_rule": "one_unit_one_round_trip"
+}

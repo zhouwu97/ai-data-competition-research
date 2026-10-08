@@ -1,0 +1,11 @@
+method,k,constraint,radius_km,city_coverage,demand_coverage,weighted_distance_km,weighted_squared_loss,enumerated_solutions
+continuous_kmeans,2,continuous_plane,5.000000,0.444444,0.547884,5.976225,32366.519281,0
+continuous_squared_exact,2,continuous_plane,5.000000,0.444444,0.547884,5.976225,32366.519281,8
+candidate_kmeans_snapped,2,nine_city_candidates,5.000000,0.444444,0.547884,5.581292,33940.000000,0
+candidate_min_squared_exact,2,nine_city_candidates,5.000000,0.444444,0.547884,5.581292,33940.000000,36
+candidate_max_city_cover_exact,2,nine_city_candidates,5.000000,0.555556,0.674833,5.848552,35390.000000,36
+continuous_kmeans,3,continuous_plane,5.000000,0.333333,0.425390,4.910914,15699.885957,0
+continuous_squared_exact,3,continuous_plane,5.000000,0.333333,0.425390,4.910914,15699.885957,28
+candidate_kmeans_snapped,3,nine_city_candidates,5.000000,0.555556,0.674833,4.013363,21364.000000,0
+candidate_min_squared_exact,3,nine_city_candidates,5.000000,0.555556,0.645880,3.683742,17156.000000,84
+candidate_max_city_cover_exact,3,nine_city_candidates,5.000000,0.666667,0.815145,3.463252,17183.000000,84
