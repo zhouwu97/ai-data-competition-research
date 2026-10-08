@@ -1,4 +1,4 @@
-"""离线检查元数据、教学产物摘要与结论数值；不判断观点正确或外网可用。"""
+"""先核对版本与引用，再调用独立公式重算指定教学指标。"""
 from datetime import date
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -6,6 +6,7 @@ import hashlib
 import json
 import re
 import sys
+import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 TEXT_FIELDS = ["id", "title", "competition", "type", "url", "priority", "value",
@@ -90,8 +91,12 @@ def main():
     errors += evidence_errors(ROOT)
     if errors:
         raise SystemExit("\n".join(errors))
-    print("OK: 非空元数据、日期、URL结构、教学文件摘要和4项结论数值检查通过。")
-    print("未检查外网可用性、所有报告句子、赛规符合性或真实业务收益；仍需人工审核。")
+    print("OK: 元数据、文件版本和4项报告引用一致。", flush=True)
+    # 错误公式可以生成彼此一致的文件，所以这一步不再只比较JSON。
+    result = subprocess.run([sys.executable, str(ROOT / "scripts/check_calculations.py")])
+    if result.returncode:
+        raise SystemExit(result.returncode)
+    print("指定计算已独立复核。检查范围见 tests/README.md。")
 
 if __name__ == "__main__":
     main()
