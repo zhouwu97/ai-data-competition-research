@@ -1,0 +1,158 @@
+{
+  "prediction_rows": 25882,
+  "paired_records": 12941,
+  "pairing_keys": [
+    "window_start",
+    "sample_index"
+  ],
+  "verified_pair_fields": [
+    "actual_minutes",
+    "accept_date",
+    "accept_hour"
+  ],
+  "raw_row_order_backlink_verified": true,
+  "overall": {
+    "test_records": 12941,
+    "baseline_mae_minutes": 106.55057568966849,
+    "hour_mae_minutes": 101.63584730700873,
+    "mean_improvement_minutes": 4.914728382659764,
+    "total_improvement_minutes": 63601.5,
+    "share_of_total_improvement": 1.0,
+    "actual_median_minutes": 183.0,
+    "mean_prediction_shift_minutes": 15.507495556757592,
+    "tail_records": 1732,
+    "tail_share": 0.13383818870257322,
+    "same_day_share": 0.9998454524379878,
+    "distinct_couriers": 24,
+    "distinct_regions": 4
+  },
+  "over_360": {
+    "test_records": 1732,
+    "baseline_mae_minutes": 292.7823325635104,
+    "hour_mae_minutes": 270.3576789838337,
+    "mean_improvement_minutes": 22.424653579676676,
+    "total_improvement_minutes": 38839.5,
+    "share_of_total_improvement": 0.6106695596801962,
+    "actual_median_minutes": 433.0,
+    "mean_prediction_shift_minutes": 22.424653579676676,
+    "tail_records": 1732,
+    "tail_share": 1.0,
+    "same_day_share": 0.9988452655889145,
+    "distinct_couriers": 23,
+    "distinct_regions": 4
+  },
+  "up_to_360": {
+    "test_records": 11209,
+    "baseline_mae_minutes": 77.77428851815506,
+    "hour_mae_minutes": 75.56517084485681,
+    "mean_improvement_minutes": 2.2091176732982425,
+    "total_improvement_minutes": 24762.0,
+    "share_of_total_improvement": 0.3893304403198038,
+    "actual_median_minutes": 161.0,
+    "mean_prediction_shift_minutes": 14.438665358194308,
+    "tail_records": 0,
+    "tail_share": 0.0,
+    "same_day_share": 1.0,
+    "distinct_couriers": 23,
+    "distinct_regions": 4
+  },
+  "tail_accept_7_to_9_records": 1645,
+  "tail_accept_7_to_9_share": 0.9497690531177829,
+  "same_day_records": 12939,
+  "cross_day_records": 2,
+  "scored_accept_dates": 56,
+  "dates_with_negative_improvement": [
+    "2022-09-18",
+    "2022-09-19",
+    "2022-09-20",
+    "2022-09-22",
+    "2022-09-29"
+  ],
+  "negative_date_mean_improvement_minutes": {
+    "2022-09-18": -1.9848484848484849,
+    "2022-09-19": -0.5714285714285714,
+    "2022-09-20": -6.371495327102804,
+    "2022-09-22": -0.6666666666666666,
+    "2022-09-29": -0.9264069264069265
+  },
+  "window_mean_improvement_minutes": {
+    "2022-08-14": 6.090810810810811,
+    "2022-08-28": 6.9157623440043405,
+    "2022-09-11": 2.7106790481717935,
+    "2022-09-25": 2.9554291133238504
+  },
+  "maximum_prediction_minutes": 206.0,
+  "all_tail_gain_equals_prediction_shift": true,
+  "loss_geometry_verified": true,
+  "concrete_examples": [
+    {
+      "window_start": "2022-08-14",
+      "accept_hour": 8,
+      "baseline_prediction_minutes": 167.0,
+      "hour_prediction_minutes": 195.0,
+      "bands": {
+        "over_360": {
+          "test_records": 316,
+          "baseline_mae_minutes": 294.48417721518985,
+          "hour_mae_minutes": 266.48417721518985,
+          "mean_improvement_minutes": 28.0,
+          "total_improvement_minutes": 8848.0,
+          "share_of_total_improvement": 0.13911621581252015,
+          "actual_median_minutes": 436.5,
+          "mean_prediction_shift_minutes": 28.0,
+          "tail_records": 316,
+          "tail_share": 1.0,
+          "same_day_share": 1.0,
+          "distinct_couriers": 10,
+          "distinct_regions": 4
+        },
+        "up_to_360": {
+          "test_records": 1359,
+          "baseline_mae_minutes": 77.72185430463576,
+          "hour_mae_minutes": 75.08756438557764,
+          "mean_improvement_minutes": 2.634289919058131,
+          "total_improvement_minutes": 3580.0,
+          "share_of_total_improvement": 0.05628798062938767,
+          "actual_median_minutes": 194.0,
+          "mean_prediction_shift_minutes": 28.0,
+          "tail_records": 0,
+          "tail_share": 0.0,
+          "same_day_share": 1.0,
+          "distinct_couriers": 11,
+          "distinct_regions": 4
+        }
+      }
+    },
+    {
+      "window_start": "2022-08-14",
+      "accept_hour": 13,
+      "baseline_prediction_minutes": 167.0,
+      "hour_prediction_minutes": 123.0,
+      "bands": {
+        "up_to_360": {
+          "test_records": 79,
+          "baseline_mae_minutes": 90.67088607594937,
+          "hour_mae_minutes": 67.9367088607595,
+          "mean_improvement_minutes": 22.734177215189874,
+          "total_improvement_minutes": 1796.0,
+          "share_of_total_improvement": 0.02823832771239672,
+          "actual_median_minutes": 86.0,
+          "mean_prediction_shift_minutes": -44.0,
+          "tail_records": 0,
+          "tail_share": 0.0,
+          "same_day_share": 1.0,
+          "distinct_couriers": 5,
+          "distinct_regions": 4
+        }
+      }
+    }
+  ],
+  "interpretation": "长尾均高于两预测值，其误差变化等于预测位移，不能据此声称模型识别了长尾机制。",
+  "composition_contrast_definition": "相对8时；对两小时均满足最小样本数的共同组，以目标小时对象数加权组内中位数差；不是 pooled 中位数差的精确分解。",
+  "limits": [
+    "长尾按实际完成时长事后划分，预测时未知。",
+    "四窗口已经用于首轮评价，逐日逐窗口结果是内部一致性核对，不是新数据外部验证。",
+    "同配送员/区域或同配送员同日对照仍未控制任务类型、接单批次、路线、工作安排和输入采样。",
+    "本模块仅回连当前四窗口；10月9日以后的稀疏记录不构成后续验证。"
+  ]
+}

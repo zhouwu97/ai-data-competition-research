@@ -1,0 +1,9 @@
+clock,comparison,shared_couriers,before_only_couriers,after_only_couriers,shared_with_changed_region_set,before_multiple_region_couriers,after_multiple_region_couriers
+delivery,primary_7d,13,5,4,0,0,0
+delivery,earlier_baseline_7d,11,4,6,0,0,0
+delivery,equal_6d,12,6,4,0,0,0
+delivery,shift_after_7d,12,6,3,0,0,0
+accept,primary_7d,13,5,4,0,0,0
+accept,earlier_baseline_7d,11,4,6,0,0,0
+accept,equal_6d,12,6,4,0,0,0
+accept,shift_after_7d,12,6,3,0,0,0

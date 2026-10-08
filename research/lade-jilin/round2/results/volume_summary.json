@@ -1,0 +1,120 @@
+{
+  "rows": 31415,
+  "unique_couriers": 57,
+  "anonymous_region_count": 4,
+  "couriers_observed_in_multiple_regions_over_full_input": 0,
+  "cross_day_records": 19,
+  "primary_comparison": {
+    "delivery": {
+      "before": {
+        "start": "2022-09-24",
+        "end": "2022-09-30",
+        "requested_days": 7,
+        "observed_days": 7,
+        "missing_dates": [],
+        "complete": true,
+        "records": 1677,
+        "unique_couriers": 18,
+        "courier_days": 90,
+        "records_per_day": 239.57142857142858,
+        "active_couriers_per_day": 12.857142857142858,
+        "records_per_active_courier_day": 18.633333333333333
+      },
+      "after": {
+        "start": "2022-10-01",
+        "end": "2022-10-07",
+        "requested_days": 7,
+        "observed_days": 7,
+        "missing_dates": [],
+        "complete": true,
+        "records": 657,
+        "unique_couriers": 17,
+        "courier_days": 50,
+        "records_per_day": 93.85714285714286,
+        "active_couriers_per_day": 7.142857142857143,
+        "records_per_active_courier_day": 13.14
+      },
+      "decomposition": {
+        "delta_records_per_day": -145.71428571428572,
+        "active_contribution_per_day": -90.78095238095239,
+        "productivity_contribution_per_day": -54.93333333333332,
+        "active_share_of_delta": 0.6230065359477124,
+        "productivity_share_of_delta": 0.3769934640522875,
+        "change_pct": -60.82289803220036
+      },
+      "courier_groups": {
+        "shared": 13,
+        "before_only": 5,
+        "after_only": 4
+      },
+      "region_productivity_decomposition": {
+        "applicable": true,
+        "delta_records_per_active_courier_day": -5.493333333333332,
+        "region_weight_contribution": 0.6446993933139444,
+        "within_region_contribution": -6.1380327266472765,
+        "region_weight_share_of_delta": -0.11736032645278117,
+        "within_region_share_of_delta": 1.1173603264527812
+      }
+    },
+    "accept": {
+      "before": {
+        "start": "2022-09-24",
+        "end": "2022-09-30",
+        "requested_days": 7,
+        "observed_days": 7,
+        "missing_dates": [],
+        "complete": true,
+        "records": 1677,
+        "unique_couriers": 18,
+        "courier_days": 91,
+        "records_per_day": 239.57142857142858,
+        "active_couriers_per_day": 13.0,
+        "records_per_active_courier_day": 18.428571428571427
+      },
+      "after": {
+        "start": "2022-10-01",
+        "end": "2022-10-07",
+        "requested_days": 7,
+        "observed_days": 7,
+        "missing_dates": [],
+        "complete": true,
+        "records": 657,
+        "unique_couriers": 17,
+        "courier_days": 50,
+        "records_per_day": 93.85714285714286,
+        "active_couriers_per_day": 7.142857142857143,
+        "records_per_active_courier_day": 13.14
+      },
+      "decomposition": {
+        "delta_records_per_day": -145.71428571428572,
+        "active_contribution_per_day": -92.4508163265306,
+        "productivity_contribution_per_day": -53.26346938775508,
+        "active_share_of_delta": 0.6344663865546217,
+        "productivity_share_of_delta": 0.365533613445378,
+        "change_pct": -60.82289803220036
+      },
+      "courier_groups": {
+        "shared": 13,
+        "before_only": 5,
+        "after_only": 4
+      },
+      "region_productivity_decomposition": {
+        "applicable": true,
+        "delta_records_per_active_courier_day": -5.2885714285714265,
+        "region_weight_contribution": 0.7258571128119996,
+        "within_region_contribution": -6.0144285413834275,
+        "region_weight_share_of_delta": -0.13725012938098324,
+        "within_region_share_of_delta": 1.1372501293809836
+      }
+    }
+  },
+  "region_labels": "匿名序号按输入region_id字符串排序；不是实际行政区名称。",
+  "missing_date_rule": "城市整日无记录保留缺失，不解释为0条；比较期缺日时不计算平均每日分解。",
+  "interpretation": [
+    "活跃配送员指该日出现在这份文件中的不同courier_id，不代表完整在岗人数。",
+    "每配送员日条数=总记录数/总活跃配送员日；一个配送员两天出现计2个配送员日。",
+    "共同配送员、前期独有、后期独有均由比较期是否有记录决定，不推断入职离职。",
+    "对称分解是记录恒等式的数量分解，不能从它确定需求、作业或采样变化的原因。",
+    "两个时钟反映同一份已完成记录的日期归属，接单统计不是完整新增需求或未完成对象统计。"
+  ]
+}
