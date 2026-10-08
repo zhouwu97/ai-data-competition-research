@@ -157,12 +157,71 @@ class CustomDataChecks(unittest.TestCase):
             audit = json.loads((output / "data_audit.json").read_text(encoding="utf-8"))
             self.assertEqual(audit["rows"], 60)
             self.assertEqual(audit["observed_completed_rows"], 50)
+            status = json.loads((output / "run_status.json").read_text(encoding="utf-8"))
+            self.assertEqual(status["input_file"], "records.csv")
+            self.assertEqual(status["source_sha256"], summary["source_sha256"])
+            self.assertNotIn("data_path", status)
+            self.assertNotIn("command", status)
+            self.assertNotIn(str(folder), json.dumps(status, ensure_ascii=False))
             # 同一输出目录再次失败，应替换成功报告并让校验拒绝。
             with self.assertRaises(ValueError):
                 research.main(["--data", str(data), "--output-dir", str(output)])
             self.assertIn("failed", (output / "report.md").read_text(encoding="utf-8"))
             with self.assertRaisesRegex(ValueError, "未成功"):
                 check_public_research(output)
+
+    def test_slow_order_crossing_observation_end_cannot_be_dropped_for_scoring(self):
+        with tempfile.TemporaryDirectory() as folder:
+            folder = Path(folder)
+            data, output = folder / "records.csv", folder / "out"
+            days = pd.date_range("2026-01-01", periods=60)
+            records = [{"order_id": str(i), "city": "Test", "ds": str(day.date()),
+                        "accept_time": str(day + pd.Timedelta(hours=8)),
+                        "delivery_time": str(day + pd.Timedelta(hours=8, minutes=10))}
+                       for i, day in enumerate(days)]
+            records.append({"order_id": "slow", "city": "Test", "ds": "2026-02-22",
+                            "accept_time": "2026-02-19 08:00:00", "delivery_time": "2026-02-22 08:00:00"})
+            pd.DataFrame(records).to_csv(data, index=False, encoding="utf-8")
+            command = ["--custom-data", "--data", str(data), "--output-dir", str(output),
+                       "--horizon-days", "7", "--windows", "1", "--hour-min-records", "1"]
+            # 截止日当天的快单完成，慢单三天后完成；旧实现只剩快单，MAE为0。
+            with self.assertRaisesRegex(ValueError, "1条在观察截止日后才完成"):
+                research.main(command + ["--observation-end", "2026-02-19"])
+            maturity = pd.read_csv(output / "duration_label_maturity.csv", encoding="utf-8")
+            self.assertEqual(maturity.accepted_records.tolist(), [8])
+            self.assertEqual(maturity.mature_records.tolist(), [7])
+            self.assertEqual(maturity.pending_records.tolist(), [1])
+            self.assertFalse((output / "summary.json").exists())
+            self.assertIn("failed", (output / "report.md").read_text(encoding="utf-8"))
+
+            # 选择早一天结束的完整接单窗口，可以合法评分。
+            research.main(command + ["--observation-end", "2026-02-19", "--evaluation-end", "2026-02-18"])
+            check_public_research(output)
+            predicted = pd.read_csv(output / "duration_predictions.csv", encoding="utf-8")
+            self.assertEqual(predicted.accept_date.max(), "2026-02-18")
+
+            # 延后观察、仍评价同一接单窗口时，慢单必须计入误差。
+            research.main(command + ["--observation-end", "2026-02-22", "--evaluation-end", "2026-02-19"])
+            check_public_research(output)
+            metrics = pd.read_csv(output / "duration_metrics.csv", encoding="utf-8")
+            self.assertEqual(metrics.test_records.tolist(), [8, 8])
+            self.assertEqual(metrics.mae_minutes.tolist(), [538.75, 538.75])
+
+    def test_failure_paths_stay_in_ignored_local_log(self):
+        with tempfile.TemporaryDirectory() as folder:
+            folder = Path(folder)
+            data, output = folder / "private.csv", folder / "out"
+            error = OSError(f"cannot open {str(data.resolve())!r}")
+            with patch.object(research, "execute", side_effect=error):
+                with self.assertRaises(OSError):
+                    research.main(["--custom-data", "--data", str(data), "--output-dir", str(output)])
+            status_text = (output / "run_status.json").read_text(encoding="utf-8")
+            report = (output / "report.md").read_text(encoding="utf-8")
+            self.assertNotIn(str(folder), status_text + report)
+            self.assertNotIn(str(folder).replace("\\", "\\\\"), status_text + report)
+            local_log = json.loads((output / "run.local.log").read_text(encoding="utf-8"))
+            self.assertEqual(local_log["data_path"], str(data.resolve()))
+            self.assertEqual(local_log["error"], f"OSError: {error}")
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "run_at_utc": "2026-10-08T07:18:31.267583+00:00",
+  "run_at_utc": "2026-10-08T11:51:36.763212+00:00",
   "command": "python examples/run_all.py",
   "data_kind": "synthetic",
   "environment": {
@@ -39,7 +39,7 @@
     "examples/results/failure_cases/report.md": "92a60ff2c5df96635cd9b1bbb684d60b8a08fe051520b118eca6e43c34af8a30",
     "examples/results/kmeans_hand/trace.csv": "62e38173dfbbca8f1e637352d37b625d48ab6331d1d4cb50695361affdb29df8",
     "examples/results/report.md": "41c8d437b9f4616dc11d9ae01d4826517cadfc724f506cdb74472e32e22b47fd",
-    "examples/results/run.log": "ea20bf0d7ffd9f834c84fccf4d41abee2c52ec2ac85f1d588e90dd391c5fd9d5",
+    "examples/results/run.log": "df317dbc67854716f8b28cf644d56ec03c3762077c962d3ede981fef35a7d27a",
     "examples/results/sequential/decisions.csv": "d3b4f5b01d34bce1a9b015aad048b1f4a1d7be46f0fd90027305fc753e0047d7",
     "examples/results/sequential/metrics.csv": "d99f4f6c3207613c001ab19c7bf825b65ef2f629af81d0d45b03ae6aa33b5cec",
     "examples/results/sequential/past_scores.csv": "8f686ce12ca3540caf22e20e97c3fd9b2826997012c99b6a7ddfd78823bfdb26",
@@ -114,16 +114,16 @@
     "scripts/check_calculations.py"
   ],
   "step_seconds": {
-    "00_make_data.py": 1.6164,
-    "01_demand_forecast.py": 2.9797,
-    "02_warehouse_eiq_abc.py": 1.2381,
-    "03_dc_locations.py": 2.8374,
-    "04_customer_segments.py": 2.8667,
-    "05_kmeans_by_hand.py": 0.0797,
-    "failure_cases.py": 1.0644,
-    "06_method_stress.py": 3.5575,
-    "07_sequential_forecast.py": 3.3611,
-    "08_location_tradeoffs.py": 2.448,
-    "scripts/check_calculations.py": 0.2012
+    "00_make_data.py": 0.9719,
+    "01_demand_forecast.py": 1.9719,
+    "02_warehouse_eiq_abc.py": 0.9825,
+    "03_dc_locations.py": 2.0968,
+    "04_customer_segments.py": 2.2224,
+    "05_kmeans_by_hand.py": 0.0852,
+    "failure_cases.py": 0.9118,
+    "06_method_stress.py": 2.6712,
+    "07_sequential_forecast.py": 2.0989,
+    "08_location_tradeoffs.py": 1.2346,
+    "scripts/check_calculations.py": 0.1166
   }
 }

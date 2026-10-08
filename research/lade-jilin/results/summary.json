@@ -11,8 +11,10 @@
     "windows": 4,
     "hour_min_records": 30,
     "year": 2022,
-    "observation_end": null
+    "observation_end": null,
+    "evaluation_end": null
   },
+  "duration_label_maturity": "duration_label_maturity.csv",
   "duration_diagnostics": "duration_diagnostics.csv",
   "duration_record_mean_mae_minutes": {
     "global_median": 106.55057568966849,
@@ -26,6 +28,6 @@
   ],
   "python": "3.12.10",
   "source_sha256": "12e2cf4664dd5b4475d39dddee8872f5a03b3082f08f0eece7f103baee6c6e73",
-  "code_sha256": "29e9f9c1185b04b72b2428db8ab495f7b90af35bad44532dcfc491e1fc49498e",
+  "code_sha256": "e0fa8e1630830620928acfe6b0cbbb24f0224a618277d427f73bc61666075c8a",
   "forecasting_sha256": "8a6406868b38a1a12b8434d095525c63e52f369f2e3c9df5fc16abdc64ba67ed"
 }

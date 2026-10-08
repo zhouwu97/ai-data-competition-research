@@ -29,9 +29,13 @@ python scripts/check_public_research.py --output-dir outputs/my-delivery
 
 字段仍为下面的五列；运单ID唯一、必需字段非空、完成时间不早于接单时间。`accept_time`与`delivery_time`使用完整`YYYY-MM-DD HH:MM:SS`，`ds`使用`YYYY-MM-DD`。若沿用LaDe无年份格式，显式加`--year 2022`：时间为`MM-DD HH:MM:SS`，ds为四位MMDD。输入CSV使用UTF-8或UTF-8 BOM。自有模式保存实际SHA256与`user_supplied_records`来源类型，不沿用官方文件的来源与许可声明。
 
-`--observation-end 2026-09-30`可将输入限定为截至当日已经完成的记录；未完成对象不属于这个已完成记录分析入口。程序在该范围的最长连续完成日期段，取最后指定数量的窗口，至少需要28天训练、一个完整的选模历史窗口和全部测试窗口。缺记录日仍保持缺失，不能自动解释为零业务；测试窗口没有接单对象时会说明原因并停止。
+`--observation-end 2026-09-30`指定观察截止日：完成量只统计当日及以前的完成记录；时长仍按接单日期从完整输入选择测试对象，逐窗口记录已成熟与未成熟条数到`duration_label_maturity.csv`。例如截止日当天两单接单，一单10分钟完成、一单三天后完成，程序会保留这两个对象并停止评分，不能删除慢单后只给快单计算MAE。
 
-每次运行将`run_status.json`与报告标为`running`，全部成功后改为`success`；出错时报告显示`failed`和原因，避免误读旧成功报告。分项文件在失败时可能是旧结果，检查器会拒绝非成功运行。
+使用`--evaluation-end 2026-09-23`可提前结束回测，让测试对象有更多时间完成；或者等标签成熟后延后观察截止日。提前几天本身不保证标签成熟，程序仍检查完整接单对象。未指定观察截止日时，使用输入中已提供的全部完成标签。输入需保留跨截止日完成的记录及其时间；如果文件本身删除了未完成单，这项检查无法恢复漏掉的对象，评价仍可能偏乐观。
+
+程序在回测结束日以前的最长连续完成日期段，取最后指定数量的窗口，至少需要28天训练、一个完整的选模历史窗口和全部测试窗口。缺记录日保持缺失，不能自动解释为零业务；测试窗口没有接单对象时会说明原因并停止。
+
+每次运行将`run_status.json`与报告标为`running`，全部成功后改为`success`；出错时报告显示`failed`和原因，避免误读旧成功报告。分项文件在失败时可能是旧结果，检查器会拒绝非成功运行。公开状态只记录输入文件名、实际SHA256、来源类型与运行状态；完整命令、路径和错误详情保存在`run.local.log`，该日志已由Git忽略。
 
 ## 先认识五个字段
 
@@ -51,6 +55,7 @@ python scripts/check_public_research.py --output-dir outputs/my-delivery
 - [data_audit.json](results/data_audit.json)：输入来源、版本、缺失、日期与时长范围。
 - [volume_choices.csv](results/volume_choices.csv)：每次选模时已知的历史成绩。
 - [duration_metrics.csv](results/duration_metrics.csv)：每窗口误差及超过6小时记录的误差。
+- [duration_label_maturity.csv](results/duration_label_maturity.csv)：各窗口按接单日选出的对象数及观察截止时已成熟、未成熟条数。
 - 两份逐条预测CSV供重算；输出不含原运单ID、配送员ID或坐标。
 - [duration_diagnostics.csv](results/duration_diagnostics.csv)：按接单小时、接单日期、是否超过6小时拆开条数与MAE；长尾分类是事后诊断，不能用于预测时选对象。
 

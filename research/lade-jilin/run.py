@@ -49,6 +49,17 @@ def duration_estimates(history, hours, min_records=30):
             "hour_median": np.array([reliable.get(int(h), overall) for h in hours])}
 
 
+def public_error(error, args):
+    """公开报告保留错误原因，完整路径只写入被Git忽略的本地日志。"""
+    message = f"{type(error).__name__}: {error}"
+    for path in [args.data, args.output_dir, ROOT]:
+        spellings = {str(path), str(path.resolve()), path.resolve().as_posix()}
+        for spelling in sorted(spellings, key=len, reverse=True):
+            message = message.replace(spelling.replace("\\", "\\\\"), path.name)
+            message = message.replace(spelling, path.name)
+    return message
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data", type=Path)
@@ -56,7 +67,8 @@ def main(argv=None):
     parser.add_argument("--custom-data", action="store_true", help="分析自有同字段数据，记录其摘要和来源类型")
     parser.add_argument("--output-dir", type=Path, help="结果目录；自有数据必须指定")
     parser.add_argument("--year", type=int, help="输入没有年份时明确提供年份；官方固定为2022")
-    parser.add_argument("--observation-end", help="可选观察结束日期YYYY-MM-DD，只使用此前已完成记录（含当天）")
+    parser.add_argument("--observation-end", help="观察截止日期YYYY-MM-DD（含当天），检验测试对象的标签是否均已成熟")
+    parser.add_argument("--evaluation-end", help="可选回测结束日期YYYY-MM-DD（含当天），可早于观察截止日")
     parser.add_argument("--horizon-days", type=int, default=14)
     parser.add_argument("--windows", type=int, default=4)
     parser.add_argument("--hour-min-records", type=int, default=30)
@@ -71,25 +83,32 @@ def main(argv=None):
     args.output_dir = args.output_dir or HERE / "results"
     args.output_dir.mkdir(parents=True, exist_ok=True)
     status = {"status": "running", "run_at_utc": datetime.now(timezone.utc).isoformat(),
-              "command": ["python", "research/lade-jilin/run.py", *(sys.argv[1:] if argv is None else argv)],
-              "data_path": str(args.data.resolve())}
+              "input_file": args.data.name, "source_sha256": None,
+              "data_kind": "user_supplied_records" if args.custom_data else "public_real_records"}
+    local_log = {**status, "command": ["python", "research/lade-jilin/run.py",
+                                       *(sys.argv[1:] if argv is None else argv)],
+                 "data_path": str(args.data.resolve()), "output_dir": str(args.output_dir.resolve())}
     write_json(status, args.output_dir / "run_status.json")
     (args.output_dir / "report.md").write_text(
         "# 配送研究本次运行：running\n\n正在运行，分项文件可能仍属于旧结果。\n", encoding="utf-8", newline="\n")
     try:
-        execute(args)
+        write_json(local_log, args.output_dir / "run.local.log")
+        execute(args, status)
         status["status"] = "success"
         write_json(status, args.output_dir / "run_status.json")
+        write_json({**local_log, **status}, args.output_dir / "run.local.log")
     except BaseException as error:
-        status.update(status="failed", error=f"{type(error).__name__}: {error}")
+        status.update(status="failed", error=public_error(error, args))
         write_json(status, args.output_dir / "run_status.json")
         (args.output_dir / "report.md").write_text(
             f"# 配送研究本次运行：failed\n\n{status['error']}\n\n"
             "本次未成功完成，分项文件可能属于旧运行或未完成运行。\n", encoding="utf-8", newline="\n")
+        write_json({**local_log, **status, "error": f"{type(error).__name__}: {error}"},
+                   args.output_dir / "run.local.log")
         raise
 
 
-def execute(args):
+def execute(args, status):
     started = time.perf_counter()
     if args.download and not args.data.exists():
         args.data.parent.mkdir(parents=True, exist_ok=True)
@@ -98,6 +117,7 @@ def execute(args):
     if not args.data.exists():
         raise SystemExit("未找到数据；加 --download，或用 --data 指向官方吉林CSV。")
     digest = hashlib.sha256(args.data.read_bytes()).hexdigest()
+    status["source_sha256"] = digest
     if not args.custom_data and digest != EXPECTED_SHA:
         raise ValueError("数据与本次固定版本不同；不要悄悄覆盖已记录的实验输入。")
     raw = pd.read_csv(args.data, encoding="utf-8-sig", dtype={"order_id": "string", "city": "string"})
@@ -125,15 +145,29 @@ def execute(args):
     frame["minutes"] = (frame.delivery_time - frame.accept_time).dt.total_seconds() / 60
     if (frame.minutes < 0).any():
         raise ValueError("出现负时长，先核对跨日和时间字段，不能自动改成正值。")
+    completed = frame
+    label_cutoff = None
     if args.observation_end:
-        end = pd.Timestamp(args.observation_end)
-        if pd.isna(end) or end != end.normalize():
+        observation_end = pd.Timestamp(args.observation_end)
+        if pd.isna(observation_end) or observation_end != observation_end.normalize():
             raise ValueError("观察结束日期需要是完整日期。")
-        frame = frame[frame.delivery_time < end + pd.Timedelta(days=1)]
-    if frame.empty:
+        label_cutoff = observation_end + pd.Timedelta(days=1)
+        # 完成量只数观察截止前的完成记录；时长仍从完整输入按接单日取对象。
+        completed = frame[frame.delivery_time < label_cutoff]
+    if completed.empty:
         raise ValueError("观察区间没有已完成记录。")
-    daily = frame.groupby(frame.delivery_time.dt.normalize()).size().sort_index()
-    observed = longest_block(daily)
+    daily = completed.groupby(completed.delivery_time.dt.normalize()).size().sort_index()
+    evaluation_daily = daily
+    if args.evaluation_end:
+        evaluation_end = pd.Timestamp(args.evaluation_end)
+        if pd.isna(evaluation_end) or evaluation_end != evaluation_end.normalize():
+            raise ValueError("回测结束日期需要是完整日期。")
+        if label_cutoff is not None and evaluation_end >= label_cutoff:
+            raise ValueError("回测结束日期不能晚于观察截止日。")
+        evaluation_daily = daily[daily.index <= evaluation_end]
+        if evaluation_daily.empty:
+            raise ValueError("回测结束日期以前没有完成记录。")
+    observed = longest_block(evaluation_daily)
     if len(observed) < 28 + args.horizon_days * (args.windows + 1):
         raise ValueError("连续可评分区间不足，至少需28天训练、1个选模历史窗口和指定测试窗口。")
     out = args.output_dir
@@ -146,20 +180,39 @@ def execute(args):
              "source_bytes": args.data.stat().st_size, "data_kind": data_kind,
              "license_on_current_data_card": None if args.custom_data else "Apache-2.0; research purposes",
              "rows": len(raw), "unique_orders": raw.order_id.nunique(),
-             "observed_completed_rows": len(frame),
+             "observed_completed_rows": len(completed),
              "source_columns": raw.columns.tolist(),
              "missing_field_counts": raw.isna().sum().loc[lambda x: x > 0].to_dict(),
              "ds_days": ds.nunique(), "ds_finish_day_disagreements":
-             int((ds.loc[frame.index] != frame.delivery_time.dt.normalize()).sum()),
-             "ds_accept_day_disagreements": int((ds.loc[frame.index] != frame.accept_time.dt.normalize()).sum()),
+             int((ds.loc[completed.index] != completed.delivery_time.dt.normalize()).sum()),
+             "ds_accept_day_disagreements": int((ds.loc[completed.index] != completed.accept_time.dt.normalize()).sum()),
              "no_finish_records_dates": missing.strftime("%Y-%m-%d").tolist(),
              "observation_block": {"start": str(observed.index[0].date()),
                                    "end": str(observed.index[-1].date()), "days": len(observed)},
-             "minutes_quantiles": frame.minutes.quantile([0, .5, .9, .99, 1]).to_dict()}
+             "minutes_quantiles": completed.minutes.quantile([0, .5, .9, .99, 1]).to_dict()}
     # numpy整数转成Python整数，避免JSON依赖某一环境的隐式转换。
     audit["unique_orders"], audit["ds_days"] = int(audit["unique_orders"]), int(audit["ds_days"])
     write_json(audit, out / "data_audit.json")
     windows = range(len(observed) - args.windows * args.horizon_days, len(observed), args.horizon_days)
+    maturity = []
+    for cutoff in windows:
+        future = observed.iloc[cutoff:cutoff + args.horizon_days]
+        origin, end = future.index[0], future.index[-1] + pd.Timedelta(days=1)
+        cohort = frame[(frame.accept_time >= origin) & (frame.accept_time < end)]
+        pending = int((cohort.delivery_time >= label_cutoff).sum()) if label_cutoff is not None else 0
+        maturity.append({"window_start": str(origin.date()), "window_end": str(future.index[-1].date()),
+                         "accepted_records": len(cohort), "mature_records": len(cohort) - pending,
+                         "pending_records": pending, "all_labels_mature": pending == 0,
+                         "observation_end": args.observation_end,
+                         "all_test_labels_known_after": str(cohort.delivery_time.max()) if len(cohort) else None})
+    write_csv(pd.DataFrame(maturity), out / "duration_label_maturity.csv")
+    incomplete = [row for row in maturity if row["pending_records"]]
+    if incomplete:
+        row = incomplete[-1]
+        raise ValueError(f"{row['window_start']}至{row['window_end']}的{row['accepted_records']}条接单对象中，"
+                         f"{row['pending_records']}条在观察截止日后才完成，不能只评价已完成的快单。"
+                         "本次不生成MAE；详见duration_label_maturity.csv。请将--evaluation-end提前，"
+                         "或等待这些标签成熟后延后--observation-end。")
     volume_predictions, volume_metrics, choices = [], [], []
     eta_predictions, eta_metrics = [], []
     for cutoff in windows:
@@ -176,7 +229,7 @@ def execute(args):
             volume_metrics.append([origin.date(), future.index[-1].date(), method, float(error.mean())])
             volume_predictions.extend([origin.date(), day.date(), method, int(actual), float(pred)]
                                       for day, actual, pred in zip(future.index, future, prediction))
-        # 时长路线使用同样的四个日历窗口，按接单日选未来对象；训练标签须已完成。
+        # 按接单日选完整测试对象；上面已确认没有跨观察截止日的未成熟标签。
         mature = mature_history(frame, origin)
         valid = frame[(frame.accept_time >= origin) & (frame.accept_time < end)]
         if valid.empty:
@@ -223,7 +276,8 @@ def execute(args):
     summary = {"data_kind": data_kind, "volume_window_mean_mae": volume_means,
                "parameters": {"horizon_days": args.horizon_days, "windows": args.windows,
                               "hour_min_records": args.hour_min_records, "year": year,
-                              "observation_end": args.observation_end},
+                              "observation_end": args.observation_end, "evaluation_end": args.evaluation_end},
+               "duration_label_maturity": "duration_label_maturity.csv",
                "duration_diagnostics": "duration_diagnostics.csv",
                "duration_record_mean_mae_minutes": eta_means,
                "volume_choices": [row[3] for row in choices], "python": platform.python_version(),
@@ -247,7 +301,7 @@ def execute(args):
     text = ("# 配送记录研究：从字段审查到两条路线\n\n"
             f"{introduction}本次比较完成量与时长两条路线。\n\n"
             "## 实际数据先改变了什么\n\n"
-            f"取得{len(raw)}条记录、{audit['source_bytes']}字节，无重复运单ID；观察范围内有{len(frame)}条已完成记录。"
+            f"取得{len(raw)}条记录、{audit['source_bytes']}字节，无重复运单ID；观察范围内有{len(completed)}条已完成记录。"
             "观察范围内ds与完成日期有"
             f"{audit['ds_finish_day_disagreements']}条不同，所以完成量按delivery_time日期统计。"
             f"完成日期区间内{len(missing)}天无记录，空日含义不明，没有补零。最长连续观察段为"
@@ -271,6 +325,13 @@ def execute(args):
              "两法使用相同历史和未来运单，训练要求接单和完成时间均早于窗口起点。"
              "模型在起点冻结，到每张运单接单时读取当时可见的小时；"
              "未来完成时间仅在评分时使用。极长样本保留，另列超过6小时的误差。\n\n"
+             f"观察截止日：{args.observation_end or '未指定，使用文件中已提供的全部完成标签'}；"
+             f"回测最终日期：{observed.index[-1].date()}。"
+             "[逐窗口标签成熟情况](duration_label_maturity.csv)列出接单对象、已成熟和未成熟条数；"
+             "本次所有窗口的输入内接单对象均已成熟。若存在跨观察截止日的慢单，"
+             "程序停止评分，要求提前回测结束日或延后观察截止日，避免只剩快单时得到偏乐观MAE。"
+             "此检查限于输入中已有的记录，不能证明采样完整；输入本身漏掉未完成单时，"
+             "仍可能存在样本选择偏差。\n\n"
              "| 方法 | 全部测试运单MAE（分钟） |\n| --- | ---: |\n")
     for name, value in eta_means.items():
         text += f"| {name} | {value:.4f} |\n"
