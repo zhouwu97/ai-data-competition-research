@@ -1,0 +1,8 @@
+{
+  "data_kind": "synthetic",
+  "days": 2,
+  "source_lines": 15,
+  "normalized_order_sku_lines": 14,
+  "total_quantity": 41,
+  "threshold_changed_rows": 1
+}
