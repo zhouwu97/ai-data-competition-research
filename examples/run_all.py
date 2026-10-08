@@ -27,7 +27,8 @@ def main():
     env.update({"OMP_NUM_THREADS": "1", "OPENBLAS_NUM_THREADS": "1", "MKL_NUM_THREADS": "1"})
     steps = ["00_make_data.py", "01_demand_forecast.py", "02_warehouse_eiq_abc.py",
              "03_dc_locations.py", "04_customer_segments.py", "05_kmeans_by_hand.py",
-             "failure_cases.py", "06_method_stress.py", "scripts/check_calculations.py"]
+             "failure_cases.py", "06_method_stress.py", "07_sequential_forecast.py",
+             "08_location_tradeoffs.py", "scripts/check_calculations.py"]
     log_path = RESULT / "run.log"
     step_seconds = {}
     with log_path.open("w", encoding="utf-8") as log:
@@ -75,7 +76,8 @@ def main():
                "选题表中的真实数据和评分证据仍是待取得状态。\n\n"
                "详细记录：[题一](task01/report.md)、[题二](task02/report.md)、"
                "[题三](task03/report.md)、[题四](task04/report.md)、"
-               "[错误示范](failure_cases/report.md)、[四类困难情景](stress/report.md)。\n\n"
+               "[错误示范](failure_cases/report.md)、[四类困难情景](stress/report.md)、"
+               "[事前预测选择](sequential/report.md)、[覆盖与距离取舍](tradeoffs/report.md)。\n\n"
                "研究下一步：[由结果到决策](../../docs/research/decision-cases.md)。\n\n"
                "复查：[命令日志](run.log)、[版本与SHA256](run_manifest.json)、"
                "[结论对应数值](claims.json)。全部步骤实际返回0后，才会写入本汇总。\n")

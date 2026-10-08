@@ -1,18 +1,10 @@
 """题一练习：用过去预测未来14天；比较简单基线和日历趋势模型。"""
 import numpy as np
 import pandas as pd
-from sklearn.linear_model import Ridge
 from sklearn.metrics import mean_absolute_error
 from common import read_input, output_dir, write_csv, write_json, save_figure
 from common import assert_future_split, plt
-
-def calendar_features(dates, origin):
-    # 每个特征在预测前就知道：距离起点天数，以及星期几。
-    # 不使用未来销量；不在验证集上拟合任何统计量。
-    dates = pd.DatetimeIndex(dates)
-    day = (dates - origin).days.to_numpy()
-    weekdays = np.eye(7)[dates.dayofweek]
-    return np.column_stack([day, weekdays])
+from forecasting import forecast_at_origin
 
 def main():
     out = output_dir("task01")
@@ -34,16 +26,8 @@ def main():
     for cutoff in [56, 70, 84, 98]:
         train, valid = series.iloc[:cutoff], series.iloc[cutoff:cutoff + 14]
         assert_future_split(train.index, valid.index)
-        recent = train.iloc[-28:]
-        weekday_means = recent.groupby(recent.index.dayofweek).mean()
-        # 基线1：最近7天均值；基线2：最近28天中同星期的均值。
-        candidates = {
-            "recent_mean": np.repeat(train.iloc[-7:].mean(), len(valid)),
-            "weekday_mean": np.array([weekday_means[d] for d in valid.index.dayofweek])}
-        model = Ridge(alpha=0.1)
-        model.fit(calendar_features(train.index, series.index[0]), train.to_numpy())
-        candidates["calendar_ridge"] = np.maximum(
-            0, model.predict(calendar_features(valid.index, series.index[0])))
+        # 共用入口只把cutoff之前的历史交给模型；未来数量留到下面评分时使用。
+        candidates = forecast_at_origin(series, cutoff, len(valid))
         for name, pred in candidates.items():
             mae = float(mean_absolute_error(valid.to_numpy(), pred))
             # RMSE把较大的误差罚得更重；和MAE一起看，不直接当库存损失。

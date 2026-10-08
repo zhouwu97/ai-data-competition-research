@@ -17,7 +17,7 @@ python scripts/test_validate_research.py
 
 run_all会重建教学输入和结果，不要在这些目录存正式数据。[requirements.txt](requirements.txt)是本次实际运行的依赖版本。
 
-现在 `run_all.py` 还会执行四类困难情景，再用独立公式检查基础指标。先读[困难情景报告](results/stress/report.md)与[决策案例](../docs/research/decision-cases.md)，看结果如何影响方法选择。
+`run_all.py` 执行基础、困难情景、顺序选择与选址权衡练习，再用独立公式检查基础和压力指标。先读[困难情景报告](results/stress/report.md)与[决策案例](../docs/research/decision-cases.md)，看结果如何影响方法选择。公开真实数据的[吉林配送研究](../research/lade-jilin/README.md)使用单独命令，不混入合成数据汇总。
 
 ## 文件与研究问题
 
@@ -31,7 +31,10 @@ run_all会重建教学输入和结果，不要在这些目录存正式数据。[
 | [04_customer_segments.py](04_customer_segments.py) | 运单聚合与客户分群 | 聚类是否增加了规则分组之外的信息 | [报告](results/task04/report.md) |
 | [failure_cases.py](failure_cases.py) | 故意构造错误 | 检查应如何失败，0误差为什么也会骗人 | [记录](results/failure_cases/report.md) |
 | [06_method_stress.py](06_method_stress.py) | 趋势突变、周期波动、目标冲突与客户变化 | 方法假设失效时怎样改判 | [压力报告](results/stress/report.md) |
+| [07_sequential_forecast.py](07_sequential_forecast.py) | 三种变化机制，逐次使用已完成窗口选择 | 不知道未来时怎样选模型，为什么仍会失败 | [顺序选择](results/sequential/report.md) |
+| [08_location_tradeoffs.py](08_location_tradeoffs.py) | 同一候选集、三个半径与损失预算 | 小幅距离目标损失能否换取覆盖 | [权衡报告](results/tradeoffs/report.md) |
 | [common.py](common.py) | 共用读写、图与输入检查 | 第一遍可跳过 | 被各练习调用 |
+| [forecasting.py](forecasting.py) | 共用历史预测入口 | 训练边界与已完成回测 | 被01、06、07与真实数据练习调用 |
 | [run_all.py](run_all.py) | 顺序执行并记录产物 | 只有全部成功才写汇总 | [汇总](results/report.md) |
 
 注释重点解释业务对象、处理理由和结论边界，不仅翻译函数名。SVG图的轴使用英文，中文含义在对应报告与代码里说明；不用安装额外中文字体。

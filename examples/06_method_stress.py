@@ -8,16 +8,10 @@ from itertools import combinations
 import numpy as np
 import pandas as pd
 from sklearn.cluster import KMeans
-from sklearn.linear_model import Ridge
 from sklearn.metrics import adjusted_rand_score, silhouette_score
 from sklearn.preprocessing import StandardScaler
 from common import INPUT, RESULT, output_dir, write_csv, write_json, save_figure, plt
-
-
-def calendar_features(dates, origin):
-    """日期差和星期在预测前可知。与题一基础练习使用同一组特征。"""
-    dates = pd.DatetimeIndex(dates)
-    return np.column_stack([(dates - origin).days, np.eye(7)[dates.dayofweek]])
+from forecasting import forecast_at_origin
 
 
 def prediction_stress(out):
@@ -39,15 +33,7 @@ def prediction_stress(out):
         for cutoff in [56, 70, 84, 98]:
             train, valid = series.iloc[:cutoff], series.iloc[cutoff:cutoff + 14]
             assert train.index.max() < valid.index.min()
-            recent = train.iloc[-28:]
-            weekday_mean = recent.groupby(recent.index.dayofweek).mean()
-            estimates = {
-                "recent_mean": np.repeat(train.iloc[-7:].mean(), len(valid)),
-                "weekday_mean": np.array([weekday_mean[d] for d in valid.index.dayofweek]),
-            }
-            model = Ridge(alpha=0.1).fit(calendar_features(train.index, series.index[0]), train)
-            estimates["calendar_ridge"] = np.maximum(
-                0, model.predict(calendar_features(valid.index, series.index[0])))
+            estimates = forecast_at_origin(series, cutoff, len(valid))
             for name, pred in estimates.items():
                 metrics.append([scenario, cutoff, name,
                                 float(np.mean(np.abs(valid.to_numpy() - pred)))])
