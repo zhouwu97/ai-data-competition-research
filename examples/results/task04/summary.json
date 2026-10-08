@@ -1,0 +1,14 @@
+{
+  "data_kind": "synthetic",
+  "customers": 60,
+  "illustration_k": 3,
+  "silhouette_k3": 0.632643134353397,
+  "ari_to_volume_rule": 0.9016666666666666,
+  "minimum_seed_ari": 1.0,
+  "features": [
+    "orders",
+    "business_volume",
+    "recency_days"
+  ],
+  "cutoff": "2025-05-01"
+}

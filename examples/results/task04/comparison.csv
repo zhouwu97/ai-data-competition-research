@@ -1,0 +1,6 @@
+method,k,silhouette
+kmeans,2,0.563024
+kmeans,3,0.632643
+kmeans,4,0.598200
+kmeans,5,0.577448
+volume_rule,3,0.584372
