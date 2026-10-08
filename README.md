@@ -23,6 +23,8 @@
 
 [困难情景的实际结果](examples/results/stress/report.md)与[决策案例](docs/research/decision-cases.md)把这些问题接到路线取舍和答辩。先解释失败，再考虑增加算法。
 
+想开始真实数据研究，打开[吉林配送小研究](research/lade-jilin/README.md)：取得公开记录后先改变分析口径，再比较完成量预测和接单时长两条路线。计划、失败、结果和继续研究的理由都保留；这是公开数据实践，正式赛题仍按赛事平台取得。
+
 ## 先看结论
 
 - **练基础：** 先完成本站小练习，再用Datawhale补清洗与分析，熟悉后做Kaggle Titanic或House Prices的完整流程。
@@ -37,6 +39,7 @@
 | 从零理解术语与方法 | [新手教程](docs/beginner/README.md)、[精选现成教程](docs/beginner/learning-resources.md) |
 | 带注释代码、输入、实际结果与图表 | [练习说明](examples/README.md)、[运行汇总](examples/results/report.md) |
 | 方法为什么会失败、结果怎样改变选择 | [问题入口](docs/research/README.md)、[困难情景](examples/results/stress/report.md)、[决策案例](docs/research/decision-cases.md) |
+| 真实数据如何改变最初设想 | [吉林配送研究](research/lade-jilin/README.md)、[事前选择](examples/results/sequential/report.md)、[选址权衡](examples/results/tradeoffs/report.md) |
 | 数字是否算对、文件是否对应本次运行 | [独立计算检查](tests/README.md)、[版本与证据检查](scripts/validate_research.py) |
 | 规则、正式数据与使用权限 | [要求清单](competition-requirements/README.md)、[数据获取](competition-requirements/data-access.md) |
 | 四题用同一标准审查 | [四题档案](changfeng/README.md)、[选题表](templates/topic-selection-matrix.md) |
