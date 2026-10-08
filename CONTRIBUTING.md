@@ -4,4 +4,8 @@
 
 名次注明作者声明或官方证据；入口失效与内容不完整分别标记。新增资源不能仅由星数、标题或 README 宣传判断质量。
 
-提交前运行 `python scripts/check_catalog.py`，检查重复链接与本地文档链接。第三方代码与数据只收录链接；如确需引入代码，保留其许可和引用，另核查赛规。
+提交前运行 `python scripts/check_catalog.py`、`python scripts/validate_research.py`与`python scripts/test_validate_research.py`。前者检查非空元数据、日期、URL结构、重复值和本地链接；后两项核对教学证据和指定失败情形。网络可用性与研究结论仍需人工审查。
+
+教学源码改动后运行 `python examples/run_all.py`，提交输入、结果、报告、日志与摘要。注明合成或真实数据，未执行不能写成实测；不以合成结果推断比赛获奖机会。
+
+术语第一次出现给白话说明或新手文档链接。第三方代码与数据只收录链接；如确需引入代码，保留其许可和引用，另核查赛规。
