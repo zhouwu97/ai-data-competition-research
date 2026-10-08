@@ -51,6 +51,8 @@ P0：在相应用途下优先；P1：选方向后读；P2：进阶或历史参�
 
 R35—R42见catalog.json：K-means官方课程、KMeans与StandardScaler接口、轮廓系数、ARI、EIQ应用论文、Python虚拟环境与MAE定义。主要是按问题查阅的P1资料；[精选教程](../docs/beginner/learning-resources.md)说明当前先读哪些章节。
 
+R43—R47只补这轮实际遇到的问题：校赛评分与诚信、概念漂移、仓储调位、最大覆盖、K-means假设失效。先从[按问题阅读入口](../docs/research/README.md)选一个，再读[七份资料的指定章节](../docs/research/method-sources.md)，不要求读完整个目录。
+
 按条件缩小范围：
 
 ~~~bash

@@ -547,6 +547,71 @@
       "next_action": "按新手教程的问题针对查阅，再核对教学代码和结果",
       "verification": "已读接口与指标定义",
       "checked_at": "2026-10-08"
+    },
+    {
+      "id": "R43",
+      "title": "2025长风杯辽宁工业大学校赛评分与诚信要求",
+      "competition": "长风杯 / 2025校内选拔",
+      "type": "official-notice",
+      "url": "https://cxcy.lnut.edu.cn/info/14428/185940.htm",
+      "priority": "P1",
+      "value": "核对报告10、答辩30、创新40、应用20的校赛评分，以及诚信材料要求",
+      "limitation": "仅适用于该校2025选拔；AI拼凑与仿造限制不能概括为所有AI辅助都被禁止",
+      "next_action": "将本校评分与作品亮点对应，确认本届允许的AI与代码使用范围",
+      "verification": "已读2025-11-14通知正文、评分表与学术诚信条款",
+      "checked_at": "2026-10-08"
+    },
+    {
+      "id": "R44",
+      "title": "Learning under Concept Drift: A Review",
+      "competition": "通用方法 / 需求预测",
+      "type": "research-paper",
+      "url": "https://arxiv.org/html/2004.05785v1",
+      "priority": "P1",
+      "value": "理解趋势与关系变化、适应方法和跨时间评价",
+      "limitation": "论文主要讨论流式学习；不能据此认定短窗口必胜",
+      "next_action": "按窗口查看压力误差，提出一个更新条件后另留时间段验证",
+      "verification": "已读作者预印本定义、变化类型、适应与评估章节",
+      "checked_at": "2026-10-08"
+    },
+    {
+      "id": "R45",
+      "title": "Dynamic Storage Location Assignment under a Traversing Route",
+      "competition": "通用方法 / 仓储运营",
+      "type": "research-paper",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1155/2020/1621828",
+      "priority": "P1",
+      "value": "区分短期热度与布局调整，理解搬移作业和路线假设",
+      "limitation": "特定picker-to-parts仓型与遍历路线，收益不能套到任意仓库",
+      "next_action": "将每日诊断与调位周期分开，比较未来拣选与搬移代价",
+      "verification": "已读第3节和5.2.2/5.2.3的需求热度及距离分析",
+      "checked_at": "2026-10-08"
+    },
+    {
+      "id": "R46",
+      "title": "PySAL/spopt 最大覆盖选址示范",
+      "competition": "通用方法 / 配送中心选址",
+      "type": "official-doc",
+      "url": "https://pysal.org/spopt/notebooks/mclp.html",
+      "priority": "P1",
+      "value": "在设施数量、候选点与服务阈值给定时最大化覆盖需求",
+      "limitation": "候选约束及距离口径必须一致；本仓库另演示最大城市数目标",
+      "next_action": "先在小候选集穷举两种目标，不直接拿离散与连续中心排名",
+      "verification": "已读目标、距离矩阵、欧氏与路网距离及已有设施约束",
+      "checked_at": "2026-10-08"
+    },
+    {
+      "id": "R47",
+      "title": "scikit-learn 1.8 K-means 假设失效示范",
+      "competition": "通用方法 / 客户分群",
+      "type": "official-doc",
+      "url": "https://scikit-learn.org/1.8/auto_examples/cluster/plot_kmeans_assumptions.html",
+      "priority": "P1",
+      "value": "理解形状、方差和样本量差异如何影响K-means",
+      "limitation": "图示不证明真实客户存在天然等级，增加初始化也不能修复目标差异",
+      "next_action": "查看客户原特征，再与规则分档及跨期分组比较",
+      "verification": "已读官方四幅情景、拟合代码与初始化说明",
+      "checked_at": "2026-10-08"
     }
   ],
   "checked_at_note": "目录最后更新日；每条资源的实际核查日期见 checked_at，不表示旧赛事信息全部重新核查。"
