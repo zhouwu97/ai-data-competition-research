@@ -7,5 +7,10 @@
     "calendar_ridge": 4.818434184967776,
     "recent_mean": 16.59438775510204,
     "weekday_mean": 9.857142857142858
+  },
+  "mean_rmse": {
+    "calendar_ridge": 5.879525118746531,
+    "recent_mean": 21.065255605019775,
+    "weekday_mean": 11.66312904470613
   }
 }
