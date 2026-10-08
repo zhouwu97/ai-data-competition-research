@@ -27,13 +27,15 @@ def main():
     env.update({"OMP_NUM_THREADS": "1", "OPENBLAS_NUM_THREADS": "1", "MKL_NUM_THREADS": "1"})
     steps = ["00_make_data.py", "01_demand_forecast.py", "02_warehouse_eiq_abc.py",
              "03_dc_locations.py", "04_customer_segments.py", "05_kmeans_by_hand.py",
-             "failure_cases.py"]
+             "failure_cases.py", "06_method_stress.py", "scripts/check_calculations.py"]
     log_path = RESULT / "run.log"
     step_seconds = {}
     with log_path.open("w", encoding="utf-8") as log:
         for step in steps:
-            cmd = [sys.executable, str(HERE / step)]
-            log.write(f"$ python examples/{step}\n")
+            # 计算检查使用另外一份公式；它失败时，不写成功汇总。
+            relative = step if step.startswith("scripts/") else f"examples/{step}"
+            cmd = [sys.executable, str(ROOT / relative)]
+            log.write(f"$ python {relative}\n")
             log.flush()
             started = time.perf_counter()
             proc = subprocess.run(cmd, cwd=ROOT, env=env, capture_output=True, text=True)
@@ -73,13 +75,15 @@ def main():
                "选题表中的真实数据和评分证据仍是待取得状态。\n\n"
                "详细记录：[题一](task01/report.md)、[题二](task02/report.md)、"
                "[题三](task03/report.md)、[题四](task04/report.md)、"
-               "[错误示范](failure_cases/report.md)。\n\n"
+               "[错误示范](failure_cases/report.md)、[四类困难情景](stress/report.md)。\n\n"
+               "研究下一步：[由结果到决策](../../docs/research/decision-cases.md)。\n\n"
                "复查：[命令日志](run.log)、[版本与SHA256](run_manifest.json)、"
                "[结论对应数值](claims.json)。全部步骤实际返回0后，才会写入本汇总。\n")
     (RESULT / "report.md").write_text(report, encoding="utf-8")
     # 原始输入、源码和结果分别留摘要；摘要能发现文件变化，不能证明研究结论正确。
     input_files = sorted((HERE / "sample_inputs").glob("*.csv"))
     source_files = sorted(HERE.glob("*.py"))
+    source_files.append(ROOT / "scripts/check_calculations.py")
     result_files = sorted(p for p in RESULT.rglob("*")
                           if p.is_file() and p.name != "run_manifest.json")
     manifest = {

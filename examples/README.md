@@ -11,10 +11,13 @@ python examples/05_kmeans_by_hand.py
 python examples/run_all.py
 python scripts/check_catalog.py
 python scripts/validate_research.py
+python -m unittest discover -s tests -v
 python scripts/test_validate_research.py
 ~~~
 
-run_all会重建教学输入和结果，不要在这些目录存正式数据。requirements.txt是本次实际运行的依赖版本。
+run_all会重建教学输入和结果，不要在这些目录存正式数据。[requirements.txt](requirements.txt)是本次实际运行的依赖版本。
+
+现在 `run_all.py` 还会执行四类困难情景，再用独立公式检查基础指标。先读[困难情景报告](results/stress/report.md)与[决策案例](../docs/research/decision-cases.md)，看结果如何影响方法选择。
 
 ## 文件与研究问题
 
@@ -27,6 +30,7 @@ run_all会重建教学输入和结果，不要在这些目录存正式数据。r
 | [03_dc_locations.py](03_dc_locations.py) | 虚构平面选址 | 城市覆盖与需求覆盖为何不同 | [报告](results/task03/report.md) |
 | [04_customer_segments.py](04_customer_segments.py) | 运单聚合与客户分群 | 聚类是否增加了规则分组之外的信息 | [报告](results/task04/report.md) |
 | [failure_cases.py](failure_cases.py) | 故意构造错误 | 检查应如何失败，0误差为什么也会骗人 | [记录](results/failure_cases/report.md) |
+| [06_method_stress.py](06_method_stress.py) | 趋势突变、周期波动、目标冲突与客户变化 | 方法假设失效时怎样改判 | [压力报告](results/stress/report.md) |
 | [common.py](common.py) | 共用读写、图与输入检查 | 第一遍可跳过 | 被各练习调用 |
 | [run_all.py](run_all.py) | 顺序执行并记录产物 | 只有全部成功才写汇总 | [汇总](results/report.md) |
 

@@ -46,17 +46,20 @@ def main():
             0, model.predict(calendar_features(valid.index, series.index[0])))
         for name, pred in candidates.items():
             mae = float(mean_absolute_error(valid.to_numpy(), pred))
-            metrics.append([cutoff, str(valid.index[0].date()), name, mae])
+            # RMSE把较大的误差罚得更重；和MAE一起看，不直接当库存损失。
+            rmse = float(np.sqrt(np.mean((valid.to_numpy() - pred) ** 2)))
+            metrics.append([cutoff, str(valid.index[0].date()), name, mae, rmse])
             for date, actual, estimate in zip(valid.index, valid.to_numpy(), pred):
                 predictions.append([cutoff, date.date(), name, int(actual), float(estimate)])
     frame = pd.DataFrame(predictions, columns=["cutoff_day", "date", "model",
                                               "actual", "prediction"])
-    scores = pd.DataFrame(metrics, columns=["cutoff_day", "valid_start", "model", "mae"])
+    scores = pd.DataFrame(metrics, columns=["cutoff_day", "valid_start", "model", "mae", "rmse"])
     write_csv(frame, out / "predictions.csv")
     write_csv(scores, out / "metrics.csv")
     means = scores.groupby("model")["mae"].mean().to_dict()
     summary = {"data_kind": "synthetic", "windows": 4, "horizon_days": 14,
-               "target": "national_total_quantity", "mean_mae": means}
+               "target": "national_total_quantity", "mean_mae": means,
+               "mean_rmse": scores.groupby("model")["rmse"].mean().to_dict()}
     write_json(summary, out / "summary.json")
     fig, ax = plt.subplots(figsize=(9, 4))
     latest = frame[frame.cutoff_day == 98]
