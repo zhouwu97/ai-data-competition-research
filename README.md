@@ -2,7 +2,7 @@
 
 面向个人与算法社团的竞赛资料库：Kaggle、海豚杯、长风杯，以及天池、讯飞等可继续关注的平台。
 
-资料按条目记录核查日期；赛事入口主要核查于 **2026-10-07**，新手教程、原创教学实验和复盘专项更新于 **2026-10-08**。实际报名资格、赛题、日程与提交格式以当届规程为准。
+资料与实验更新于 **2026-10-08**。这里既教方法，也研究方法什么时候失效、怎样依据结果选路线。
 
 ## 零基础先从这里开始
 
@@ -15,7 +15,13 @@
 5. [可运行练习](examples/README.md)与[已执行结果](examples/results/report.md)：带中文注释的代码、CSV、图表、报告和日志。
 6. [四题研究档案](changfeng/README.md)、[选题表](templates/topic-selection-matrix.md)和[AI审核流程](docs/ai-assisted-competition.md)：从学习转到正式选题。
 
-教学数据全部为本仓库生成的虚构数据。练习已实际执行，但没有取得正式赛题数据、提交比赛或验证获奖效果；不能把教学结果写成真实参赛成绩。
+练习使用合成数据，已有实际运行结果；正式数据和当届完整要求的获取状态集中见[证据说明](docs/research/evidence.md)与[赛事要求](competition-requirements/README.md)。
+
+## 已经会基础，接着研究什么？
+
+打开[按问题研究](docs/research/README.md)，直接进入你遇到的问题：预测突然失准、每天ABC变化、多建中心却覆盖变差、分群只是规模分档。
+
+[困难情景的实际结果](examples/results/stress/report.md)与[决策案例](docs/research/decision-cases.md)把这些问题接到路线取舍和答辩。先解释失败，再考虑增加算法。
 
 ## 先看结论
 
@@ -24,15 +30,15 @@
 - **准备长风杯：** 2025 辽宁本科生赛道已有四个指定题目的公开说明，可练需求预测、仓储分析、选址和客户分群；本次尚未确认 2026 届完整规程。
 - **选代码：** 先复现简单 baseline，再读高排名方案。当前找到的海豚杯代码项目与长风杯展示项目，完整程度差别很大。
 
-上述学习顺序是本仓库的建议，不是赛事规定。不要将训练赛排名当作正式竞赛奖项，也不要把往届要求套到新一届。
-
 ## 阅读导航
 
 | 内容 | 文件 |
 | --- | --- |
 | 从零理解术语与方法 | [新手教程](docs/beginner/README.md)、[精选现成教程](docs/beginner/learning-resources.md) |
 | 带注释代码、输入、实际结果与图表 | [练习说明](examples/README.md)、[运行汇总](examples/results/report.md) |
-| 规则适用届次与材料缺口 | [要求清单](competition-requirements/README.md) |
+| 方法为什么会失败、结果怎样改变选择 | [问题入口](docs/research/README.md)、[困难情景](examples/results/stress/report.md)、[决策案例](docs/research/decision-cases.md) |
+| 数字是否算对、文件是否对应本次运行 | [独立计算检查](tests/README.md)、[版本与证据检查](scripts/validate_research.py) |
+| 规则、正式数据与使用权限 | [要求清单](competition-requirements/README.md)、[数据获取](competition-requirements/data-access.md) |
 | 四题用同一标准审查 | [四题档案](changfeng/README.md)、[选题表](templates/topic-selection-matrix.md) |
 | AI分析、代码与报告怎样审核 | [AI辅助参赛](docs/ai-assisted-competition.md)、[字段时点表](templates/feature-availability.md) |
 | 选题比较、我们的判断与改判条件 | [从选题到分析](docs/retrospectives/topic-selection-analysis.md) |
@@ -46,10 +52,7 @@
 | 每条共享资源的用途、限制和阅读优先级 | [资源导读](resources/README.md) |
 | 可筛选的链接目录与核查证据 | [catalog.json](resources/catalog.json) |
 | 验证、特征、实验和报告的经验 | [参赛工作方法](docs/experience/workflow.md) |
-| 从零做起的四周计划 | [学习路线](docs/experience/roadmap.md) |
-| 赛事信息收集模板 | [赛事卡](templates/competition-card.md) |
-| 阅读并复现别人方案 | [方案复现卡](templates/solution-review.md) |
-| 实验与展示 | [实验日志](templates/experiments.csv)、[报告提纲](templates/report-outline.md) |
+| 学习计划、研究记录与报告 | [学习路线](docs/experience/roadmap.md)、[赛事卡](templates/competition-card.md)、[复现卡](templates/solution-review.md)、[实验日志](templates/experiments.csv)、[报告提纲](templates/report-outline.md) |
 | 已检索的范围与仍需确认的事项 | [检索记录](resources/search-log.md) |
 
 ## 熟悉基础后再看的资源
@@ -62,16 +65,16 @@
 
 ## 如何使用和更新
 
-每次只选一场比赛、一份方案。填赛事卡，确定能用的数据与评分方式；填复现卡，记录实际运行命令和结果。新资源写入 `resources/catalog.json`，注明核查时间与依据，再运行：
+每次只选一场比赛、一份方案。填赛事卡，确定能用的数据与评分方式；填复现卡，记录实际运行命令和结果。新资源写入 `resources/catalog.json`，注明核查时间与依据，资料修订运行 `python scripts/check_catalog.py` 即可。计算改动先重建结果，再核对：
 
 ```bash
-python scripts/check_catalog.py
+python examples/run_all.py
 python scripts/validate_research.py
-python scripts/test_validate_research.py
+python -m unittest discover -s tests -v
 ```
 
 本仓库收录链接和原创导读，不搬运第三方完整代码、论文或竞赛数据。上游代码的公开访问不等于允许用于当前比赛；引用和改编时分别检查许可证与赛规。未见获奖证明的作者成绩，统一标作作者自述。
 
-原检查脚本现会拒绝空白元数据、错误日期和不完整URL；新增脚本核对教学文件摘要与四项结论数字。它们不证明网站可用、研究观点正确或符合当届全部评分要求。
+独立计算检查从逐条数据重算指标，版本检查核对摘要和报告引用。检查范围见[说明](tests/README.md)。
 
-GitHub仓库：[zhouwu97/ai-data-competition-research](https://github.com/zhouwu97/ai-data-competition-research)，私有。保留六个案例与15个固定版本来源，新增零基础文档、四题档案、原创教学练习与错误示范。尚未复现上游参赛训练或取得正式赛题实验结果。
+写作遵循[仓库原则](AGENTS.md)：术语有例子，结论有依据，重复提醒集中写；不靠复杂算法、流程数量或主观打分制造进步感。
