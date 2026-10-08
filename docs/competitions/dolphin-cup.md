@@ -24,9 +24,9 @@
 
 [qyyyy09315/DophinCup2025ofSanX](https://github.com/qyyyy09315/DophinCup2025ofSanX)
 
-已读取 README 前80行、根目录和 LICENSE。作者描述文本分类、BERT 特征、树模型和集成；根目录包含 `src`、`requirements.txt` 等。LICENSE 为 MIT。README 所写 Top3、93.7% 是作者自述，本次未取得官方结果或独立复现。
+2026-10-08 补读完整 README、递归目录及5个源文件，见[三夏项目复盘与代码审读](../retrospectives/case-05-dolphin-code-audit.md)。LICENSE 为 MIT。README 的 Top3 与成绩声明仍未独立核验。
 
-优先学习数据清洗和特征组织方式，再检查标签处理、合成数据是否遵守你的赛规。此次未审计全部源代码，不能由 README 的完整目录就认定可一键复现。该仓库不是2026题目或官方 baseline。
+所读分类脚本为二分类、三模型概率平均，与 README 的多标签和 Stacking 描述存在差异；标签检查与合成数据文件的实现也比介绍有限。输入输出路径与格式需要先统一，再做验证设计和表示对比。本轮是局部静态审读，没有运行模型；该仓库不是2026题目或官方 baseline。
 
 ## 备赛建议
 
