@@ -62,3 +62,5 @@ python scripts/find_resources.py --priority P1 --keyword 教程
 ~~~
 
 这是检索过滤，不是自动选题或获奖推荐。正式选择需要真实数据与[选题表](../templates/topic-selection-matrix.md)。
+
+本轮新增的[R48 LaDe官方数据](https://huggingface.co/datasets/Cainiao-AI/LaDe)已经用于[吉林配送小研究](../research/lade-jilin/README.md)。读资料后直接看原计划怎样被字段和实验改变，不必继续按目录收藏链接。

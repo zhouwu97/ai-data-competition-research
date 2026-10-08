@@ -612,6 +612,19 @@
       "next_action": "查看客户原特征，再与规则分档及跨期分组比较",
       "verification": "已读官方四幅情景、拟合代码与初始化说明",
       "checked_at": "2026-10-08"
+    },
+    {
+      "id": "R48",
+      "title": "LaDe官方公开配送记录：吉林小规模研究",
+      "competition": "公开真实数据 / 配送研究",
+      "type": "dataset",
+      "url": "https://huggingface.co/datasets/Cainiao-AI/LaDe",
+      "priority": "P1",
+      "value": "启动完成记录量与接单时长两条真实数据路线，观察日期覆盖和成熟标签",
+      "limitation": "公开配送记录不等于全部市场需求；不是长风杯正式数据，覆盖说明仍影响业务解释",
+      "next_action": "按research/lade-jilin的计划、字段改判和执行报告顺序研究，再重算预测误差",
+      "verification": "已读官方数据卡、字段和作者时间说明；已下载固定版本吉林CSV，核对SHA256并执行两条路线",
+      "checked_at": "2026-10-08"
     }
   ],
   "checked_at_note": "目录最后更新日；每条资源的实际核查日期见 checked_at，不表示旧赛事信息全部重新核查。"
