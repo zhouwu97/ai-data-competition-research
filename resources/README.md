@@ -1,6 +1,6 @@
 # 共享资源与经验导读
 
-P0：先读；P1：选方向后读；P2：进阶或历史参考。核查状态只表示实际读取范围，不表示已复现。每条核查日期见 catalog.json；2026-10-08 新增[复盘专项](../docs/retrospectives/README.md)。
+P0：在相应用途下优先；P1：选方向后读；P2：进阶或历史参考。并非所有P0都应同时读。核查状态只表示实际读取范围，不表示已复现。每条核查日期见catalog.json；零基础先读[精选教程](../docs/beginner/learning-resources.md)和[中文解释](../docs/beginner/README.md)，研究经验见[复盘专项](../docs/retrospectives/README.md)。
 
 | 编号 | 资源 | 优先级 | 学什么 | 主要限制 |
 | --- | --- | --- | --- | --- |
@@ -45,4 +45,18 @@ P0：先读；P1：选方向后读；P2：进阶或历史参考。核查状态�
 
 研究参赛路线先读 R32、R31，再按方向读 R33、R34；国内代码的实际差异见[六案例复盘专项](../docs/retrospectives/README.md)。[15个固定文件的来源清单](retrospective-sources.json)可定位本轮分析依据。
 
-先填复现卡再下载大数据或训练模型。当前资料库只做公开材料与局部源码审读，没有运行上游训练程序，也没有独立验证获奖声明。
+先填复现卡再下载大数据或训练模型。外部方案仍以材料与局部源码审读为主，没有运行上游参赛训练程序或独立验证获奖声明；新增的[原创教学练习](../examples/README.md)已实际执行，合成数据结果与真实赛题证据分开。
+
+## 新增方法解释来源
+
+R35—R42见catalog.json：K-means官方课程、KMeans与StandardScaler接口、轮廓系数、ARI、EIQ应用论文、Python虚拟环境与MAE定义。主要是按问题查阅的P1资料；[精选教程](../docs/beginner/learning-resources.md)说明当前先读哪些章节。
+
+按条件缩小范围：
+
+~~~bash
+python scripts/find_resources.py --competition 长风杯
+python scripts/find_resources.py --keyword 聚类
+python scripts/find_resources.py --priority P1 --keyword 教程
+~~~
+
+这是检索过滤，不是自动选题或获奖推荐。正式选择需要真实数据与[选题表](../templates/topic-selection-matrix.md)。
