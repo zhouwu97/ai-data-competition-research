@@ -1,0 +1,5 @@
+forecast_date,history_end,latest_completed_backtest_end,selected_model,past_mae_recent_mean,past_mae_weekday_mean,past_mae_calendar_ridge
+2022-08-14,2022-08-13,2022-08-02,calendar_ridge,36.122449,71.000000,31.448961
+2022-08-28,2022-08-27,2022-08-16,calendar_ridge,49.852041,73.375000,46.143911
+2022-09-11,2022-09-10,2022-08-30,weekday_mean,62.790816,52.875000,63.026442
+2022-09-25,2022-09-24,2022-09-13,weekday_mean,49.551020,33.750000,67.260976

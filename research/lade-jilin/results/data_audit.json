@@ -1,0 +1,56 @@
+{
+  "source_url": "https://huggingface.co/datasets/Cainiao-AI/LaDe/resolve/be2cec02775cafc8d52230303f32134382bcc50b/delivery/delivery_jl.csv",
+  "source_revision": "be2cec02775cafc8d52230303f32134382bcc50b",
+  "source_sha256": "12e2cf4664dd5b4475d39dddee8872f5a03b3082f08f0eece7f103baee6c6e73",
+  "source_bytes": 4736342,
+  "data_kind": "public_real_records",
+  "license_on_current_data_card": "Apache-2.0; research purposes",
+  "rows": 31415,
+  "unique_orders": 31415,
+  "source_columns": [
+    "order_id",
+    "region_id",
+    "city",
+    "courier_id",
+    "lng",
+    "lat",
+    "aoi_id",
+    "aoi_type",
+    "accept_time",
+    "accept_gps_time",
+    "accept_gps_lng",
+    "accept_gps_lat",
+    "delivery_time",
+    "delivery_gps_time",
+    "delivery_gps_lng",
+    "delivery_gps_lat",
+    "ds"
+  ],
+  "missing_field_counts": {
+    "accept_gps_lng": 955,
+    "accept_gps_lat": 955
+  },
+  "ds_days": 163,
+  "ds_finish_day_disagreements": 19,
+  "ds_accept_day_disagreements": 0,
+  "no_finish_records_dates": [
+    "2022-06-21",
+    "2022-10-09",
+    "2022-10-23",
+    "2022-10-24",
+    "2022-10-25",
+    "2022-10-27"
+  ],
+  "observation_block": {
+    "start": "2022-06-22",
+    "end": "2022-10-08",
+    "days": 109
+  },
+  "minutes_quantiles": {
+    "0.0": 0.0,
+    "0.5": 175.0,
+    "0.9": 387.0,
+    "0.99": 660.8600000000006,
+    "1.0": 3573.0
+  }
+}
