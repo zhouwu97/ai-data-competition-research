@@ -1,6 +1,6 @@
 # 题三：配送中心选址研究档案
 
-依据：[2025公开任务](https://www.lncu.edu.cn/cxcyxy/28215.html)。正式2026规程、真实地理/需求数据和评分尚未取得。
+任务依据：[2025公开说明](https://www.lncu.edu.cn/cxcyxy/28215.html)。届次与数据状态见[要求清单](../../competition-requirements/README.md)。
 
 ## 要求与未决问题
 
@@ -37,3 +37,5 @@ K-means优化的平方距离与覆盖率、运输成本、两日送达不是同�
 ## 已运行教学结果与差距
 
 [实际报告](../../examples/results/task03/report.md)保存覆盖表与分配距离。演示图选k=3，但未确定最优k；没有真实全国地图、道路、容量或可建站约束，不是实际仓网方案。
+
+100公里半径下，本例2个中心已覆盖全部城市；3个中心主要继续改善平均距离。基础路线完成规定K-means与服务评价；增强路线针对覆盖瓶颈，与相同候选集的最大覆盖比较。见[覆盖冲突实验](../../examples/results/stress/report.md)和[决策案例](../../docs/research/decision-cases.md)。
