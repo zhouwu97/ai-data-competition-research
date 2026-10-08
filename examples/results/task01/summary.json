@@ -1,0 +1,11 @@
+{
+  "data_kind": "synthetic",
+  "windows": 4,
+  "horizon_days": 14,
+  "target": "national_total_quantity",
+  "mean_mae": {
+    "calendar_ridge": 4.818434184967776,
+    "recent_mean": 16.59438775510204,
+    "weekday_mean": 9.857142857142858
+  }
+}

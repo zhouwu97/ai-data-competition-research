@@ -1,0 +1,5 @@
+region,sku,total_quantity,mean_daily_quantity,std_daily_quantity
+North,A,4141,36.973214,6.522946
+North,B,2694,24.053571,7.000437
+South,A,4502,40.196429,7.263185
+South,B,3015,26.919643,6.797109
