@@ -1,34 +1,51 @@
 $ python examples/00_make_data.py
 已生成5份合成教学CSV；正式赛题数据仍未取得。
 exit_code=0
-elapsed_seconds=0.5275
+elapsed_seconds=0.6702
 
 $ python examples/01_demand_forecast.py
 题一完成：4个14天窗口，3种方法；真实赛题粒度待确认。
 exit_code=0
-elapsed_seconds=1.3719
+elapsed_seconds=1.9379
 
 $ python examples/02_warehouse_eiq_abc.py
 题二完成：按天计算EQ/EN/IQ/IK，核对数量并比较ABC阈值。
 exit_code=0
-elapsed_seconds=0.552
+elapsed_seconds=0.6561
 
 $ python examples/03_dc_locations.py
 题三完成：4个中心数量、3个半径，区分城市覆盖与需求覆盖。
 exit_code=0
-elapsed_seconds=1.5969
+elapsed_seconds=1.8403
 
 $ python examples/04_customer_segments.py
 题四完成：60位合成客户，规则对照、4个k和5个初始化检查。
 exit_code=0
-elapsed_seconds=1.3571
+elapsed_seconds=1.6009
 
 $ python examples/05_kmeans_by_hand.py
 手算K-means完成：中心从1和2移动到1.5和8.5；见trace.csv。
 exit_code=0
-elapsed_seconds=0.0195
+elapsed_seconds=0.0217
 
 $ python examples/failure_cases.py
 错误示范完成：4项拒绝检查、1项EIQ口径检查、1项答案泄漏示范。
 exit_code=0
-elapsed_seconds=0.4923
+elapsed_seconds=0.5419
+
+$ python examples/06_method_stress.py
+压力练习完成：预测机制反转、仓储次日调位、选址目标冲突、客户弱结构与漂移。
+exit_code=0
+elapsed_seconds=1.9712
+
+$ python scripts/check_calculations.py
+OK 题一：12组窗口×方法的MAE、RMSE已核对；独立计算的平均RMSE为 calendar_ridge=5.8795; recent_mean=21.0653; weekday_mean=11.6631
+OK 题二：从原始订单重算每日EQ/EN/IQ/IK、两组ABC边界及数量汇总。
+OK 题三：独立重算已存中心的最近分配、城市/需求覆盖率及加权距离。
+OK 题四：从运单核对客户特征；独立重算演示k与规则的轮廓系数、ARI及画像。
+OK 压力练习：重算两机制MAE、玩具拣选/调位距离、同候选覆盖、客户轮廓与时间/种子ARI。
+数值比较容限：绝对2e-06，相对1e-07（处理CSV舍入）。
+检查不读取文件摘要。基础题四其他k/种子未保存标签，未独立核对；不判断真实业务收益。
+压力选址只穷举给定9城候选；连续坐标全局最优、模型拟合过程和口径对账文字未审计。
+exit_code=0
+elapsed_seconds=0.0656

@@ -11,6 +11,8 @@
 
 这些量回答不同问题，不能据此排列四个赛题的获奖机会。选题表中的真实数据和评分证据仍是待取得状态。
 
-详细记录：[题一](task01/report.md)、[题二](task02/report.md)、[题三](task03/report.md)、[题四](task04/report.md)、[错误示范](failure_cases/report.md)。
+详细记录：[题一](task01/report.md)、[题二](task02/report.md)、[题三](task03/report.md)、[题四](task04/report.md)、[错误示范](failure_cases/report.md)、[四类困难情景](stress/report.md)。
+
+研究下一步：[由结果到决策](../../docs/research/decision-cases.md)。
 
 复查：[命令日志](run.log)、[版本与SHA256](run_manifest.json)、[结论对应数值](claims.json)。全部步骤实际返回0后，才会写入本汇总。
