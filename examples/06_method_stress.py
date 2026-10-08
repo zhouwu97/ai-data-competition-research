@@ -394,7 +394,7 @@ def main():
              "选一条失败现象，先画出原因，提出一个可以反驳的改进，再留出新窗口比较。"
              "本练习展示的是路线改变的依据；正式数据的机制、成本和授权需分别核实。"
              "[汇总数字](summary.json)便于检查，逐条CSV才是重算入口。\n")
-    (out / "report.md").write_text(text, encoding="utf-8")
+    (out / "report.md").write_text(text, encoding="utf-8", newline="\n")
     print("压力练习完成：预测机制反转、仓储次日调位、选址目标冲突、客户弱结构与漂移。")
 
 

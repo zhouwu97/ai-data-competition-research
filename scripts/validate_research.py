@@ -4,6 +4,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 import hashlib
 import json
+import os
 import re
 import sys
 import subprocess
@@ -113,7 +114,9 @@ def evidence_errors(root):
     manifest_path = root / "examples/results/run_manifest.json"
     if not manifest_path.exists():
         return ["缺少教学运行记录；先运行python examples/run_all.py"]
-    manifest = json.loads(manifest_path.read_text())
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    if manifest.get("status") != "success":
+        return [f"教学本次运行状态不是success：{manifest.get('status', '未记录')}；查看report.md与run.log"]
     if manifest.get("data_kind") != "synthetic":
         errors.append("教学运行记录必须明确synthetic")
     for group in ["input_sha256", "source_sha256", "result_sha256"]:
@@ -129,15 +132,15 @@ def evidence_errors(root):
     if not claims_path.exists():
         return errors + ["缺少结论追溯表claims.json"]
     report_path = root / "examples/results/report.md"
-    report = report_path.read_text()
-    claims = json.loads(claims_path.read_text())
+    report = report_path.read_text(encoding="utf-8")
+    claims = json.loads(claims_path.read_text(encoding="utf-8"))
     errors += report_claim_errors(root, report_path, report, claims)
     for claim in claims:
         path = (root / claim["result"]).resolve()
         if not path.is_relative_to(root.resolve()) or not path.is_file():
             errors.append(f"{claim['id']}: 证据文件缺失或越界")
             continue
-        value = json.loads(path.read_text())
+        value = json.loads(path.read_text(encoding="utf-8"))
         try:
             for key in claim["keys"]:
                 value = value[key]
@@ -150,15 +153,17 @@ def evidence_errors(root):
     return errors
 
 def main():
-    errors = metadata_errors(json.loads((ROOT / "resources/catalog.json").read_text()))
+    errors = metadata_errors(json.loads((ROOT / "resources/catalog.json").read_text(encoding="utf-8")))
     errors += evidence_errors(ROOT)
     if errors:
         raise SystemExit("\n".join(errors))
     print("OK: 元数据、文件版本和4项报告引用一致。", flush=True)
     # 错误公式可以生成彼此一致的文件，所以这一步不再只比较JSON。
-    result = subprocess.run([sys.executable, str(ROOT / "scripts/check_calculations.py")])
-    if result.returncode:
-        raise SystemExit(result.returncode)
+    env = {**os.environ, "PYTHONIOENCODING": "utf-8"}
+    for script in ["check_calculations.py", "check_public_research.py"]:
+        result = subprocess.run([sys.executable, str(ROOT / "scripts" / script)], env=env)
+        if result.returncode:
+            raise SystemExit(result.returncode)
     print("指定计算已独立复核。检查范围见 tests/README.md。")
 
 if __name__ == "__main__":

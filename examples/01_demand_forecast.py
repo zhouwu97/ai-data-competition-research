@@ -64,7 +64,7 @@ def main():
              "没有库存成本、缺货或补货决策数据，不能推导库存节省。\n\n"
              "证据：[区域-SKU统计](regional_summary.csv)、[逐窗口指标](metrics.csv)、[逐日预测](predictions.csv)、"
              "[图表](forecast.svg)、[汇总](summary.json)。\n")
-    (out / "report.md").write_text(text, encoding="utf-8")
+    (out / "report.md").write_text(text, encoding="utf-8", newline="\n")
     print("题一完成：4个14天窗口，3种方法；真实赛题粒度待确认。")
 
 if __name__ == "__main__":

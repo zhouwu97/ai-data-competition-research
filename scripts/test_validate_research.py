@@ -11,18 +11,18 @@ from validate_research import ROOT, metadata_errors, evidence_errors
 
 def sync_manifest(root):
     path = root / "examples/results/run_manifest.json"
-    manifest = json.loads(path.read_text())
+    manifest = json.loads(path.read_text(encoding="utf-8"))
     for group in ["input_sha256", "source_sha256", "result_sha256"]:
         for name in manifest[group]:
             manifest[group][name] = hashlib.sha256((root / name).read_bytes()).hexdigest()
-    path.write_text(json.dumps(manifest))
+    path.write_text(json.dumps(manifest), encoding="utf-8", newline="\n")
 
 @contextmanager
 def research_copy():
     with tempfile.TemporaryDirectory() as folder:
         root = Path(folder)
         shutil.copytree(ROOT / "examples", root / "examples")
-        manifest = json.loads((root / "examples/results/run_manifest.json").read_text())
+        manifest = json.loads((root / "examples/results/run_manifest.json").read_text(encoding="utf-8"))
         for name in manifest["source_sha256"]:
             target = root / name
             if not target.exists():
@@ -33,7 +33,7 @@ def research_copy():
 
 class ResearchChecks(unittest.TestCase):
     def setUp(self):
-        self.catalog = json.loads((ROOT / "resources/catalog.json").read_text())
+        self.catalog = json.loads((ROOT / "resources/catalog.json").read_text(encoding="utf-8"))
 
     def test_blank_evidence(self):
         data = copy.deepcopy(self.catalog)
@@ -53,15 +53,15 @@ class ResearchChecks(unittest.TestCase):
     def test_changed_result_is_detected(self):
         with research_copy() as root:
             path = root / "examples/results/task01/predictions.csv"
-            path.write_text(path.read_text() + "changed\n")
+            path.write_text(path.read_text(encoding="utf-8") + "changed\n", encoding="utf-8", newline="\n")
             self.assertTrue(any("文件变化" in x for x in evidence_errors(root)))
 
     def test_false_claim_is_detected(self):
         with research_copy() as root:
             path = root / "examples/results/claims.json"
-            claims = json.loads(path.read_text())
+            claims = json.loads(path.read_text(encoding="utf-8"))
             claims[0]["value"] = 999
-            path.write_text(json.dumps(claims))
+            path.write_text(json.dumps(claims), encoding="utf-8", newline="\n")
             sync_manifest(root)
             self.assertTrue(any("结论数值与证据不一致" in x for x in evidence_errors(root)))
 
@@ -72,63 +72,63 @@ class ResearchChecks(unittest.TestCase):
     def test_wrong_report_row_is_detected_after_syncing_hash(self):
         with research_copy() as root:
             path = root / "examples/results/report.md"
-            path.write_text(path.read_text().replace(
-                "| C01 | 题一14天回测窗口数 | 4 |", "| C01 | 题一14天回测窗口数 | 999 |"))
-            self.assertIn("4", path.read_text())  # 别处仍有4，不能拿它救C01。
+            path.write_text(path.read_text(encoding="utf-8").replace(
+                "| C01 | 题一14天回测窗口数 | 4 |", "| C01 | 题一14天回测窗口数 | 999 |"), encoding="utf-8", newline="\n")
+            self.assertIn("4", path.read_text(encoding="utf-8"))  # 别处仍有4，不能拿它救C01。
             sync_manifest(root)
             self.assertTrue(any("C01: 报告数值" in x for x in evidence_errors(root)))
 
     def test_wrong_report_link_is_detected_after_syncing_hash(self):
         with research_copy() as root:
             path = root / "examples/results/report.md"
-            path.write_text(path.read_text().replace(
+            path.write_text(path.read_text(encoding="utf-8").replace(
                 "[task01/summary.json](task01/summary.json)",
-                "[task01/summary.json](task02/summary.json)"))
+                "[task01/summary.json](task02/summary.json)"), encoding="utf-8", newline="\n")
             sync_manifest(root)
             self.assertTrue(any("C01: 报告结果链接" in x for x in evidence_errors(root)))
 
     def test_missing_report_id_is_detected(self):
         with research_copy() as root:
             path = root / "examples/results/report.md"
-            path.write_text("\n".join(line for line in path.read_text().splitlines()
-                                      if not line.startswith("| C01 |")) + "\n")
+            path.write_text("\n".join(line for line in path.read_text(encoding="utf-8").splitlines()
+                                      if not line.startswith("| C01 |")) + "\n", encoding="utf-8", newline="\n")
             sync_manifest(root)
             self.assertTrue(any("C01: 汇总报告缺少结果行" in x for x in evidence_errors(root)))
 
     def test_duplicate_report_id_is_detected(self):
         with research_copy() as root:
             path = root / "examples/results/report.md"
-            report = path.read_text()
+            report = path.read_text(encoding="utf-8")
             row = next(line for line in report.splitlines() if line.startswith("| C01 |"))
-            path.write_text(report.replace(row, row + "\n" + row))
+            path.write_text(report.replace(row, row + "\n" + row), encoding="utf-8", newline="\n")
             sync_manifest(root)
             self.assertTrue(any("C01: 汇总报告结果编号重复" in x for x in evidence_errors(root)))
 
     def test_duplicate_claim_id_is_detected(self):
         with research_copy() as root:
             path = root / "examples/results/claims.json"
-            claims = json.loads(path.read_text())
+            claims = json.loads(path.read_text(encoding="utf-8"))
             claims.append(claims[0])
-            path.write_text(json.dumps(claims))
+            path.write_text(json.dumps(claims), encoding="utf-8", newline="\n")
             sync_manifest(root)
             self.assertTrue(any("C01: 结论记录编号重复" in x for x in evidence_errors(root)))
 
     def test_report_id_without_claim_is_detected(self):
         with research_copy() as root:
             path = root / "examples/results/claims.json"
-            path.write_text(json.dumps(json.loads(path.read_text())[1:]))
+            path.write_text(json.dumps(json.loads(path.read_text(encoding="utf-8"))[1:]), encoding="utf-8", newline="\n")
             sync_manifest(root)
             self.assertTrue(any("C01: 汇总报告结果编号未登记" in x for x in evidence_errors(root)))
 
     def test_fraudulent_display_value_is_detected(self):
         with research_copy() as root:
             path = root / "examples/results/claims.json"
-            claims = json.loads(path.read_text())
+            claims = json.loads(path.read_text(encoding="utf-8"))
             claims[0]["display_value"] = "999"
-            path.write_text(json.dumps(claims))
+            path.write_text(json.dumps(claims), encoding="utf-8", newline="\n")
             report = root / "examples/results/report.md"
-            report.write_text(report.read_text().replace(
-                "| C01 | 题一14天回测窗口数 | 4 |", "| C01 | 题一14天回测窗口数 | 999 |"))
+            report.write_text(report.read_text(encoding="utf-8").replace(
+                "| C01 | 题一14天回测窗口数 | 4 |", "| C01 | 题一14天回测窗口数 | 999 |"), encoding="utf-8", newline="\n")
             sync_manifest(root)
             self.assertTrue(any("C01: 展示值与原始结论数值不符" in x for x in evidence_errors(root)))
 

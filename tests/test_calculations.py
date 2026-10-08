@@ -34,7 +34,7 @@ def rewrite_csv(path, change):
 def rewrite_json(path, change):
     data = json.loads(path.read_text(encoding="utf-8"))
     change(data)
-    path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
 
 
 def sync_manifest(root):
@@ -110,7 +110,7 @@ class BrokenOutputs(unittest.TestCase):
         self.root = Path(self.temp.name)
         shutil.copytree(ROOT / "examples/sample_inputs", self.root / "examples/sample_inputs")
         shutil.copytree(ROOT / "examples/results", self.root / "examples/results")
-        manifest = json.loads((self.root / "examples/results/run_manifest.json").read_text())
+        manifest = json.loads((self.root / "examples/results/run_manifest.json").read_text(encoding="utf-8"))
         for name in manifest.get("source_sha256", {}):
             target = self.root / name
             if (ROOT / name).exists():

@@ -51,7 +51,7 @@ def main():
             "前四项验证检查器会拒绝输入；第五项核对EN；第六项说明抄答案能制造0误差。\n\n"
             "见[结果表](checks.csv)。这些检查覆盖指定情形，不能自动保证没有全部泄漏、"
             "业务口径错误或OOF污染。正式数据仍需人工审核。\n")
-    (out / "report.md").write_text(text, encoding="utf-8")
+    (out / "report.md").write_text(text, encoding="utf-8", newline="\n")
     print("错误示范完成：4项拒绝检查、1项EIQ口径检查、1项答案泄漏示范。")
 
 if __name__ == "__main__":

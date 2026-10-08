@@ -17,6 +17,23 @@ python scripts/test_validate_research.py
 
 run_all会重建教学输入和结果，不要在这些目录存正式数据。[requirements.txt](requirements.txt)是本次实际运行的依赖版本。
 
+文本文件统一使用UTF-8（输入CSV也接受UTF-8 BOM），源码和生成文件使用LF换行，避免跨电脑时仅因换行造成摘要变化。每次运行先把汇总与清单写为`running`；失败时改为`failed`并记录已完成步骤，成功时写`success`及文件摘要。运行失败后先读当前状态和日志，分项CSV可能来自旧运行。
+
+## 换入自己的数据
+
+以下命令读取自有文件，不会调用`00_make_data.py`。输出目录单独指定；路径有空格时用双引号。
+
+```bash
+python scripts/predict_demand.py --data "D:/data/demand.csv" --output-dir outputs/demand --as-of 2026-10-01 --horizon-days 14
+python examples/04_customer_segments.py --input-dir "D:/data/customers" --output-dir outputs/customers --cutoff 2026-10-01
+```
+
+需求CSV字段见下面的数据字典；日期连续、数量非负，观察日期前至少28天并覆盖其前一天。`future_predictions.csv`输出所有区域与SKU合计的未来预测，三种方法分别列出，不是商品级提交表，也没有未来实际成绩。
+
+客户目录包含`waybills.csv`与`business_volume.csv`，字段见下表；数量须为正，两表逐客户合计一致，业务量对应观察日期以前的运单。运单含观察日期当天或之后的记录会报错，需要先按同一口径准备两表。业务量相同、小样本或全部特征相同时，继续保存特征与画像；`comparison.csv`记录实际组数，不能计算的轮廓系数留空并附原因。
+
+配送数据的自有入口、可调窗口与时长分组见[配送研究说明](../research/lade-jilin/README.md)。仓储和选址脚本仍是固定教学练习，真实道路和容量约束需要另外建模。
+
 `run_all.py` 执行基础、困难情景、顺序选择与选址权衡练习，再用独立公式检查基础和压力指标。先读[困难情景报告](results/stress/report.md)与[决策案例](../docs/research/decision-cases.md)，看结果如何影响方法选择。公开真实数据的[吉林配送研究](../research/lade-jilin/README.md)使用单独命令，不混入合成数据汇总。
 
 ## 文件与研究问题

@@ -68,7 +68,7 @@ def main():
             "中心是连续坐标，尚未约束到可建站地点。正式题必须重新定义距离与服务阈值。\n\n"
             "证据：[覆盖表](coverage.csv)、[城市分配](allocations.csv)、"
             "[中心](centers.csv)、[图表](locations.svg)、[汇总](summary.json)。\n")
-    (out / "report.md").write_text(text, encoding="utf-8")
+    (out / "report.md").write_text(text, encoding="utf-8", newline="\n")
     print("题三完成：4个中心数量、3个半径，区分城市覆盖与需求覆盖。")
 
 if __name__ == "__main__":

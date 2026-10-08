@@ -11,3 +11,4 @@ outputs/
 *.pt
 *.pth
 research/lade-jilin/data/
+*.local.log

@@ -175,7 +175,7 @@ def main():
              "未来销量的函数，确认同一个检验会拒绝它。\n\n"
              "执行：`python examples/07_sequential_forecast.py`；"
              "测试：`python -m unittest tests.test_forecasting -v`。\n")
-    (out / "report.md").write_text(text, encoding="utf-8")
+    (out / "report.md").write_text(text, encoding="utf-8", newline="\n")
     print("顺序预测完成：三种机制、四个起点；只按最近两个已完成窗口选择已有方法。")
 
 

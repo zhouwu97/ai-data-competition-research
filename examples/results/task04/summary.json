@@ -2,7 +2,11 @@
   "data_kind": "synthetic",
   "customers": 60,
   "illustration_k": 3,
+  "actual_clusters": 3,
+  "silhouette": 0.632643134353397,
+  "silhouette_reason": "",
   "silhouette_k3": 0.632643134353397,
+  "volume_rule_silhouette_reason": "",
   "ari_to_volume_rule": 0.9016666666666666,
   "minimum_seed_ari": 1.0,
   "features": [

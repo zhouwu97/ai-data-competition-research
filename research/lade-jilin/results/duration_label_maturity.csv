@@ -1,0 +1,5 @@
+window_start,window_end,accepted_records,mature_records,pending_records,all_labels_mature,observation_end,all_test_labels_known_after
+2022-08-14,2022-08-27,3700,3700,0,True,,2022-08-27 20:02:00
+2022-08-28,2022-09-10,3686,3686,0,True,,2022-09-10 19:18:00
+2022-09-11,2022-09-24,3446,3446,0,True,,2022-09-25 08:29:00
+2022-09-25,2022-10-08,2109,2109,0,True,,2022-10-08 20:23:00

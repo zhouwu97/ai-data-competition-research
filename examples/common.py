@@ -20,11 +20,16 @@ def output_dir(name):
     folder.mkdir(parents=True, exist_ok=True)
     return folder
 
-def read_input(name, required):
-    path = INPUT / name
+def read_input(name, required, input_dir=None):
+    path = (Path(input_dir) if input_dir is not None else INPUT) / name
     if not path.exists():
+        if input_dir is not None:
+            raise FileNotFoundError(f"缺少输入文件：{path}")
         raise FileNotFoundError(f"先运行 python examples/00_make_data.py；缺少 {path.name}")
-    frame = pd.read_csv(path)
+    # 编号保留原字符串；001和1可能是不同客户，不能自动转成同一个整数。
+    identifiers = {field: "string" for field in required
+                   if field.endswith("_id") or field in ["region", "sku"]}
+    frame = pd.read_csv(path, encoding="utf-8-sig", dtype=identifiers)
     missing = set(required) - set(frame.columns)
     if missing:
         raise ValueError(f"{name} 缺少字段：{sorted(missing)}")
@@ -34,19 +39,19 @@ def read_input(name, required):
 
 def write_csv(frame, path):
     # index=False 避免把 pandas 的行号误当作业务字段写入 CSV。
-    frame.to_csv(path, index=False, float_format="%.6f")
+    frame.to_csv(path, index=False, float_format="%.6f", encoding="utf-8", lineterminator="\n")
 
 def write_json(value, path):
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2,
-                              allow_nan=False) + "\n", encoding="utf-8")
+                              allow_nan=False) + "\n", encoding="utf-8", newline="\n")
 
 def save_figure(fig, path):
     fig.tight_layout()
     # 去掉 SVG 内部生成日期，让相同输入的图更容易比较。
     fig.savefig(path, metadata={"Date": None})
     # 绘图库的SVG路径带行尾空格；规范化文本，不改变图形或计算。
-    path.write_text("\n".join(line.rstrip() for line in path.read_text().splitlines())
-                    + "\n", encoding="utf-8")
+    path.write_text("\n".join(line.rstrip() for line in path.read_text(encoding="utf-8").splitlines())
+                    + "\n", encoding="utf-8", newline="\n")
     plt.close(fig)
 
 def assert_future_split(train_dates, valid_dates):
