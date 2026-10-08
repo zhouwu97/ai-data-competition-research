@@ -1,0 +1,57 @@
+{
+  "data_kind": "synthetic_sequential",
+  "horizon_days": 14,
+  "decision_cutoffs": [
+    56,
+    70,
+    84,
+    98
+  ],
+  "first_history_window_cutoff": 28,
+  "selection_rule": "minimum_mean_mae_of_last_two_completed_14_day_windows",
+  "tie_order": [
+    "recent_mean",
+    "weekday_mean",
+    "calendar_ridge"
+  ],
+  "mean_mae": {
+    "decline": {
+      "calendar_ridge": 36.213987984642486,
+      "recent_mean": 25.612244897959187,
+      "sequential_select": 30.525169855292468,
+      "weekday_mean": 31.866071428571427
+    },
+    "original": {
+      "calendar_ridge": 4.818434184967776,
+      "recent_mean": 16.59438775510204,
+      "sequential_select": 4.818434184967776,
+      "weekday_mean": 9.857142857142858
+    },
+    "regrowth": {
+      "calendar_ridge": 28.09721678982202,
+      "recent_mean": 26.721938775510203,
+      "sequential_select": 28.517516794067976,
+      "weekday_mean": 26.205357142857142
+    }
+  },
+  "selected_models": {
+    "original": [
+      "calendar_ridge",
+      "calendar_ridge",
+      "calendar_ridge",
+      "calendar_ridge"
+    ],
+    "decline": [
+      "calendar_ridge",
+      "weekday_mean",
+      "weekday_mean",
+      "recent_mean"
+    ],
+    "regrowth": [
+      "calendar_ridge",
+      "weekday_mean",
+      "weekday_mean",
+      "weekday_mean"
+    ]
+  }
+}
