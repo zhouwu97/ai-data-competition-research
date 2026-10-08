@@ -1,0 +1,7 @@
+case,status,observation,fix
+future_feature,caught,字段在预测时点之后才可用：不能进入当时的模型。,只使用预测时点前能取得的字段；补录时间也要审查
+future_split,caught,训练日期没有严格早于验证日期：不能把这次比较称为未来回测。,未来预测用训练日期严格早于验证日期的切分
+stacking_column_order,caught,训练与推理字段或顺序不同，必须先统一接口。,固定元模型输入名称和顺序；另审查OOF与推理的生成流程
+duplicated_join_key,caught,Merge keys are not unique in right dataset; not a one-to-one merge,确认业务主键；选择正确合并关系，不能默默接受行数膨胀
+EN_counts_rows,caught,按行数得到3，不同SKU数应为2,先明确订单键；EN按不同SKU计数
+answer_as_feature,illustrated,直接抄答案MAE=0.0000；常数对照MAE=6.6667,指标好不等于流程正确；需要审核字段来源和可用时点
