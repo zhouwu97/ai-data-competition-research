@@ -1,6 +1,6 @@
 # 题二：仓储运营优化研究档案
 
-依据：[2025公开任务](https://www.lncu.edu.cn/cxcyxy/28215.html)。正式2026规程、真实数据和评分尚未取得。
+任务依据：[2025公开说明](https://www.lncu.edu.cn/cxcyxy/28215.html)。届次与数据状态见[要求清单](../../competition-requirements/README.md)。
 
 ## 要求与未决问题
 
@@ -21,6 +21,8 @@
 [白话解释](../../docs/beginner/eiq-abc-explained.md)可手算第一天；[代码](../../examples/02_warehouse_eiq_abc.py)含拆行与每日核对。
 
 策略先对应数据特征，再说明可验证方法。例如高IK与高EN提出不同作业假设；验证是否有收益需固定原策略、布局与评价口径。
+
+每日诊断与储位调整是两个时间尺度。昨天A类、今天B类，并不直接要求搬货。增强路线可比较周期分类、固定货位和有条件调位；[周期波动实验](../../examples/results/stress/report.md)用前一天记录决定次日动作，并把搬移成本算进去。
 
 ## 继续、修复与停止条件
 
