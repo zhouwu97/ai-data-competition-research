@@ -1,0 +1,9 @@
+{
+  "data_kind": "synthetic",
+  "coordinate_system": "fictional_planar_km",
+  "illustration_k": 3,
+  "illustration_radius_km": 100,
+  "city_coverage": 1.0,
+  "demand_coverage": 1.0,
+  "weighted_distance_km": 16.19329466872681
+}
