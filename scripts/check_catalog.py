@@ -3,13 +3,14 @@ import json
 import re
 from pathlib import Path
 from urllib.parse import urlsplit, unquote
+from validate_research import metadata_errors
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
 def main():
     data = json.loads((ROOT / 'resources/catalog.json').read_text(encoding='utf-8'))
-    errors = []
+    errors = metadata_errors(data)
     ids, urls = set(), set()
     required = {'id', 'title', 'competition', 'type', 'url', 'priority', 'value',
                 'limitation', 'next_action', 'verification', 'checked_at'}
@@ -35,7 +36,7 @@ def main():
                 errors.append(f"Broken local link: {file.relative_to(ROOT)} -> {target}")
     if errors:
         raise SystemExit('\n'.join(errors))
-    print(f"OK: {len(ids)} resources; local Markdown links resolve. External availability is not tested.")
+    print(f"OK: {len(ids)} resources; non-empty metadata/date/URL structure and local links checked. External availability is not tested.")
 
 
 if __name__ == '__main__':
