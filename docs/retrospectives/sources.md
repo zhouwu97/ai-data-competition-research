@@ -33,4 +33,3 @@
 ## 检索与筛选
 
 本轮检索参赛者 postmortem、experiment log、leaderboard、winning solution 和两项国内杯赛的 GitHub 分享。中文杯赛搜索有大量同名、书籍和无关项目，未收录；也排除了金海豚、配音等不同赛事。六个案例按材料可追溯性与方法覆盖选择，不按星数或声明名次排序。
-
