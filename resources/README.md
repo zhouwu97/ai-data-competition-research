@@ -1,6 +1,6 @@
 # 共享资源与经验导读
 
-P0：先读；P1：选方向后读；P2：进阶或历史参考。核查状态只表示此次实际读到的范围，不表示已复现。
+P0：先读；P1：选方向后读；P2：进阶或历史参考。核查状态只表示实际读取范围，不表示已复现。每条核查日期见 catalog.json；2026-10-08 新增[复盘专项](../docs/retrospectives/README.md)。
 
 | 编号 | 资源 | 优先级 | 学什么 | 主要限制 |
 | --- | --- | --- | --- | --- |
@@ -24,7 +24,7 @@ P0：先读；P1：选方向后读；P2：进阶或历史参考。核查状态�
 | R18 | [动手学数据分析](https://github.com/datawhalechina/hands-on-data-analysis) | P0 | 观察、清洗、建模与评估 | 已读README前80行；没有替代赛题实战 |
 | R19 | [Joyful Pandas](https://github.com/datawhalechina/joyful-pandas) | P1 | pandas分组、连接、缺失与时序 | 已读README前80行；教程版本与安装环境需注意 |
 | R20 | [Datawhale数据挖掘组队学习](https://github.com/datawhalechina/team-learning-data-mining) | P1 | 多类任务学习资料 | 已读根目录；各任务未逐一审计 |
-| R21 | [2025海豚杯三夏团队](https://github.com/qyyyy09315/DophinCup2025ofSanX) | P0 | BERT特征、分类与集成的参赛组织参考 | README前80行、根目录、LICENSE已读；Top3与93.7%为作者自述，未独立复现 |
+| R21 | [2025海豚杯三夏团队](https://github.com/qyyyy09315/DophinCup2025ofSanX) | P0 | BERT表示、分类与概率融合；适合复现前代码审读 | 完整README及5个源码已读；任务、融合命名与路径存在差异；成绩为作者自述，未运行 |
 | R22 | [长风杯心理状态可视化](https://github.com/1065374244/changfeng) | P1 | 历届前端展示参考 | 已读README、根目录和index.html；主要编译产物，无完整分析流程，未见根目录许可证 |
 | R23 | [Kaggle Competition Treasure](https://github.com/dayeren/Kaggle_Competition_Treasure) | P2 | 分类整理的比赛方法与常识 | 已读根目录，无根README；内部资料未逐篇核查 |
 | R24 | [Kaggle Web Traffic](https://github.com/Arturus/kaggle-web-traffic) | P2 | 时间序列高排名方法研究 | 已读Readme.md；第一名为作者声明，旧TensorFlow/cuDNN且要求GPU，本次未跑 |
@@ -34,9 +34,15 @@ P0：先读；P1：选方向后读；P2：进阶或历史参考。核查状态�
 | R28 | [scikit-learn交叉验证](https://scikit-learn.org/stable/modules/cross_validation.html) | P0 | 选择验证方式 | 已读官方文档入口及正文；按任务选择切分 |
 | R29 | [阿里云天池](https://tianchi.aliyun.com/competition) | P1 | 算法、工程与学习赛门户 | 已读门户正文；未指定当前可报名赛题 |
 | R30 | [2026讯飞AI开发者大赛](https://challenge.xfyun.cn/) | P1 | 算法赛与应用赛门户 | 已读官方门户正文；单题规则尚未读 |
+| R31 | [S6E9：49模型与验证失真复盘](https://github.com/avoid137/kaggle-s6e9-postmortem) | P0 | 连续失败日志、数值审计、融合与推理表示一致性 | 分数及根因诊断来自作者；建议修复未经实验确认；未独立复现 |
+| R32 | [S6E7：连续实验与停手决策](https://github.com/msusol/kaggle-playground-series-s6e7/blob/main/docs/plans/leaderboard.md) | P0 | 指标对齐、负结果、表示对比、嵌套评估与采用条件 | 成绩来自作者；固定增益门槛不是通用显著性标准；未运行 |
+| R33 | [HMS：主体分组与标签质量方案](https://github.com/zlin7dev/kaggle-3) | P1 | 先处理验证对象和标签质量，再考虑不同表示的融合 | 第3名为作者声明；至少24GB显存为上游要求；未复现 |
+| R34 | [NeurIPS聚合物预测：领域信息与最终训练入口](https://github.com/jday96314/NeurIPS-polymer-prediction) | P2 | 外部信息、多表示分支、最终入口与旧实验归档 | 第1名为作者声明；数据与依赖复杂，入口未运行；不能推断单项收益 |
 
 ## 阅读顺序
 
 入门先读 R18、R19、R27，再做 R11 或 R12；找代码用 R17 和 R15。海豚杯重点读 R01—R04、R21；长风杯重点读 R05、R22，需求预测方法再看 R25。
 
-先填复现卡再下载大数据或训练模型。当前资料库只做公开材料预研，没有运行任何上游训练程序，也没有验证获奖声明。
+研究参赛路线先读 R32、R31，再按方向读 R33、R34；国内代码的实际差异见[六案例复盘专项](../docs/retrospectives/README.md)。[15个固定文件的来源清单](retrospective-sources.json)可定位本轮分析依据。
+
+先填复现卡再下载大数据或训练模型。当前资料库只做公开材料与局部源码审读，没有运行上游训练程序，也没有独立验证获奖声明。

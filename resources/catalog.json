@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-07",
+  "checked_at": "2026-10-08",
   "timezone": "Asia/Shanghai",
   "resources": [
     {
@@ -269,11 +269,11 @@
       "type": "participant-project",
       "url": "https://github.com/qyyyy09315/DophinCup2025ofSanX",
       "priority": "P0",
-      "value": "BERT特征、分类与集成的参赛组织参考",
-      "limitation": "README前80行、根目录、LICENSE已读；Top3与93.7%为作者自述，未独立复现",
-      "next_action": "先看清洗、特征，再检查评估和标签处理",
-      "verification": "部分文件已读",
-      "checked_at": "2026-10-07"
+      "value": "BERT表示、分类与概率融合；适合复现前代码审读",
+      "limitation": "完整README及5个源码已读；任务、融合命名与路径存在差异；成绩为作者自述，未运行",
+      "next_action": "先统一目标和输入输出，再复现简单基线",
+      "verification": "固定提交读取README、清洗、BERT、融合、标签检查、合成数据；见复盘专项与来源清单",
+      "checked_at": "2026-10-08"
     },
     {
       "id": "R22",
@@ -284,9 +284,9 @@
       "priority": "P1",
       "value": "历届前端展示参考",
       "limitation": "已读README、根目录和index.html；主要编译产物，无完整分析流程，未见根目录许可证",
-      "next_action": "借鉴展示，不作为分析baseline",
-      "verification": "展示文件已读",
-      "checked_at": "2026-10-07"
+      "next_action": "学习展示组织，并自行补齐可运行分析、图表与报告的证据链",
+      "verification": "重新读取固定提交README、index.html与根目录；交付完整性分析见复盘专项",
+      "checked_at": "2026-10-08"
     },
     {
       "id": "R23",
@@ -391,6 +391,59 @@
       "next_action": "比较数据挖掘或文本赛题",
       "verification": "官方门户已读",
       "checked_at": "2026-10-07"
+    },
+    {
+      "id": "R31",
+      "title": "S6E9：49模型与验证失真复盘",
+      "competition": "Kaggle",
+      "type": "retrospective-or-solution",
+      "url": "https://github.com/avoid137/kaggle-s6e9-postmortem",
+      "priority": "P0",
+      "value": "连续失败日志、数值审计、融合与推理表示一致性",
+      "limitation": "分数及根因诊断来自作者；建议修复未经实验确认；未独立复现",
+      "next_action": "先读案例01，画预测生成路径表",
+      "verification": "完整README与逐轮实验日志，固定提交与blob SHA已校验",
+      "checked_at": "2026-10-08"
+    },
+    {
+      "id": "R32",
+      "title": "S6E7：连续实验与停手决策",
+      "competition": "Kaggle",
+      "type": "retrospective-or-solution",
+      "url": "https://github.com/msusol/kaggle-playground-series-s6e7/blob/main/docs/plans/leaderboard.md",
+      "priority": "P0",
+      "value": "指标对齐、负结果、表示对比、嵌套评估与采用条件",
+      "limitation": "成绩来自作者；固定增益门槛不是通用显著性标准；未运行",
+      "next_action": "先读案例02，整理三次失败与下一步实验",
+      "verification": "完整leaderboard.md，固定提交与blob SHA已校验",
+      "checked_at": "2026-10-08"
+    },
+    {
+      "id": "R33",
+      "title": "HMS：主体分组与标签质量方案",
+      "competition": "Kaggle",
+      "type": "retrospective-or-solution",
+      "url": "https://github.com/zlin7dev/kaggle-3",
+      "priority": "P1",
+      "value": "先处理验证对象和标签质量，再考虑不同表示的融合",
+      "limitation": "第3名为作者声明；至少24GB显存为上游要求；未复现",
+      "next_action": "读案例03，检查自己的主体与标签关系",
+      "verification": "完整README与filter_train.py，固定提交与blob SHA已校验",
+      "checked_at": "2026-10-08"
+    },
+    {
+      "id": "R34",
+      "title": "NeurIPS聚合物预测：领域信息与最终训练入口",
+      "competition": "Kaggle",
+      "type": "retrospective-or-solution",
+      "url": "https://github.com/jday96314/NeurIPS-polymer-prediction",
+      "priority": "P2",
+      "value": "外部信息、多表示分支、最终入口与旧实验归档",
+      "limitation": "第1名为作者声明；数据与依赖复杂，入口未运行；不能推断单项收益",
+      "next_action": "读案例04，建立信息来源和成本表",
+      "verification": "完整README与train_winning_ensemble.sh及根目录，固定文件版本已校验",
+      "checked_at": "2026-10-08"
     }
-  ]
+  ],
+  "checked_at_note": "目录最后更新日；每条资源的实际核查日期见 checked_at，不表示旧赛事信息全部重新核查。"
 }

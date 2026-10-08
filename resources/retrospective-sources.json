@@ -1,0 +1,157 @@
+{
+  "checked_at": "2026-10-08",
+  "scope": "六个案例的15个文件；固定提交读取并校验blob SHA；静态审读，无上游训练",
+  "sources": [
+    {
+      "id": "ev-log",
+      "repository": "avoid137/kaggle-s6e9-postmortem",
+      "path": "docs/experiment-log.md",
+      "commit": "e156407799d789f2bb30a989a5802caec099ce5b",
+      "blob_sha": "0113fd22daf3e3ce8ca62c19033bf918dd1de4e3",
+      "url": "https://github.com/avoid137/kaggle-s6e9-postmortem/blob/e156407799d789f2bb30a989a5802caec099ce5b/docs/experiment-log.md",
+      "checked_at": "2026-10-08",
+      "scope": "完整读取此文件；静态分析，未执行上游程序"
+    },
+    {
+      "id": "metric-log",
+      "repository": "msusol/kaggle-playground-series-s6e7",
+      "path": "docs/plans/leaderboard.md",
+      "commit": "80422e8a096284748524a1407c326109a2560986",
+      "blob_sha": "38efb52ebd893ae566e017aa1638439fa1b7b9f2",
+      "url": "https://github.com/msusol/kaggle-playground-series-s6e7/blob/80422e8a096284748524a1407c326109a2560986/docs/plans/leaderboard.md",
+      "checked_at": "2026-10-08",
+      "scope": "完整读取此文件；静态分析，未执行上游程序"
+    },
+    {
+      "id": "hms-readme",
+      "repository": "zlin7dev/kaggle-3",
+      "path": "README.md",
+      "commit": "9d9502ba8841bcdf81d3313e7920259d4b2abe59",
+      "blob_sha": "ba77ac13b9ffe417a782654bad37a539fb5f5731",
+      "url": "https://github.com/zlin7dev/kaggle-3/blob/9d9502ba8841bcdf81d3313e7920259d4b2abe59/README.md",
+      "checked_at": "2026-10-08",
+      "scope": "完整读取此文件；静态分析，未执行上游程序"
+    },
+    {
+      "id": "hms-filter",
+      "repository": "zlin7dev/kaggle-3",
+      "path": "scripts/filter_train.py",
+      "commit": "9d9502ba8841bcdf81d3313e7920259d4b2abe59",
+      "blob_sha": "2498aa6e288e9ec8c186895e60b58b79030d4338",
+      "url": "https://github.com/zlin7dev/kaggle-3/blob/9d9502ba8841bcdf81d3313e7920259d4b2abe59/scripts/filter_train.py",
+      "checked_at": "2026-10-08",
+      "scope": "完整读取此文件；静态分析，未执行上游程序"
+    },
+    {
+      "id": "polymer-readme",
+      "repository": "jday96314/NeurIPS-polymer-prediction",
+      "path": "README.md",
+      "commit": "a7a2bc90e6f5e6f1f3e00ab556e4f7ff555aae53",
+      "blob_sha": "5a99d5c6b91ce0fe46506d28a5777cbb2d916ae0",
+      "url": "https://github.com/jday96314/NeurIPS-polymer-prediction/blob/a7a2bc90e6f5e6f1f3e00ab556e4f7ff555aae53/README.md",
+      "checked_at": "2026-10-08",
+      "scope": "完整读取此文件；静态分析，未执行上游程序"
+    },
+    {
+      "id": "polymer-run",
+      "repository": "jday96314/NeurIPS-polymer-prediction",
+      "path": "train_winning_ensemble.sh",
+      "commit": "a7a2bc90e6f5e6f1f3e00ab556e4f7ff555aae53",
+      "blob_sha": "df401edc4cf0de9243e845d1a2b4a620918e15bf",
+      "url": "https://github.com/jday96314/NeurIPS-polymer-prediction/blob/a7a2bc90e6f5e6f1f3e00ab556e4f7ff555aae53/train_winning_ensemble.sh",
+      "checked_at": "2026-10-08",
+      "scope": "完整读取此文件；静态分析，未执行上游程序"
+    },
+    {
+      "id": "dolphin-readme",
+      "repository": "qyyyy09315/DophinCup2025ofSanX",
+      "path": "README.md",
+      "commit": "5e498d0536693e1915aac62835986675fc8e0169",
+      "blob_sha": "49b393a48c1db94d13bdc398653b8c3f00c0b595",
+      "url": "https://github.com/qyyyy09315/DophinCup2025ofSanX/blob/5e498d0536693e1915aac62835986675fc8e0169/README.md",
+      "checked_at": "2026-10-08",
+      "scope": "完整读取此文件；静态分析，未执行上游程序"
+    },
+    {
+      "id": "dolphin-clean",
+      "repository": "qyyyy09315/DophinCup2025ofSanX",
+      "path": "src/preprocessing/clean_data.py",
+      "commit": "5e498d0536693e1915aac62835986675fc8e0169",
+      "blob_sha": "fde4aedeb911f795c5d98ea32c1b120b90d7cf25",
+      "url": "https://github.com/qyyyy09315/DophinCup2025ofSanX/blob/5e498d0536693e1915aac62835986675fc8e0169/src/preprocessing/clean_data.py",
+      "checked_at": "2026-10-08",
+      "scope": "完整读取此文件；静态分析，未执行上游程序"
+    },
+    {
+      "id": "dolphin-bert",
+      "repository": "qyyyy09315/DophinCup2025ofSanX",
+      "path": "src/feature_engineering/bert_embedding/bert_convert_efficient.py",
+      "commit": "5e498d0536693e1915aac62835986675fc8e0169",
+      "blob_sha": "08c265aa34ed95396d014255af56c56cfcaa14f9",
+      "url": "https://github.com/qyyyy09315/DophinCup2025ofSanX/blob/5e498d0536693e1915aac62835986675fc8e0169/src/feature_engineering/bert_embedding/bert_convert_efficient.py",
+      "checked_at": "2026-10-08",
+      "scope": "完整读取此文件；静态分析，未执行上游程序"
+    },
+    {
+      "id": "dolphin-stack",
+      "repository": "qyyyy09315/DophinCup2025ofSanX",
+      "path": "src/models/ensemble/stacking/st_brf_xgboost_catboost_stacking.py",
+      "commit": "5e498d0536693e1915aac62835986675fc8e0169",
+      "blob_sha": "332ccc962c289874d9717756a85f97b0e84976ae",
+      "url": "https://github.com/qyyyy09315/DophinCup2025ofSanX/blob/5e498d0536693e1915aac62835986675fc8e0169/src/models/ensemble/stacking/st_brf_xgboost_catboost_stacking.py",
+      "checked_at": "2026-10-08",
+      "scope": "完整读取此文件；静态分析，未执行上游程序"
+    },
+    {
+      "id": "dolphin-label",
+      "repository": "qyyyy09315/DophinCup2025ofSanX",
+      "path": "src/preprocessing/label_detection.py",
+      "commit": "5e498d0536693e1915aac62835986675fc8e0169",
+      "blob_sha": "2b1b2fdc2e564157591d2b6b5cb1a54382330be6",
+      "url": "https://github.com/qyyyy09315/DophinCup2025ofSanX/blob/5e498d0536693e1915aac62835986675fc8e0169/src/preprocessing/label_detection.py",
+      "checked_at": "2026-10-08",
+      "scope": "完整读取此文件；静态分析，未执行上游程序"
+    },
+    {
+      "id": "dolphin-synthetic",
+      "repository": "qyyyy09315/DophinCup2025ofSanX",
+      "path": "src/preprocessing/synthetic_data_generator.py",
+      "commit": "5e498d0536693e1915aac62835986675fc8e0169",
+      "blob_sha": "a55447a9ea9ec2720159483b8864577efcd355cf",
+      "url": "https://github.com/qyyyy09315/DophinCup2025ofSanX/blob/5e498d0536693e1915aac62835986675fc8e0169/src/preprocessing/synthetic_data_generator.py",
+      "checked_at": "2026-10-08",
+      "scope": "完整读取此文件；静态分析，未执行上游程序"
+    },
+    {
+      "id": "changfeng-index",
+      "repository": "1065374244/changfeng",
+      "path": "index.html",
+      "commit": "fc8499803641c683d6949e6c9795405f5a4ab86e",
+      "blob_sha": "0e958c4e762eeac4b84bea04f3706b8f0cbaaae8",
+      "url": "https://github.com/1065374244/changfeng/blob/fc8499803641c683d6949e6c9795405f5a4ab86e/index.html",
+      "checked_at": "2026-10-08",
+      "scope": "完整读取此文件；静态分析，未执行上游程序"
+    },
+    {
+      "id": "ev-readme",
+      "repository": "avoid137/kaggle-s6e9-postmortem",
+      "path": "README.md",
+      "commit": "e156407799d789f2bb30a989a5802caec099ce5b",
+      "blob_sha": "eda8b73186304f1858cca5eadfed85e8d6ef92cc",
+      "url": "https://github.com/avoid137/kaggle-s6e9-postmortem/blob/e156407799d789f2bb30a989a5802caec099ce5b/README.md",
+      "checked_at": "2026-10-08",
+      "scope": "完整读取此文件；静态分析，未执行上游程序"
+    },
+    {
+      "id": "changfeng-readme",
+      "repository": "1065374244/changfeng",
+      "path": "README.md",
+      "commit": "fc8499803641c683d6949e6c9795405f5a4ab86e",
+      "blob_sha": "57126ea6e8332cc56300f328de4c7c027c6803bb",
+      "url": "https://github.com/1065374244/changfeng/blob/fc8499803641c683d6949e6c9795405f5a4ab86e/README.md",
+      "checked_at": "2026-10-08",
+      "scope": "完整读取此文件；静态分析，未执行上游程序"
+    }
+  ]
+}
+
