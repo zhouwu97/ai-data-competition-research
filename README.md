@@ -2,7 +2,7 @@
 
 面向个人与算法社团的竞赛资料库：Kaggle、海豚杯、长风杯，以及天池、讯飞等可继续关注的平台。
 
-核查日期：**2026-10-07（北京时间）**。这里汇总公开入口、共享方案和参赛方法；实际报名资格、赛题、日程与提交格式以当届规程为准。
+资料按条目记录核查日期；赛事入口主要核查于 **2026-10-07**，比赛路线与复盘专项更新于 **2026-10-08**。这里汇总公开入口、共享方案和参赛方法；实际报名资格、赛题、日程与提交格式以当届规程为准。
 
 ## 先看结论
 
@@ -17,6 +17,9 @@
 
 | 内容 | 文件 |
 | --- | --- |
+| 六个参赛路线案例、失败原因和迁移建议 | [比赛复盘分析专项](docs/retrospectives/README.md) |
+| 从选题到赛后复盘的具体动作 | [跨案例参赛路线](docs/retrospectives/playbook.md) |
+| 复盘时记录证据、根因与决策 | [复盘模板](templates/postmortem.md)、[决策日志](templates/decision-log.csv) |
 | 赛事比较、候选平台 | [赛事总览](docs/competitions/overview.md) |
 | Kaggle 入门和方案检索 | [Kaggle](docs/competitions/kaggle.md) |
 | 2026 海豚杯与辽宁赛的核查记录 | [海豚杯](docs/competitions/dolphin-cup.md) |
@@ -48,4 +51,4 @@ python scripts/check_catalog.py
 
 本仓库收录链接和原创导读，不搬运第三方完整代码、论文或竞赛数据。上游代码的公开访问不等于允许用于当前比赛；引用和改编时分别检查许可证与赛规。未见获奖证明的作者成绩，统一标作作者自述。
 
-GitHub 仓库：[zhouwu97/ai-data-competition-research](https://github.com/zhouwu97/ai-data-competition-research)，私有。资料核查日期仍为2026-10-07；发布于2026-10-08。
+GitHub 仓库：[zhouwu97/ai-data-competition-research](https://github.com/zhouwu97/ai-data-competition-research)，私有。2026-10-08 新增复盘专项：六个案例、参赛路线、复盘模板与15个固定版本来源。仅做资料和局部代码审读，尚未运行上游训练。
