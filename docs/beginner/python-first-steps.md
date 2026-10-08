@@ -22,6 +22,7 @@ py -3.12 -m venv .venv
 .venv\Scripts\python.exe examples\run_all.py
 .venv\Scripts\python.exe scripts\check_catalog.py
 .venv\Scripts\python.exe scripts\validate_research.py
+.venv\Scripts\python.exe -m unittest discover -s tests -v
 ~~~
 
 不用修改PowerShell执行策略，也不必先激活环境。每次直接调用.venv里的Python。若找不到py，先从[Python官网](https://www.python.org/downloads/)安装Python3.12，或使用已安装的对应解释器；不要把错误提示中的命令随意复制执行。
@@ -35,6 +36,7 @@ python3.12 -m venv .venv
 .venv/bin/python examples/run_all.py
 .venv/bin/python scripts/check_catalog.py
 .venv/bin/python scripts/validate_research.py
+.venv/bin/python -m unittest discover -s tests -v
 ~~~
 
 依赖安装需要联网。练习运行不下载数据、不需要GPU或付费API。虚拟环境依据：[Python官方中文说明](https://docs.python.org/zh-cn/3/tutorial/venv.html)。
