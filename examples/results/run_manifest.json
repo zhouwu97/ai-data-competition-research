@@ -1,0 +1,81 @@
+{
+  "run_at_utc": "2026-10-08T01:17:14.474185+00:00",
+  "command": "python examples/run_all.py",
+  "data_kind": "synthetic",
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.8.0",
+    "matplotlib": "3.10.8"
+  },
+  "input_sha256": {
+    "examples/sample_inputs/business_volume.csv": "a316fd0ee2de07d691e8cae2c6caa60f32f1ca433f75aa874be6868cb3cf6809",
+    "examples/sample_inputs/cities.csv": "971b75ac20d792c2ae9025a479eb977fe2da4911aa7607a06a42dc9c99270439",
+    "examples/sample_inputs/demand.csv": "c01f7d61fdae48b60117c7bcee26482ce808a12240667d78f2a57e65657b43c4",
+    "examples/sample_inputs/warehouse_orders.csv": "e7ee0859df49b8a59efb75e38c76b6a89b871932a542a1355ad109825edf6027",
+    "examples/sample_inputs/waybills.csv": "3b6400ff252ec3063db41ea840a1e7f7250865b5d649c1b8a1edc46ea4ac8645"
+  },
+  "source_sha256": {
+    "examples/00_make_data.py": "273c04eedc557adedf70a8621e6f9e54796f7e6d24003577cdfea9968b461452",
+    "examples/01_demand_forecast.py": "72f03cdae1d08d37647a4d3688a47f26212d891dbfe983b17eb47f0d46c70a6f",
+    "examples/02_warehouse_eiq_abc.py": "34d21cc1ccce28549a5190edfe6bb32cf1a4943a6b2f759392106c7d2be07725",
+    "examples/03_dc_locations.py": "6d7192d7041ccb57f465bffee65baa6365d19e0fe171397085226722ee510c00",
+    "examples/04_customer_segments.py": "8d517b0e3bf83b8c46236a158c39dc2bf4c2b5a84fec3628bad19996acccdb01",
+    "examples/05_kmeans_by_hand.py": "43423d1805079e53be56d72a2bd1a1e6c6a96c31b41984f0483b28c59d09c160",
+    "examples/common.py": "3149338a8e222d654dd8076bb1eabff54b79a3337fd4bd0fc408fca4f4268b43",
+    "examples/failure_cases.py": "ced8961e22f489cb3a06729e54fdc344fb6ee795ae71c17d7c223455df0463cd",
+    "examples/run_all.py": "6d7f87b26cf5817f343877d78d743d6ec4e0ae4dfd02a866c79002a5dc2f3fcb"
+  },
+  "result_sha256": {
+    "examples/results/claims.json": "77e16a309130d9a89c01579f46893647ef71441c0f305eb2d00a568a2c62c1da",
+    "examples/results/failure_cases/checks.csv": "e23a0141267d56a47bb5b4f8b71ec06c52e46aca8667d195acbc38494d10ee78",
+    "examples/results/failure_cases/report.md": "92a60ff2c5df96635cd9b1bbb684d60b8a08fe051520b118eca6e43c34af8a30",
+    "examples/results/kmeans_hand/trace.csv": "62e38173dfbbca8f1e637352d37b625d48ab6331d1d4cb50695361affdb29df8",
+    "examples/results/report.md": "d67966a8aa73c30d64783da5eed74dc4462eddd9d10c2195ee591f7dd2c71daa",
+    "examples/results/run.log": "6a651b178fa52b3b52e16ec74b3d49302dab89e8d20e393ecc08f7e1e309cbd7",
+    "examples/results/task01/forecast.svg": "07b1d446bdd2b81a44679d36e0ddce3d3159066b0b6ae119350af81a7ea206d8",
+    "examples/results/task01/metrics.csv": "7274cc694e27203a615b7c53653460465a82507988cb1085b4d87257898b2924",
+    "examples/results/task01/predictions.csv": "a0d4f5ad651db11f7b8cc32dd48a07ef26897a0116e5326fd8672ba443ba062b",
+    "examples/results/task01/regional_summary.csv": "9c6b46fa9c04e4983610c84ff1530c6937a39ebb2a5dca4e918d9267bd2bb8bd",
+    "examples/results/task01/report.md": "006106a1551bc4088fc24503af972d30bd0118ce640e71706420a729af66ad67",
+    "examples/results/task01/summary.json": "07a8ea415bbc08f0a2b901bcf60556e7ae7cc0e6bb918278884c922ff36fa0f3",
+    "examples/results/task02/abc.svg": "c3a6e44ae599e5feb091b1da37ea94450788ce6d02ee497d17f2cf4493caa19a",
+    "examples/results/task02/item_eiq_abc.csv": "b60c4d00ef85e43dc7f5abfff14fc2a5ea009b078db01fd27c5997b87a6ee5e3",
+    "examples/results/task02/order_eiq.csv": "23480f8f656cc7f321423e19d4d3122db24ce63c0eceeb9f33d5cf5bf872adfa",
+    "examples/results/task02/report.md": "ea12d109f9d4962566e183de93dad7c4c15ce60ed880ec4d4d490bacb43525c2",
+    "examples/results/task02/summary.json": "a7e8aa218eddec237e2a13557e6cb1ead885960368f7f54003dd4e83ff02fbd0",
+    "examples/results/task02/threshold_comparison.csv": "5b5f880764ad43b052bd0b93624881a990051fc41844c832efbbe7b7915c7ee7",
+    "examples/results/task03/allocations.csv": "8f34023c06a6980d998798a27a481a59789a757b3161d166f7d8786308f32d50",
+    "examples/results/task03/centers.csv": "d100914d9da818659a0ef8db57ffe1c4aa9f4acaf102715a02fef60822e6ca70",
+    "examples/results/task03/coverage.csv": "9c4c44e6c02e90eb6f7a021287257c0caaf7a9947fa0225be71cce0594eb8b29",
+    "examples/results/task03/locations.svg": "e1075f7ea861a5638dbda5276959b00e239e8ce61370fe133c7b7e177a39185a",
+    "examples/results/task03/report.md": "bfd1e58e95f9af6848166c899db0a166e2c3b768ea8239168012a4b47ca6c1c5",
+    "examples/results/task03/summary.json": "0968ba1a4546f4bf3b3fc99365babe8f6e3562feb4cdb708af0613482c108e28",
+    "examples/results/task04/comparison.csv": "d9716eee9bbdb3995bb0c60bc5249b2dd8d6f886c69cf4eb532d99d176bcc67f",
+    "examples/results/task04/customer_features.csv": "7f75c6364228835873da01184fd97e8c1ef9ec089f6fefa05ad9f1bc1dd7c1f3",
+    "examples/results/task04/profiles.csv": "32a0b2fde7b31eb11c3f937cd00c3b8aa25bdaf159c10d0fac76d1949e1fe776",
+    "examples/results/task04/report.md": "15e0584dbcd713c87859476d090d6bfeaaa4620993cdc096e79e4ecb7ab13599",
+    "examples/results/task04/seed_stability.csv": "82813d3ec936c1c5697fe019939daf136b360222d042698d7a61a8d805145d60",
+    "examples/results/task04/segments.svg": "b37a33f614923aad315c4813c2698e8a37329eaab2ce27f86b766cb404a9bb54",
+    "examples/results/task04/summary.json": "66c872fb4153df7de9b55256f946a2f943cc87acc5a401c786101be74c1ab21c"
+  },
+  "completed_steps": [
+    "00_make_data.py",
+    "01_demand_forecast.py",
+    "02_warehouse_eiq_abc.py",
+    "03_dc_locations.py",
+    "04_customer_segments.py",
+    "05_kmeans_by_hand.py",
+    "failure_cases.py"
+  ],
+  "step_seconds": {
+    "00_make_data.py": 0.5275,
+    "01_demand_forecast.py": 1.3719,
+    "02_warehouse_eiq_abc.py": 0.552,
+    "03_dc_locations.py": 1.5969,
+    "04_customer_segments.py": 1.3571,
+    "05_kmeans_by_hand.py": 0.0195,
+    "failure_cases.py": 0.4923
+  }
+}

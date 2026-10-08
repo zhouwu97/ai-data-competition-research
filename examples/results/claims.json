@@ -1,0 +1,42 @@
+[
+  {
+    "id": "C01",
+    "value": 4,
+    "result": "examples/results/task01/summary.json",
+    "keys": [
+      "windows"
+    ],
+    "data_kind": "synthetic",
+    "display_value": "4"
+  },
+  {
+    "id": "C02",
+    "value": 41,
+    "result": "examples/results/task02/summary.json",
+    "keys": [
+      "total_quantity"
+    ],
+    "data_kind": "synthetic",
+    "display_value": "41"
+  },
+  {
+    "id": "C03",
+    "value": 16.19329466872681,
+    "result": "examples/results/task03/summary.json",
+    "keys": [
+      "weighted_distance_km"
+    ],
+    "data_kind": "synthetic",
+    "display_value": "16.1933"
+  },
+  {
+    "id": "C04",
+    "value": 0.632643134353397,
+    "result": "examples/results/task04/summary.json",
+    "keys": [
+      "silhouette_k3"
+    ],
+    "data_kind": "synthetic",
+    "display_value": "0.6326"
+  }
+]
