@@ -17,6 +17,7 @@
 
 | 内容 | 文件 |
 | --- | --- |
+| 选题比较、我们的判断与改判条件 | [从选题到分析](docs/retrospectives/topic-selection-analysis.md) |
 | 六个参赛路线案例、失败原因和迁移建议 | [比赛复盘分析专项](docs/retrospectives/README.md) |
 | 从选题到赛后复盘的具体动作 | [跨案例参赛路线](docs/retrospectives/playbook.md) |
 | 复盘时记录证据、根因与决策 | [复盘模板](templates/postmortem.md)、[决策日志](templates/decision-log.csv) |
