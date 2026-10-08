@@ -64,7 +64,7 @@ def main():
             "需补充尺寸、通道、容量、路线与实际作业数据才能证明提效。\n\n"
             "证据：[订单EIQ](order_eiq.csv)、[每日商品EIQ-ABC](item_eiq_abc.csv)、"
             "[阈值比较](threshold_comparison.csv)、[图表](abc.svg)、[汇总](summary.json)。\n")
-    (out / "report.md").write_text(text, encoding="utf-8")
+    (out / "report.md").write_text(text, encoding="utf-8", newline="\n")
     print("题二完成：按天计算EQ/EN/IQ/IK，核对数量并比较ABC阈值。")
 
 if __name__ == "__main__":

@@ -9,7 +9,7 @@ parser.add_argument("--keyword", default="", help="在标题、用途和限制�
 parser.add_argument("--priority", choices=["P0", "P1", "P2"])
 args = parser.parse_args()
 root = Path(__file__).resolve().parents[1]
-items = json.loads((root / "resources/catalog.json").read_text())["resources"]
+items = json.loads((root / "resources/catalog.json").read_text(encoding="utf-8"))["resources"]
 selected = []
 for item in items:
     if args.competition and args.competition not in item["competition"]:

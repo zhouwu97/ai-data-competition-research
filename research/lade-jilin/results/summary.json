@@ -6,6 +6,14 @@
     "sequential_select": 64.89306493764805,
     "weekday_mean": 50.82142857142857
   },
+  "parameters": {
+    "horizon_days": 14,
+    "windows": 4,
+    "hour_min_records": 30,
+    "year": 2022,
+    "observation_end": null
+  },
+  "duration_diagnostics": "duration_diagnostics.csv",
   "duration_record_mean_mae_minutes": {
     "global_median": 106.55057568966849,
     "hour_median": 101.63584730700873
@@ -16,8 +24,8 @@
     "weekday_mean",
     "weekday_mean"
   ],
-  "python": "3.12.14",
+  "python": "3.12.10",
   "source_sha256": "12e2cf4664dd5b4475d39dddee8872f5a03b3082f08f0eece7f103baee6c6e73",
-  "code_sha256": "b25e568e4c1d7f8a6ce23958ffffb29c0dab1ca7c483c87c57d45cbccab501d4",
+  "code_sha256": "29e9f9c1185b04b72b2428db8ab495f7b90af35bad44532dcfc491e1fc49498e",
   "forecasting_sha256": "8a6406868b38a1a12b8434d095525c63e52f369f2e3c9df5fc16abdc64ba67ed"
 }

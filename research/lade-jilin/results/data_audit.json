@@ -7,6 +7,7 @@
   "license_on_current_data_card": "Apache-2.0; research purposes",
   "rows": 31415,
   "unique_orders": 31415,
+  "observed_completed_rows": 31415,
   "source_columns": [
     "order_id",
     "region_id",

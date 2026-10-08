@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "run_at_utc": "2026-10-08T07:18:31.700192+00:00",
+  "command": [
+    "python",
+    "research/lade-jilin/run.py",
+    "--data",
+    "research/lade-jilin/data/delivery_jl.csv"
+  ],
+  "data_path": "E:\\AI\\rage\\research\\lade-jilin\\data\\delivery_jl.csv"
+}

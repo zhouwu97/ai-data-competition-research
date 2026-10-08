@@ -1,52 +1,52 @@
 $ python examples/00_make_data.py
 已生成5份合成教学CSV；正式赛题数据仍未取得。
 exit_code=0
-elapsed_seconds=0.8975
+elapsed_seconds=1.6164
 
 $ python examples/01_demand_forecast.py
 题一完成：4个14天窗口，3种方法；真实赛题粒度待确认。
 exit_code=0
-elapsed_seconds=1.4822
+elapsed_seconds=2.9797
 
 $ python examples/02_warehouse_eiq_abc.py
 题二完成：按天计算EQ/EN/IQ/IK，核对数量并比较ABC阈值。
 exit_code=0
-elapsed_seconds=0.6813
+elapsed_seconds=1.2381
 
 $ python examples/03_dc_locations.py
 题三完成：4个中心数量、3个半径，区分城市覆盖与需求覆盖。
 exit_code=0
-elapsed_seconds=1.5419
+elapsed_seconds=2.8374
 
 $ python examples/04_customer_segments.py
-题四完成：60位合成客户，规则对照、4个k和5个初始化检查。
+题四完成：60位客户，演示k=3；不可计算指标见comparison.csv的reason。
 exit_code=0
-elapsed_seconds=1.5452
+elapsed_seconds=2.8667
 
 $ python examples/05_kmeans_by_hand.py
 手算K-means完成：中心从1和2移动到1.5和8.5；见trace.csv。
 exit_code=0
-elapsed_seconds=0.0258
+elapsed_seconds=0.0797
 
 $ python examples/failure_cases.py
 错误示范完成：4项拒绝检查、1项EIQ口径检查、1项答案泄漏示范。
 exit_code=0
-elapsed_seconds=0.5775
+elapsed_seconds=1.0644
 
 $ python examples/06_method_stress.py
 压力练习完成：预测机制反转、仓储次日调位、选址目标冲突、客户弱结构与漂移。
 exit_code=0
-elapsed_seconds=1.8409
+elapsed_seconds=3.5575
 
 $ python examples/07_sequential_forecast.py
 顺序预测完成：三种机制、四个起点；只按最近两个已完成窗口选择已有方法。
 exit_code=0
-elapsed_seconds=1.6187
+elapsed_seconds=3.3611
 
 $ python examples/08_location_tradeoffs.py
-已穷举252个半径—选址组合，结果：examples/results/tradeoffs
+已穷举252个半径—选址组合，结果：examples\results\tradeoffs
 exit_code=0
-elapsed_seconds=0.869
+elapsed_seconds=2.448
 
 $ python scripts/check_calculations.py
 OK 题一：12组窗口×方法的MAE、RMSE已核对；独立计算的平均RMSE为 calendar_ridge=5.8795; recent_mean=21.0653; weekday_mean=11.6631
@@ -58,4 +58,4 @@ OK 压力练习：重算两机制MAE、玩具拣选/调位距离、同候选覆�
 检查不读取文件摘要。基础题四其他k/种子未保存标签，未独立核对；不判断真实业务收益。
 压力选址只穷举给定9城候选；连续坐标全局最优、模型拟合过程和口径对账文字未审计。
 exit_code=0
-elapsed_seconds=0.0652
+elapsed_seconds=0.2012

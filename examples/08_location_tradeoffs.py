@@ -186,7 +186,7 @@ def write_report(groups, out):
               "- `summary.json`：本次结果和5公里的直接差值，报告数字从这些计算生成。", "",
               "多目标背景：[pymoo官方教程](https://pymoo.org/getting_started/part_3.html)。"
               "本例只有84个组合，用穷举即可，不需要遗传算法或安装pymoo。", ""]
-    (out / "report.md").write_text("\n".join(lines), encoding="utf-8")
+    (out / "report.md").write_text("\n".join(lines), encoding="utf-8", newline="\n")
 
 
 def main():

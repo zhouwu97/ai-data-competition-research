@@ -334,17 +334,33 @@ def check_customers(root):
             "本例核对的特征应为orders、business_volume、recency_days")
     points = standardized([[float(row[field]) for field in features] for row in records])
     labels = [int(row["cluster"]) for row in records]
-    require(len(set(labels)) == int(summary["illustration_k"]), "客户演示群数量不符")
-    score = silhouette(points, labels)
-    rule_score = silhouette(points, rule)
+    require(len(set(labels)) == int(summary.get("actual_clusters", summary["illustration_k"])),
+            "客户演示群数量不符")
+    score = silhouette(points, labels) if 2 <= len(set(labels)) < len(points) else None
+    rule_score = silhouette(points, rule) if 2 <= len(set(rule)) < len(points) else None
     ari = adjusted_rand(labels, rule)
     close(summary["customers"], len(records), "task04 summary.json 客户数")
-    close(summary["silhouette_k3"], score, "task04 summary.json 轮廓系数")
+    def check_score(saved, expected, reason, name):
+        if expected is None:
+            require(saved is None or saved == "", f"{name}: 不可计算时应为空")
+            require(bool(reason), f"{name}: 缺少不可计算原因")
+        else:
+            close(saved, expected, name)
+    if int(summary["illustration_k"]) == 3:
+        check_score(summary["silhouette_k3"], score, summary.get("silhouette_reason"),
+                    "task04 summary.json 轮廓系数")
+    else:
+        require(summary["silhouette_k3"] is None, "未演示k=3时不能报告silhouette_k3")
+    if "silhouette" in summary:
+        check_score(summary["silhouette"], score, summary.get("silhouette_reason"),
+                    "task04 summary.json 演示轮廓系数")
     close(summary["ari_to_volume_rule"], ari, "task04 summary.json ARI")
     comparison = unique_index(rows(output / "comparison.csv"), ["method", "k"], "comparison.csv")
-    close(comparison[("kmeans", str(summary["illustration_k"]))]["silhouette"], score,
-          "comparison.csv 演示k轮廓系数")
-    close(comparison[("volume_rule", "3")]["silhouette"], rule_score, "comparison.csv 规则分组轮廓系数")
+    demo = comparison[("kmeans", str(summary["illustration_k"]))]
+    rule_row = comparison[("volume_rule", "3")]
+    check_score(demo["silhouette"], score, demo.get("reason"), "comparison.csv 演示k轮廓系数")
+    check_score(rule_row["silhouette"], rule_score, rule_row.get("reason"),
+                "comparison.csv 规则分组轮廓系数")
     profiles = unique_index(rows(output / "profiles.csv"), ["cluster"], "profiles.csv")
     require(set(profiles) == {(str(label),) for label in labels}, "画像群编号集合不符")
     for key, profile in profiles.items():

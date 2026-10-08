@@ -20,6 +20,19 @@ python research/lade-jilin/run.py --data /path/to/delivery_jl.csv
 
 Windows示例：`python research/lade-jilin/run.py --data "D:\data\delivery_jl.csv"`。结果会重建到`results/`；先复制旧结果，再改代码比较。
 
+换成自有同字段CSV时，显式选择自有模式并单独指定结果目录：
+
+```bash
+python research/lade-jilin/run.py --custom-data --data "D:/data/records.csv" --output-dir outputs/my-delivery --horizon-days 14 --windows 4 --hour-min-records 30
+python scripts/check_public_research.py --output-dir outputs/my-delivery
+```
+
+字段仍为下面的五列；运单ID唯一、必需字段非空、完成时间不早于接单时间。`accept_time`与`delivery_time`使用完整`YYYY-MM-DD HH:MM:SS`，`ds`使用`YYYY-MM-DD`。若沿用LaDe无年份格式，显式加`--year 2022`：时间为`MM-DD HH:MM:SS`，ds为四位MMDD。输入CSV使用UTF-8或UTF-8 BOM。自有模式保存实际SHA256与`user_supplied_records`来源类型，不沿用官方文件的来源与许可声明。
+
+`--observation-end 2026-09-30`可将输入限定为截至当日已经完成的记录；未完成对象不属于这个已完成记录分析入口。程序在该范围的最长连续完成日期段，取最后指定数量的窗口，至少需要28天训练、一个完整的选模历史窗口和全部测试窗口。缺记录日仍保持缺失，不能自动解释为零业务；测试窗口没有接单对象时会说明原因并停止。
+
+每次运行将`run_status.json`与报告标为`running`，全部成功后改为`success`；出错时报告显示`failed`和原因，避免误读旧成功报告。分项文件在失败时可能是旧结果，检查器会拒绝非成功运行。
+
 ## 先认识五个字段
 
 | 字段 | 含义 | 本次怎么用 |
@@ -39,6 +52,11 @@ Windows示例：`python research/lade-jilin/run.py --data "D:\data\delivery_jl.c
 - [volume_choices.csv](results/volume_choices.csv)：每次选模时已知的历史成绩。
 - [duration_metrics.csv](results/duration_metrics.csv)：每窗口误差及超过6小时记录的误差。
 - 两份逐条预测CSV供重算；输出不含原运单ID、配送员ID或坐标。
+- [duration_diagnostics.csv](results/duration_diagnostics.csv)：按接单小时、接单日期、是否超过6小时拆开条数与MAE；长尾分类是事后诊断，不能用于预测时选对象。
+
+先看逐窗口改善是否一致，再从接单小时和日期找误差集中对象。用后续日期的新数据在另一输出目录运行，才能检验改善是否保持；当前四个窗口的4.61%改善不证明后续时间仍有效。
+
+`python scripts/validate_research.py`会同时检查教学结果和仓库内的真实研究。自有目录使用上面的独立检查命令，它从逐条预测重算完成量、时长和长尾的窗口MAE、总体MAE、分组诊断与报告数字。它不依赖原始数据下载，也不验证模型拟合、原始时间标签或数据覆盖说明；范围见[测试说明](../../tests/README.md)。
 
 原数据只包含公开配送记录，未说明所有日期的采样覆盖，不能直接等同市场需求。正式赛题另从[赛事入口](../../competition-requirements/data-access.md)取得；本专题是一份研究练习。
 
