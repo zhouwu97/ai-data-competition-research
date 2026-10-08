@@ -13,3 +13,5 @@
 文件SHA256检查“运行后文件是否变了”。[教学独立计算检查](../../scripts/check_calculations.py)从原始输入和逐条输出重新计算指定指标；[真实研究检查](../../scripts/check_public_research.py)从已保存逐条预测重算窗口、总体、长尾、诊断及报告指标，范围见[说明](../../tests/README.md)。前者不能证明公式正确，独立重算也不能证明模型适合真实企业或满足全部评分。
 
 正式数据和账号权限从[数据获取说明](../../competition-requirements/data-access.md)开始。实验不把合成数据标成真实；地方校赛标准也不当作全国标准。
+
+[吉林第二轮研究](../../research/lade-jilin/round2/results/delivery_jl_eda_report.md)使用与首轮相同的31,415条吉林CSV和固定SHA256，不代表完整城市需求或在岗人员。[作者仓库](https://github.com/wenhaomin/LaDe)给出2022年的数据时间范围；[LaDe-D字段说明](https://huggingface.co/datasets/Cainiao-AI/LaDe-D#3-description)将`courier_id`、`region_id`定义为ID，将接单与完成时间定义为任务事件时间，未提供这次突降的采样或业务原因。文件实际的`ds`日期归属由本仓库与两个时间字段逐行核对，而不直接照搬字段名称。二轮已执行记录量恒等式分解、配送员集合和区域比较、原始对象回连与配对误差重算；小时模型仍使用首轮四窗口。组成对照属于事后描述，批次、等待及后续稳定性仍待新材料检验。公开二轮产物只含聚合量和匿名区域。

@@ -218,11 +218,11 @@ def execute(args, status):
     for cutoff in windows:
         history, future = observed.iloc[:cutoff], observed.iloc[cutoff:cutoff + args.horizon_days]
         origin, end = future.index[0], future.index[-1] + pd.Timedelta(days=1)
-        chosen, past_scores, completed = select_by_completed_windows(history, horizon=args.horizon_days)
+        chosen, past_scores, completed_backtests = select_by_completed_windows(history, horizon=args.horizon_days)
         estimates = predict_methods(history, future.index)
         estimates["sequential_select"] = estimates[chosen]
         choices.append([origin.date(), history.index[-1].date(),
-                        max(row["window_end"] for row in completed), chosen,
+                        max(row["window_end"] for row in completed_backtests), chosen,
                         *[past_scores[name] for name in METHODS]])
         for method, prediction in estimates.items():
             error = np.abs(future.to_numpy() - prediction)

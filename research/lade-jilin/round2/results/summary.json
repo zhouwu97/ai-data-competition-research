@@ -1,0 +1,46 @@
+{
+  "analysis_kind": "post_hoc_descriptive_followup",
+  "input_audit": {
+    "input_file": "delivery_jl.csv",
+    "source_sha256": "12e2cf4664dd5b4475d39dddee8872f5a03b3082f08f0eece7f103baee6c6e73",
+    "bytes": 4736342,
+    "rows": 31415,
+    "columns": 17,
+    "couriers": 57,
+    "regions": 4,
+    "duplicate_orders": 0,
+    "missing_fields": {
+      "accept_gps_lng": 955,
+      "accept_gps_lat": 955
+    },
+    "cross_day_records": 19,
+    "ds_finish_disagreements": 19,
+    "ds_accept_disagreements": 0,
+    "accept_start": "2022-05-12",
+    "accept_end": "2022-10-28",
+    "delivery_start": "2022-05-12",
+    "delivery_end": "2022-10-28"
+  },
+  "predictions_file": "duration_predictions.csv",
+  "predictions_sha256": "4465012825916782fb884179962bb3a51aa1150f4a7f9f8a865a4714c55d3e38",
+  "first_round_parameters": {
+    "horizon_days": 14,
+    "windows": 4,
+    "hour_min_records": 30,
+    "year": 2022,
+    "observation_end": null,
+    "evaluation_end": null
+  },
+  "code_sha256": {
+    "run.py": "0351d2c023c1a44af6a1bd78f02546bcbb173cb3160251de4c4cad9c5ceb0139",
+    "volume_structure.py": "6a68cdb509270943280ac40d7b08615f46ff0a80434f102ceefa7abe794e4298",
+    "duration_mechanism.py": "1a5ad018111e4315f2dc2dcb0b7b6bcce32641390ac88344a1ff14ca9e51147d"
+  },
+  "plot_helpers_sha256": "e50d11ad494e43295e03d892a7e029e63f6f9a3768f0ee3318a5eb3ca9b6ebb0",
+  "python": "3.12.10",
+  "numpy": "2.3.5",
+  "pandas": "2.2.3",
+  "matplotlib": "3.10.8",
+  "volume_summary": "volume_summary.json",
+  "duration_summary": "duration_summary.json"
+}
