@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+data/
+models/
+outputs/
+*.zip
+*.pkl
+*.parquet
+*.pt
+*.pth
