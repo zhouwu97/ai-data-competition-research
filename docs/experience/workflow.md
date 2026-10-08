@@ -43,7 +43,11 @@
 
 > 先读赛规和数据字典，列目标、指标、可用字段和潜在泄漏。提出一个简单基线与验证方案，每个实验记录命令、版本、耗时和结果。报告只写已有证据，待做事项单列。
 
-## 官方参考
+## 从真实参赛路线练复盘
+
+新增[复盘分析专项](../retrospectives/README.md)，集中读失败实验、验证失真、领域信息与国内作品交付。先按[参赛路线](../retrospectives/playbook.md)选一个低成本问题，运行前写采用条件，运行后填[决策日志](../../templates/decision-log.csv)与[复盘报告](../../templates/postmortem.md)。未运行的内容标待验证，作者成绩与自己的实测分开。
+
+## 官方技术依据
 
 - [scikit-learn：常见问题与数据泄漏](https://scikit-learn.org/stable/common_pitfalls.html)
 - [scikit-learn：交叉验证](https://scikit-learn.org/stable/modules/cross_validation.html)
