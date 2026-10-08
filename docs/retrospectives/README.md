@@ -19,6 +19,7 @@
 
 ## 本专项的产物
 
+- [从选题到分析：我们的见解与取舍](topic-selection-analysis.md)：条件式比较四个方向，说明优先候选、改判条件、分析过程与创新位置。
 - [跨案例参赛路线](playbook.md)：选题、验证、实验优先级、提交、报告、赛后复盘；含三类赛事的迁移建议。
 - [来源与证据](sources.md)：15 个已读文件的固定提交链接和读取范围。
 - [机器可读来源清单](../../resources/retrospective-sources.json)：完整提交 SHA、文件 blob SHA、核查日期。
