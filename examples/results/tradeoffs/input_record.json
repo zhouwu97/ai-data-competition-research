@@ -1,0 +1,28 @@
+{
+  "source": "examples/results/stress/dc_points.csv",
+  "source_sha256": "c61f682499cc6136ec759e5b8881a5566dac99ad610f2986c9b95a28385c283b",
+  "scenario": "nine_synthetic_cities",
+  "k": 3,
+  "candidate_count": 9,
+  "radii_km": [
+    3,
+    5,
+    7
+  ],
+  "extra_loss_budgets": [
+    0,
+    0.002,
+    0.01
+  ],
+  "objectives": {
+    "minimize": "weighted_squared_loss",
+    "maximize": "demand_coverage"
+  },
+  "distance": "euclidean_km",
+  "coverage_boundary": "distance <= radius",
+  "loss_unit": "synthetic_demand_unit * km^2",
+  "numeric_tolerance": 1e-09,
+  "tie_break": "demand coverage, squared loss, city coverage, mean distance, center IDs",
+  "min_squared_tie_break": "squared loss, demand coverage, center IDs",
+  "max_city_tie_break": "city coverage, then same demand-selection tie break"
+}
