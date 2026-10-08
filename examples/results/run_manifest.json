@@ -1,5 +1,5 @@
 {
-  "run_at_utc": "2026-10-08T02:40:58.491606+00:00",
+  "run_at_utc": "2026-10-08T03:24:26.351166+00:00",
   "command": "python examples/run_all.py",
   "data_kind": "synthetic",
   "environment": {
@@ -18,15 +18,18 @@
   },
   "source_sha256": {
     "examples/00_make_data.py": "273c04eedc557adedf70a8621e6f9e54796f7e6d24003577cdfea9968b461452",
-    "examples/01_demand_forecast.py": "417966e99bbf6c1206fabab441cc29b575f4a3c903b08080c4a0f49aca5f6a9a",
+    "examples/01_demand_forecast.py": "f0a62bbe107c41bb7272e0fe792d3149972a6465bbbe23306e2074d1bc4953a7",
     "examples/02_warehouse_eiq_abc.py": "34d21cc1ccce28549a5190edfe6bb32cf1a4943a6b2f759392106c7d2be07725",
     "examples/03_dc_locations.py": "6d7192d7041ccb57f465bffee65baa6365d19e0fe171397085226722ee510c00",
     "examples/04_customer_segments.py": "8d517b0e3bf83b8c46236a158c39dc2bf4c2b5a84fec3628bad19996acccdb01",
     "examples/05_kmeans_by_hand.py": "43423d1805079e53be56d72a2bd1a1e6c6a96c31b41984f0483b28c59d09c160",
-    "examples/06_method_stress.py": "e9f2989b4c577baad609d7574d72507b94c649c78eb3ff328e3d6963a05ce4ca",
+    "examples/06_method_stress.py": "21832f1f9da7e507833a82c73e2442edd30c028d4e62faac523122b0ad67be8c",
+    "examples/07_sequential_forecast.py": "3dc8f6f49592dc347c4696f2e224ebb94b59aa4b051bcd0626df33302c0fb2ef",
+    "examples/08_location_tradeoffs.py": "571a28368bafc2544a908f608705de3f5e63f46982948b43577ebace7aa5f9fe",
     "examples/common.py": "3149338a8e222d654dd8076bb1eabff54b79a3337fd4bd0fc408fca4f4268b43",
     "examples/failure_cases.py": "ced8961e22f489cb3a06729e54fdc344fb6ee795ae71c17d7c223455df0463cd",
-    "examples/run_all.py": "5dbfe92fe674c4a1d785b08d581e93fa229b34a7ca056e3f507244acef5d9049",
+    "examples/forecasting.py": "8a6406868b38a1a12b8434d095525c63e52f369f2e3c9df5fc16abdc64ba67ed",
+    "examples/run_all.py": "ecc54a2beb83e3e51c598990328638aca8a55674e106d1a4b87912b940be6ef6",
     "scripts/check_calculations.py": "c661d22df9e77537df5ffc401a917fd3bc1187ba943bbe3018f488c56b0b287b"
   },
   "result_sha256": {
@@ -34,8 +37,16 @@
     "examples/results/failure_cases/checks.csv": "e23a0141267d56a47bb5b4f8b71ec06c52e46aca8667d195acbc38494d10ee78",
     "examples/results/failure_cases/report.md": "92a60ff2c5df96635cd9b1bbb684d60b8a08fe051520b118eca6e43c34af8a30",
     "examples/results/kmeans_hand/trace.csv": "62e38173dfbbca8f1e637352d37b625d48ab6331d1d4cb50695361affdb29df8",
-    "examples/results/report.md": "ae8abb0df6b354e1229ffc2b7ec531cfb14231c576c209b2ee584164179fe36e",
-    "examples/results/run.log": "bb7d026628d5d93832afdb0c9c59fed3b89fc926a93e1e1df418ad2eb45bbbe6",
+    "examples/results/report.md": "41c8d437b9f4616dc11d9ae01d4826517cadfc724f506cdb74472e32e22b47fd",
+    "examples/results/run.log": "85e461528943c0e54f67924a6433b2ff9e03758160d92e82066a91224890c768",
+    "examples/results/sequential/decisions.csv": "d3b4f5b01d34bce1a9b015aad048b1f4a1d7be46f0fd90027305fc753e0047d7",
+    "examples/results/sequential/metrics.csv": "d99f4f6c3207613c001ab19c7bf825b65ef2f629af81d0d45b03ae6aa33b5cec",
+    "examples/results/sequential/past_scores.csv": "8f686ce12ca3540caf22e20e97c3fd9b2826997012c99b6a7ddfd78823bfdb26",
+    "examples/results/sequential/predictions.csv": "9120f54d2881e6d77fe0d285a05ac3e29da04d84252af707f0c74edb42e723c6",
+    "examples/results/sequential/report.md": "722beb719aebb1c2fb5c7b6b4f10db3c327f44b9f900d6c98fe0d45bfd9ad6e7",
+    "examples/results/sequential/scenario_inputs.csv": "f4167cecc199a78abd0cd9555b3341830cbbf7948db9dff23a62f19c84e19150",
+    "examples/results/sequential/sequential_comparison.svg": "1132c0302384c5e1d76053f3d514cdbe4a81845f8fd70c3965ed568ed1a7a4ab",
+    "examples/results/sequential/summary.json": "0ac0bf88a8a65f8d7b28160d29b51d86afbdbc82d434c1d053b8e695d976d4e9",
     "examples/results/stress/base_dc_tradeoffs.csv": "39dd1e83eb514dcf6a9fa0749c314fcab4c12cb6d9678eb48ba2daa6bbb6b77b",
     "examples/results/stress/customer_assignments.csv": "407682b42050e9df9954e53bc34e97e17759a552e947bcaf793f430dc3469523",
     "examples/results/stress/customer_features.csv": "d2f0f3d8c747e7fa6093c5976b25e09162747f518894ebb264d8f9ba6128471e",
@@ -78,7 +89,15 @@
     "examples/results/task04/report.md": "15e0584dbcd713c87859476d090d6bfeaaa4620993cdc096e79e4ecb7ab13599",
     "examples/results/task04/seed_stability.csv": "82813d3ec936c1c5697fe019939daf136b360222d042698d7a61a8d805145d60",
     "examples/results/task04/segments.svg": "b37a33f614923aad315c4813c2698e8a37329eaab2ce27f86b766cb404a9bb54",
-    "examples/results/task04/summary.json": "66c872fb4153df7de9b55256f946a2f943cc87acc5a401c786101be74c1ab21c"
+    "examples/results/task04/summary.json": "66c872fb4153df7de9b55256f946a2f943cc87acc5a401c786101be74c1ab21c",
+    "examples/results/tradeoffs/all_candidates.csv": "9065c712b1d65b00bd86c9d22ff5fc5b618174536deeb2388fcf13907effe094",
+    "examples/results/tradeoffs/input_points.csv": "c61f682499cc6136ec759e5b8881a5566dac99ad610f2986c9b95a28385c283b",
+    "examples/results/tradeoffs/input_record.json": "a9b2e9cfe7417dbadc0879f5fe580367a27707c7b232228edd0362d3bfb075ae",
+    "examples/results/tradeoffs/location_tradeoffs.svg": "7c0d91e3e8506bef351627be2b0858151f0912aaae1440acf374ab83b67ddfd1",
+    "examples/results/tradeoffs/pareto_plans.csv": "0a4d95a71362d621dbd738968b8ea3760ca2c8626bb3c0066ee12e2fd32e3039",
+    "examples/results/tradeoffs/report.md": "76b2e6cd4ad77cc1d3ebaa917407446f70d5cecd22fe131ff1c78425b58eb4d6",
+    "examples/results/tradeoffs/selected_plans.csv": "466299feeb7e2b159fd33827aefd46b81f9eb278fad7172ebee48c7704563804",
+    "examples/results/tradeoffs/summary.json": "5504aba6ae0531d2958a4adac9eb810c77bf822eef781e283a74199605ee388b"
   },
   "completed_steps": [
     "00_make_data.py",
@@ -89,17 +108,21 @@
     "05_kmeans_by_hand.py",
     "failure_cases.py",
     "06_method_stress.py",
+    "07_sequential_forecast.py",
+    "08_location_tradeoffs.py",
     "scripts/check_calculations.py"
   ],
   "step_seconds": {
-    "00_make_data.py": 0.6702,
-    "01_demand_forecast.py": 1.9379,
-    "02_warehouse_eiq_abc.py": 0.6561,
-    "03_dc_locations.py": 1.8403,
-    "04_customer_segments.py": 1.6009,
-    "05_kmeans_by_hand.py": 0.0217,
-    "failure_cases.py": 0.5419,
-    "06_method_stress.py": 1.9712,
-    "scripts/check_calculations.py": 0.0656
+    "00_make_data.py": 0.8975,
+    "01_demand_forecast.py": 1.4822,
+    "02_warehouse_eiq_abc.py": 0.6813,
+    "03_dc_locations.py": 1.5419,
+    "04_customer_segments.py": 1.5452,
+    "05_kmeans_by_hand.py": 0.0258,
+    "failure_cases.py": 0.5775,
+    "06_method_stress.py": 1.8409,
+    "07_sequential_forecast.py": 1.6187,
+    "08_location_tradeoffs.py": 0.869,
+    "scripts/check_calculations.py": 0.0652
   }
 }
