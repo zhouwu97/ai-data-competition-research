@@ -1,5 +1,7 @@
 # 题二：仓储运营优化研究档案
 
+参赛时先按[两套物流数据复盘](../../docs/research/two-dataset-retrospective.md)区分仓储作业决策与商品成交预测，明确每日EIQ/ABC、分组和储位比较各自解决什么、得到什么、用来做什么。
+
 任务依据：[2025公开说明](https://www.lncu.edu.cn/cxcyxy/28215.html)。届次与数据状态见[要求清单](../../competition-requirements/README.md)。
 
 ## 要求与未决问题

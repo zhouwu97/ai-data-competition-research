@@ -1,0 +1,6 @@
+# 本轮系统Python实际使用的版本；原仓库.venv不含PyTorch。
+numpy==2.3.5
+pandas==2.3.3
+scikit-learn==1.8.0
+matplotlib==3.10.8
+torch==2.14.0
