@@ -2,7 +2,9 @@
 
 面向个人与算法社团的竞赛资料库：Kaggle、海豚杯、长风杯，以及天池、讯飞等可继续关注的平台。
 
-资料与实验更新于 **2026-10-08**。这里既教方法，也研究方法什么时候失效、怎样依据结果选路线。
+资料与实验更新于 **2026-10-23**。这里既教方法，也研究方法什么时候失效、怎样依据结果选路线。
+
+拿到新赛题，先在[赛事卡](templates/competition-card.md)写清要支持的决定，以及每一步要解决什么、得到什么、用来做什么。[两套物流数据复盘](docs/research/two-dataset-retrospective.md)给出具体路线；论文配图按[本机MathModel入口](docs/experience/paper-figures.md)保留真实输入与可编辑源。
 
 ## 零基础先从这里开始
 
@@ -18,6 +20,8 @@
 练习使用合成数据，已有实际运行结果；正式数据和当届完整要求的获取状态集中见[证据说明](docs/research/evidence.md)与[赛事要求](competition-requirements/README.md)。
 
 ## 已经会基础，接着研究什么？
+
+题一智能分仓已实际完成数据审计和深度学习对照：[实验入口](research/smart-demand/README.md)、[结果报告](research/smart-demand/results/report.md)。本轮没有稳定超过中位数，保留开发选型、后段误差和失败原因。
 
 打开[按问题研究](docs/research/README.md)，直接进入你遇到的问题：预测突然失准、每天ABC变化、多建中心却覆盖变差、分群只是规模分档。
 

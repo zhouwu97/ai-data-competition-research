@@ -1,0 +1,1267 @@
+{
+  "status": "success",
+  "generated_at_utc": "2026-10-23T06:41:32.150230+00:00",
+  "input": {
+    "path": "E:\\AI\\rage\\outputs\\changfeng-deep-search\\competition-code\\ai-journey-changfeng\\source\\长风杯项目\\2025年长风杯竞赛数据\\智能分仓数据集.sqlite",
+    "bytes": 51933184,
+    "sha256": "58037e65d54b781f610e6c6ea73325ab42948084475d4c70aabc6381bcb2861e",
+    "read_only": true,
+    "quick_check": [
+      [
+        "ok"
+      ]
+    ]
+  },
+  "environment": {
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "tables": {
+    "Item_feature": {
+      "rows": 232621,
+      "columns": 32
+    },
+    "Cost": {
+      "rows": 6000,
+      "columns": 5
+    },
+    "bwds_meta": {
+      "rows": 39,
+      "columns": 6
+    }
+  },
+  "schema": {
+    "Item_feature": [
+      [
+        0,
+        "date",
+        "TEXT",
+        0,
+        null,
+        0
+      ],
+      [
+        1,
+        "item_id",
+        "text(255)",
+        0,
+        null,
+        0
+      ],
+      [
+        2,
+        "cate_id",
+        "text(255)",
+        0,
+        null,
+        0
+      ],
+      [
+        3,
+        "cate_level_id",
+        "text(255)",
+        0,
+        null,
+        0
+      ],
+      [
+        4,
+        "brand_id",
+        "text(255)",
+        0,
+        null,
+        0
+      ],
+      [
+        5,
+        "supplier_id",
+        "text(255)",
+        0,
+        null,
+        0
+      ],
+      [
+        6,
+        "pv_ipv",
+        "integer(64)",
+        0,
+        null,
+        0
+      ],
+      [
+        7,
+        "pv_uv",
+        "integer(64)",
+        0,
+        null,
+        0
+      ],
+      [
+        8,
+        "cart_ipv",
+        "integer(64)",
+        0,
+        null,
+        0
+      ],
+      [
+        9,
+        "collect_uv",
+        "integer(64)",
+        0,
+        null,
+        0
+      ],
+      [
+        10,
+        "num_gmv",
+        "integer(64)",
+        0,
+        null,
+        0
+      ],
+      [
+        11,
+        "amt_gmv",
+        "real(53)",
+        0,
+        null,
+        0
+      ],
+      [
+        12,
+        "qty_gmv",
+        "integer(64)",
+        0,
+        null,
+        0
+      ],
+      [
+        13,
+        "unum_gmv",
+        "integer(64)",
+        0,
+        null,
+        0
+      ],
+      [
+        14,
+        "amt_alipay",
+        "real(53)",
+        0,
+        null,
+        0
+      ],
+      [
+        15,
+        "num_alipay",
+        "integer(64)",
+        0,
+        null,
+        0
+      ],
+      [
+        16,
+        "qty_alipay",
+        "integer(64)",
+        0,
+        null,
+        0
+      ],
+      [
+        17,
+        "unum_alipay",
+        "integer(64)",
+        0,
+        null,
+        0
+      ],
+      [
+        18,
+        "ztc_pv_ipv",
+        "integer(64)",
+        0,
+        null,
+        0
+      ],
+      [
+        19,
+        "tbk_pv_ipv",
+        "integer(64)",
+        0,
+        null,
+        0
+      ],
+      [
+        20,
+        "ss_pv_ipv",
+        "integer(64)",
+        0,
+        null,
+        0
+      ],
+      [
+        21,
+        "jhs_pv_ipv",
+        "integer(64)",
+        0,
+        null,
+        0
+      ],
+      [
+        22,
+        "ztc_pv_uv",
+        "integer(64)",
+        0,
+        null,
+        0
+      ],
+      [
+        23,
+        "tbk_pv_uv",
+        "integer(64)",
+        0,
+        null,
+        0
+      ],
+      [
+        24,
+        "ss_pv_uv",
+        "integer(64)",
+        0,
+        null,
+        0
+      ],
+      [
+        25,
+        "jhs_pv_uv",
+        "integer(64)",
+        0,
+        null,
+        0
+      ],
+      [
+        26,
+        "num_alipay_njhs",
+        "integer(64)",
+        0,
+        null,
+        0
+      ],
+      [
+        27,
+        "amt_alipay_njhs",
+        "real(53)",
+        0,
+        null,
+        0
+      ],
+      [
+        28,
+        "qty_alipay_njhs",
+        "integer(64)",
+        0,
+        null,
+        0
+      ],
+      [
+        29,
+        "unum_alipay_njhs",
+        "integer(64)",
+        0,
+        null,
+        0
+      ],
+      [
+        30,
+        "cart_uv",
+        "integer(64)",
+        0,
+        null,
+        0
+      ],
+      [
+        31,
+        "id",
+        "text(255)",
+        0,
+        null,
+        0
+      ]
+    ],
+    "Cost": [
+      [
+        0,
+        "sp_id",
+        "text(50)",
+        0,
+        null,
+        0
+      ],
+      [
+        1,
+        "ch_code",
+        "text(50)",
+        0,
+        null,
+        0
+      ],
+      [
+        2,
+        "cost1",
+        "real(24)",
+        0,
+        null,
+        0
+      ],
+      [
+        3,
+        "cost2",
+        "real(24)",
+        0,
+        null,
+        0
+      ],
+      [
+        4,
+        "id",
+        "integer(32)",
+        1,
+        null,
+        0
+      ]
+    ],
+    "bwds_meta": [
+      [
+        0,
+        "ID",
+        "TEXT(255)",
+        0,
+        null,
+        0
+      ],
+      [
+        1,
+        "Name",
+        "TEXT(255)",
+        0,
+        null,
+        0
+      ],
+      [
+        2,
+        "Table_name",
+        "TEXT(255)",
+        0,
+        null,
+        0
+      ],
+      [
+        3,
+        "Type",
+        "TEXT(255)",
+        0,
+        null,
+        0
+      ],
+      [
+        4,
+        "Alias",
+        "TEXT(255)",
+        0,
+        null,
+        0
+      ],
+      [
+        5,
+        "Intro",
+        "TEXT(255)",
+        0,
+        null,
+        0
+      ]
+    ]
+  },
+  "calendar": {
+    "start": "2014-10-01",
+    "end": "2015-12-27",
+    "calendar_days": 453,
+    "observed_dates": 453,
+    "globally_missing_dates": [],
+    "invalid_dates": 0,
+    "duplicate_item_dates": 0,
+    "exact_duplicate_rows": 0,
+    "duplicate_id_values": 0
+  },
+  "items": {
+    "count": 1000,
+    "observed_days_quantiles": {
+      "0": 1.0,
+      "0.1": 53.0,
+      "0.25": 99.0,
+      "0.5": 206.5,
+      "0.75": 385.0,
+      "0.9": 452.0,
+      "1": 453.0
+    },
+    "full_453_day_items": 99,
+    "items_with_internal_missing_days": 628,
+    "total_internal_missing_item_days": 22855,
+    "full_panel_potential_item_days": 453000,
+    "full_panel_missing_item_days": 220379,
+    "last28_complete_items": 582,
+    "daily_item_count_quantiles": {
+      "0": 247.0,
+      "0.1": 287.2,
+      "0.25": 346.0,
+      "0.5": 484.0,
+      "0.75": 646.0,
+      "0.9": 837.8,
+      "1": 940.0
+    },
+    "static_fields": {
+      "cate_id": {
+        "distinct_values": 28,
+        "items_with_multiple_values": 0
+      },
+      "cate_level_id": {
+        "distinct_values": 11,
+        "items_with_multiple_values": 0
+      },
+      "brand_id": {
+        "distinct_values": 168,
+        "items_with_multiple_values": 0
+      },
+      "supplier_id": {
+        "distinct_values": 401,
+        "items_with_multiple_values": 0
+      }
+    }
+  },
+  "target": {
+    "column": "qty_alipay",
+    "meaning": "recorded paid quantity (成交件数), an observed sales proxy, not latent unmet demand",
+    "rows": 232621,
+    "zero_rows": 120709,
+    "zero_fraction": 0.518908439048925,
+    "sum": 1955102,
+    "quantiles": {
+      "0": 0.0,
+      "0.1": 0.0,
+      "0.25": 0.0,
+      "0.5": 0.0,
+      "0.75": 3.0,
+      "0.9": 13.0,
+      "1": 26051.0
+    },
+    "p99": 119.0,
+    "maximum": 26051,
+    "qty_gmv_not_equal_rows": 83791,
+    "qty_gmv_total": 2857596,
+    "same_day_correlations_descriptive_only": {
+      "qty_alipay": 1.0,
+      "qty_gmv": 0.6630680631025823,
+      "num_alipay": 0.9975809058468593,
+      "amt_alipay": 0.8588987173344084,
+      "pv_ipv": 0.27810024449553516,
+      "pv_uv": 0.26911595428617907,
+      "cart_ipv": 0.3962639790805996,
+      "cart_uv": 0.40004171983844433,
+      "collect_uv": 0.28570554468286063
+    },
+    "consistency_check_counts_not_proven_errors": {
+      "paid_quantity_greater_than_ordered_quantity": 3228,
+      "paid_amount_greater_than_ordered_amount": 2841,
+      "paid_quantity_less_than_paid_order_count": 0,
+      "ordered_quantity_less_than_order_count": 0,
+      "paid_order_count_less_than_paid_people_count": 0,
+      "pageviews_less_than_visitors": 0,
+      "cart_events_less_than_cart_people": 0,
+      "non_jhs_paid_quantity_greater_than_all_paid_quantity": 0,
+      "positive_paid_quantity_with_zero_paid_amount": 0,
+      "zero_paid_quantity_with_positive_paid_amount": 18308
+    },
+    "top_days": [
+      {
+        "date": "2015-11-11",
+        "quantity": 321221,
+        "share": 0.16429884476615542
+      },
+      {
+        "date": "2014-11-11",
+        "quantity": 77690,
+        "share": 0.039737057197015806
+      },
+      {
+        "date": "2015-12-12",
+        "quantity": 76285,
+        "share": 0.039018424614163355
+      },
+      {
+        "date": "2015-06-18",
+        "quantity": 37557,
+        "share": 0.019209739440704372
+      },
+      {
+        "date": "2015-09-09",
+        "quantity": 11956,
+        "share": 0.0061152819648284335
+      },
+      {
+        "date": "2014-12-12",
+        "quantity": 11195,
+        "share": 0.005726043960877745
+      },
+      {
+        "date": "2015-06-14",
+        "quantity": 10344,
+        "share": 0.005290772553043268
+      },
+      {
+        "date": "2015-11-10",
+        "quantity": 9290,
+        "share": 0.004751670245337583
+      },
+      {
+        "date": "2015-11-25",
+        "quantity": 9247,
+        "share": 0.004729676507926441
+      },
+      {
+        "date": "2015-06-06",
+        "quantity": 9141,
+        "share": 0.004675459387796647
+      },
+      {
+        "date": "2015-06-15",
+        "quantity": 8151,
+        "share": 0.0041690919450749885
+      },
+      {
+        "date": "2015-11-12",
+        "quantity": 7734,
+        "share": 0.003955803840413441
+      },
+      {
+        "date": "2015-11-03",
+        "quantity": 7427,
+        "share": 0.0037987787849431895
+      },
+      {
+        "date": "2015-12-01",
+        "quantity": 7177,
+        "share": 0.0036709082185993366
+      },
+      {
+        "date": "2015-06-19",
+        "quantity": 7173,
+        "share": 0.003668862289537835
+      }
+    ]
+  },
+  "cost": {
+    "distinct_items": 1000,
+    "warehouse_codes": {
+      "all": 1000,
+      "4": 1000,
+      "3": 1000,
+      "5": 1000,
+      "1": 1000,
+      "2": 1000
+    },
+    "duplicate_item_warehouse_keys": 0,
+    "matched_feature_items": 1000,
+    "unmatched_feature_items": [],
+    "numeric": {
+      "cost1": {
+        "missing": 0,
+        "nonfinite": 0,
+        "negative": 0,
+        "min": 2.72,
+        "max": 47.99
+      },
+      "cost2": {
+        "missing": 0,
+        "nonfinite": 0,
+        "negative": 0,
+        "min": 2.12,
+        "max": 95.95
+      }
+    },
+    "regional_time_demand_present": false
+  },
+  "fields": [
+    {
+      "field": "date",
+      "dtype": "datetime64[ns]",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 453
+    },
+    {
+      "field": "item_id",
+      "dtype": "object",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 1000
+    },
+    {
+      "field": "cate_id",
+      "dtype": "object",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 28
+    },
+    {
+      "field": "cate_level_id",
+      "dtype": "object",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 11
+    },
+    {
+      "field": "brand_id",
+      "dtype": "object",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 168
+    },
+    {
+      "field": "supplier_id",
+      "dtype": "object",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 401
+    },
+    {
+      "field": "pv_ipv",
+      "dtype": "int64",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 9067,
+      "nonfinite": 0,
+      "negative": 0,
+      "zero": 102349,
+      "min": 0.0,
+      "p50": 7.0,
+      "p90": 828.0,
+      "p99": 10484.0,
+      "max": 429147.0,
+      "total": 130764850.0
+    },
+    {
+      "field": "pv_uv",
+      "dtype": "int64",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 6181,
+      "nonfinite": 0,
+      "negative": 0,
+      "zero": 103144,
+      "min": 0.0,
+      "p50": 4.0,
+      "p90": 437.0,
+      "p99": 5112.799999999988,
+      "max": 180970.0,
+      "total": 64999631.0
+    },
+    {
+      "field": "cart_ipv",
+      "dtype": "int64",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 1320,
+      "nonfinite": 0,
+      "negative": 0,
+      "zero": 78454,
+      "min": 0.0,
+      "p50": 2.0,
+      "p90": 47.0,
+      "p99": 376.0,
+      "max": 16192.0,
+      "total": 5816422.0
+    },
+    {
+      "field": "collect_uv",
+      "dtype": "int64",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 1069,
+      "nonfinite": 0,
+      "negative": 0,
+      "zero": 78291,
+      "min": 0.0,
+      "p50": 2.0,
+      "p90": 40.0,
+      "p99": 281.0,
+      "max": 3870.0,
+      "total": 4382311.0
+    },
+    {
+      "field": "num_gmv",
+      "dtype": "int64",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 880,
+      "nonfinite": 0,
+      "negative": 0,
+      "zero": 109998,
+      "min": 0.0,
+      "p50": 1.0,
+      "p90": 19.0,
+      "p99": 179.0,
+      "max": 17013.0,
+      "total": 2702057.0
+    },
+    {
+      "field": "amt_gmv",
+      "dtype": "float64",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 50027,
+      "nonfinite": 0,
+      "negative": 0,
+      "zero": 93002,
+      "min": 0.0,
+      "p50": 1629.0,
+      "p90": 40841.0,
+      "p99": 364399.3999999966,
+      "max": 52683629.0,
+      "total": 6231047332.0
+    },
+    {
+      "field": "qty_gmv",
+      "dtype": "int64",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 901,
+      "nonfinite": 0,
+      "negative": 0,
+      "zero": 109307,
+      "min": 0.0,
+      "p50": 1.0,
+      "p90": 20.0,
+      "p99": 188.0,
+      "max": 17233.0,
+      "total": 2857596.0
+    },
+    {
+      "field": "unum_gmv",
+      "dtype": "int64",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 786,
+      "nonfinite": 0,
+      "negative": 0,
+      "zero": 112783,
+      "min": 0.0,
+      "p50": 1.0,
+      "p90": 16.0,
+      "p99": 150.0,
+      "max": 13754.0,
+      "total": 2260037.0
+    },
+    {
+      "field": "amt_alipay",
+      "dtype": "float64",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 33639,
+      "nonfinite": 0,
+      "negative": 0,
+      "zero": 102401,
+      "min": 0.0,
+      "p50": 543.0,
+      "p90": 15376.0,
+      "p99": 145893.39999999967,
+      "max": 68195756.0,
+      "total": 2677444132.0
+    },
+    {
+      "field": "num_alipay",
+      "dtype": "int64",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 659,
+      "nonfinite": 0,
+      "negative": 0,
+      "zero": 121474,
+      "min": 0.0,
+      "p50": 0.0,
+      "p90": 13.0,
+      "p99": 115.0,
+      "max": 24076.0,
+      "total": 1855914.0
+    },
+    {
+      "field": "qty_alipay",
+      "dtype": "int64",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 676,
+      "nonfinite": 0,
+      "negative": 0,
+      "zero": 120709,
+      "min": 0.0,
+      "p50": 0.0,
+      "p90": 13.0,
+      "p99": 119.0,
+      "max": 26051.0,
+      "total": 1955102.0
+    },
+    {
+      "field": "unum_alipay",
+      "dtype": "int64",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 652,
+      "nonfinite": 0,
+      "negative": 0,
+      "zero": 121923,
+      "min": 0.0,
+      "p50": 0.0,
+      "p90": 12.0,
+      "p99": 112.0,
+      "max": 22936.0,
+      "total": 1794205.0
+    },
+    {
+      "field": "ztc_pv_ipv",
+      "dtype": "int64",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 49,
+      "nonfinite": 0,
+      "negative": 0,
+      "zero": 224468,
+      "min": 0.0,
+      "p50": 0.0,
+      "p90": 0.0,
+      "p99": 2.0,
+      "max": 76.0,
+      "total": 18218.0
+    },
+    {
+      "field": "tbk_pv_ipv",
+      "dtype": "int64",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 63,
+      "nonfinite": 0,
+      "negative": 0,
+      "zero": 222903,
+      "min": 0.0,
+      "p50": 0.0,
+      "p90": 0.0,
+      "p99": 3.0,
+      "max": 317.0,
+      "total": 27759.0
+    },
+    {
+      "field": "ss_pv_ipv",
+      "dtype": "int64",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 1922,
+      "nonfinite": 0,
+      "negative": 0,
+      "zero": 122926,
+      "min": 0.0,
+      "p50": 0.0,
+      "p90": 79.0,
+      "p99": 770.0,
+      "max": 69256.0,
+      "total": 9839828.0
+    },
+    {
+      "field": "jhs_pv_ipv",
+      "dtype": "int64",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 1138,
+      "nonfinite": 0,
+      "negative": 0,
+      "zero": 226416,
+      "min": 0.0,
+      "p50": 0.0,
+      "p90": 0.0,
+      "p99": 101.0,
+      "max": 16237.0,
+      "total": 1708180.0
+    },
+    {
+      "field": "ztc_pv_uv",
+      "dtype": "int64",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 41,
+      "nonfinite": 0,
+      "negative": 0,
+      "zero": 225152,
+      "min": 0.0,
+      "p50": 0.0,
+      "p90": 0.0,
+      "p99": 1.0,
+      "max": 74.0,
+      "total": 13715.0
+    },
+    {
+      "field": "tbk_pv_uv",
+      "dtype": "int64",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 57,
+      "nonfinite": 0,
+      "negative": 0,
+      "zero": 223714,
+      "min": 0.0,
+      "p50": 0.0,
+      "p90": 0.0,
+      "p99": 2.0,
+      "max": 299.0,
+      "total": 21177.0
+    },
+    {
+      "field": "ss_pv_uv",
+      "dtype": "int64",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 1573,
+      "nonfinite": 0,
+      "negative": 0,
+      "zero": 123898,
+      "min": 0.0,
+      "p50": 0.0,
+      "p90": 63.0,
+      "p99": 563.7999999999884,
+      "max": 22733.0,
+      "total": 7455206.0
+    },
+    {
+      "field": "jhs_pv_uv",
+      "dtype": "int64",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 1067,
+      "nonfinite": 0,
+      "negative": 0,
+      "zero": 226466,
+      "min": 0.0,
+      "p50": 0.0,
+      "p90": 0.0,
+      "p99": 84.0,
+      "max": 14461.0,
+      "total": 1438871.0
+    },
+    {
+      "field": "num_alipay_njhs",
+      "dtype": "int64",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 488,
+      "nonfinite": 0,
+      "negative": 0,
+      "zero": 123830,
+      "min": 0.0,
+      "p50": 0.0,
+      "p90": 11.0,
+      "p99": 97.0,
+      "max": 5141.0,
+      "total": 1361376.0
+    },
+    {
+      "field": "amt_alipay_njhs",
+      "dtype": "float64",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 31677,
+      "nonfinite": 0,
+      "negative": 0,
+      "zero": 104653,
+      "min": 0.0,
+      "p50": 444.0,
+      "p90": 13776.0,
+      "p99": 113628.19999999984,
+      "max": 16661601.0,
+      "total": 1766100596.0
+    },
+    {
+      "field": "qty_alipay_njhs",
+      "dtype": "int64",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 496,
+      "nonfinite": 0,
+      "negative": 0,
+      "zero": 123064,
+      "min": 0.0,
+      "p50": 0.0,
+      "p90": 12.0,
+      "p99": 101.0,
+      "max": 5552.0,
+      "total": 1432537.0
+    },
+    {
+      "field": "unum_alipay_njhs",
+      "dtype": "int64",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 480,
+      "nonfinite": 0,
+      "negative": 0,
+      "zero": 124287,
+      "min": 0.0,
+      "p50": 0.0,
+      "p90": 11.0,
+      "p99": 94.0,
+      "max": 4807.0,
+      "total": 1316727.0
+    },
+    {
+      "field": "cart_uv",
+      "dtype": "int64",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 1169,
+      "nonfinite": 0,
+      "negative": 0,
+      "zero": 80952,
+      "min": 0.0,
+      "p50": 2.0,
+      "p90": 39.0,
+      "p99": 314.0,
+      "max": 13233.0,
+      "total": 4826158.0
+    },
+    {
+      "field": "id",
+      "dtype": "object",
+      "missing": 0,
+      "empty_strings": 0,
+      "distinct": 232621
+    }
+  ],
+  "metadata": {
+    "sp_id": {
+      "alias": "商品编号",
+      "intro": null
+    },
+    "ch_code": {
+      "alias": "仓库编码",
+      "intro": null
+    },
+    "cost1": {
+      "alias": "补少成本",
+      "intro": null
+    },
+    "cost2": {
+      "alias": "补多成本",
+      "intro": null
+    },
+    "id": {
+      "alias": "编号",
+      "intro": null
+    },
+    "date": {
+      "alias": "日期",
+      "intro": null
+    },
+    "item_id": {
+      "alias": "商品编号",
+      "intro": null
+    },
+    "cate_id": {
+      "alias": "叶子类目编号",
+      "intro": null
+    },
+    "cate_level_id": {
+      "alias": "商品大类目编号",
+      "intro": null
+    },
+    "brand_id": {
+      "alias": "品牌编号",
+      "intro": null
+    },
+    "supplier_id": {
+      "alias": "供应商编号",
+      "intro": null
+    },
+    "pv_ipv": {
+      "alias": "浏览次数",
+      "intro": null
+    },
+    "pv_uv": {
+      "alias": "流量",
+      "intro": null
+    },
+    "cart_ipv": {
+      "alias": "被加购次数",
+      "intro": null
+    },
+    "collect_uv": {
+      "alias": "收藏夹人次",
+      "intro": null
+    },
+    "num_gmv": {
+      "alias": "拍下笔数",
+      "intro": null
+    },
+    "amt_gmv": {
+      "alias": "拍下金额",
+      "intro": null
+    },
+    "qty_gmv": {
+      "alias": "拍下件数",
+      "intro": null
+    },
+    "unum_gmv": {
+      "alias": "拍下流量",
+      "intro": null
+    },
+    "amt_alipay": {
+      "alias": "成交金额",
+      "intro": null
+    },
+    "num_alipay": {
+      "alias": "成交笔数",
+      "intro": null
+    },
+    "qty_alipay": {
+      "alias": "成交件数",
+      "intro": null
+    },
+    "unum_alipay": {
+      "alias": "成交人次",
+      "intro": null
+    },
+    "ztc_pv_ipv": {
+      "alias": "直通车引导浏览次数",
+      "intro": null
+    },
+    "tbk_pv_ipv": {
+      "alias": "淘宝客引导浏览次数",
+      "intro": null
+    },
+    "ss_pv_ipv": {
+      "alias": "搜索引导浏览次数",
+      "intro": null
+    },
+    "jhs_pv_ipv": {
+      "alias": "聚划算引导浏览次数",
+      "intro": null
+    },
+    "ztc_pv_uv": {
+      "alias": "直通车引导浏览人次",
+      "intro": null
+    },
+    "tbk_pv_uv": {
+      "alias": "淘宝客引导浏览人次",
+      "intro": null
+    },
+    "ss_pv_uv": {
+      "alias": "搜索引导浏览人次",
+      "intro": null
+    },
+    "jhs_pv_uv": {
+      "alias": "聚划算引导浏览人次",
+      "intro": null
+    },
+    "num_alipay_njhs": {
+      "alias": "非聚划算支付笔数",
+      "intro": null
+    },
+    "amt_alipay_njhs": {
+      "alias": "非聚划算支付金额",
+      "intro": null
+    },
+    "qty_alipay_njhs": {
+      "alias": "非聚划算支付件数",
+      "intro": null
+    },
+    "unum_alipay_njhs": {
+      "alias": "非聚划算支付人次",
+      "intro": null
+    },
+    "cart_uv": {
+      "alias": "加购人次",
+      "intro": null
+    }
+  },
+  "all_table_missing_counts": {
+    "Item_feature": {
+      "date": 0,
+      "item_id": 0,
+      "cate_id": 0,
+      "cate_level_id": 0,
+      "brand_id": 0,
+      "supplier_id": 0,
+      "pv_ipv": 0,
+      "pv_uv": 0,
+      "cart_ipv": 0,
+      "collect_uv": 0,
+      "num_gmv": 0,
+      "amt_gmv": 0,
+      "qty_gmv": 0,
+      "unum_gmv": 0,
+      "amt_alipay": 0,
+      "num_alipay": 0,
+      "qty_alipay": 0,
+      "unum_alipay": 0,
+      "ztc_pv_ipv": 0,
+      "tbk_pv_ipv": 0,
+      "ss_pv_ipv": 0,
+      "jhs_pv_ipv": 0,
+      "ztc_pv_uv": 0,
+      "tbk_pv_uv": 0,
+      "ss_pv_uv": 0,
+      "jhs_pv_uv": 0,
+      "num_alipay_njhs": 0,
+      "amt_alipay_njhs": 0,
+      "qty_alipay_njhs": 0,
+      "unum_alipay_njhs": 0,
+      "cart_uv": 0,
+      "id": 0
+    },
+    "Cost": {
+      "sp_id": 0,
+      "ch_code": 0,
+      "cost1": 0,
+      "cost2": 0,
+      "id": 0
+    },
+    "bwds_meta": {
+      "ID": 0,
+      "Name": 0,
+      "Table_name": 0,
+      "Type": 0,
+      "Alias": 0,
+      "Intro": 37
+    }
+  },
+  "metadata_replacement_character_rows": {
+    "ID": 0,
+    "Name": 0,
+    "Table_name": 0,
+    "Type": 0,
+    "Alias": 0,
+    "Intro": 0
+  },
+  "metadata_encoding": {
+    "sqlite_text": "Unicode aliases are intact; no U+FFFD replacement characters were observed",
+    "companion_csv": "GB18030-decodable; interpreting its bytes as UTF-8 fails",
+    "console_note": "A GBK stdout stream read as UTF-8 can display mojibake; source values are checked via UTF-8 JSON and escaped Unicode"
+  },
+  "decisions": [
+    "Use qty_alipay as the paid-quantity target and keep qty_gmv as a different historical outcome.",
+    "Do not turn missing item dates into observed zero sales. Explicit zero rows remain valid zero targets.",
+    "All realized sales, GMV, views, cart and collection features must end at the forecast origin; future realized values are excluded.",
+    "Use chronological 14-day evaluation. Score known labels with coverage counts and a clearly defined item cohort; report complete-window exclusions.",
+    "Report product errors and recorded national aggregate errors separately; aggregate totals have a changing recorded product mix.",
+    "Separate shopping-festival peak windows from ordinary windows without choosing model weights from future outcomes.",
+    "Static identifiers are categorical labels, not numerical distances. Learn encodings only from historical training data.",
+    "Cost joins on item_id=sp_id; warehouse costs do not provide regional historical demand or customer preference observations.",
+    "Correlated same-day paid order count or amount cannot serve as inputs for future paid quantity unless shifted into history."
+  ]
+}

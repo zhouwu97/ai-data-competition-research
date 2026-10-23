@@ -1,5 +1,7 @@
 # 按你遇到的问题研究
 
+下次比赛先读[仓储与智能分仓复盘](two-dataset-retrospective.md)，明确每一步的问题、产物、用途与采用依据。题一的[实际数据审计](../../research/smart-demand/results/data_audit.md)和[深度模型对照](../../research/smart-demand/results/report.md)保留了未超过中位数的结果。
+
 先选一个问题，读解释、跑相应代码，再找结果会改变哪项判断。基础练习和困难情景是同一套方法的两种观察。
 
 | 现在的问题 | 先读 | 接着做 |

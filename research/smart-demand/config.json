@@ -1,0 +1,29 @@
+{
+  "study": "smart-demand-20261023",
+  "target": "qty_alipay",
+  "horizon": 14,
+  "history": 56,
+  "min_sku_history_observations": 28,
+  "development_starts": ["2015-07-13", "2015-07-27", "2015-08-10", "2015-08-24", "2015-09-07", "2015-09-21"],
+  "test_starts": ["2015-10-05", "2015-10-19", "2015-11-02", "2015-11-16", "2015-11-30", "2015-12-14"],
+  "development_seeds": [20261023],
+  "test_seeds": [20261023, 20261024, 20261025],
+  "candidates": [
+    {"name": "mlp_sales_mae", "behavior": false, "loss": "mae"},
+    {"name": "mlp_behavior_mae", "behavior": true, "loss": "mae"},
+    {"name": "mlp_behavior_poisson", "behavior": true, "loss": "poisson"}
+  ],
+  "scopes": {
+    "national": {"stride": 1, "epochs": 120, "hidden": [32, 16], "batch_size": 512},
+    "sku": {"stride": 7, "epochs": 25, "hidden": [64, 32], "batch_size": 512}
+  },
+  "learning_rate": 0.002,
+  "weight_decay": 0.001,
+  "ridge_alpha": 100.0,
+  "selection": "Within each scope, lowest pooled development observed-cell MAE; select median14/28/56 separately. Freeze before test predictions. Test the selected neural candidate with the fixed arithmetic mean of all three seeds; retain every seed result.",
+  "stable_definition": "Test pooled MAE strictly lower than the development-selected median, all six test-window MAEs no worse, and all three seed pooled MAEs lower. Report 14-day total AE separately; do not reinterpret this as independent-window significance.",
+  "missing": "Missing SKU-days are unknown, never training zeros. SKU eligibility uses >=28 observed dates in prior56 calendar dates. Score only future observed cells and report coverage. Never use future record masks to construct national forecasts.",
+  "national_scope": "Direct forecast of daily sum of recorded qty_alipay, with changing recorded assortment. Not latent demand or full-market sales.",
+  "calendar": "Known future weekdays, annual sin/cos, fixed November11/December12 indicators. No future behavior or realized paid/order fields.",
+  "audit_visibility": "Whole-data integrity audit inspected dates, coverage and extreme targets before this configuration. This is a historical time evaluation with frozen model settings, not a prospective blind test."
+}

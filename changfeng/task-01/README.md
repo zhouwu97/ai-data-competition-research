@@ -1,5 +1,7 @@
 # 题一：分仓商品需求预测研究档案
 
+2026-10-23已用完整往届智能分仓库完成[数据审计与深度学习对照](../../research/smart-demand/README.md)，与下方合成练习分开。[本轮研究复盘](../../docs/research/two-dataset-retrospective.md)逐步说明目的、产物和用途。
+
 任务依据：[2025公开说明](https://www.lncu.edu.cn/cxcyxy/28215.html)。届次与数据状态见[要求清单](../../competition-requirements/README.md)。
 
 ## 要求与未决问题

@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "generated_at_utc": "2026-10-23T06:41:33.582311+00:00",
+  "checks": {
+    "row_count": true,
+    "paid_total": true,
+    "explicit_zero_rows": true,
+    "distinct_items": true,
+    "distinct_dates": true,
+    "internal_gaps_from_sql_calendar": true,
+    "each_exported_item_reaggregated_from_sql": true,
+    "each_exported_date_reaggregated_from_sql": true,
+    "each_max_gap_matches_sql_lag": true,
+    "original_source_hash_unchanged": true
+  },
+  "rows_reaggregated": 232621,
+  "item_rows_verified": 1000,
+  "date_rows_verified": 453,
+  "input_sha256": "58037e65d54b781f610e6c6ea73325ab42948084475d4c70aabc6381bcb2861e"
+}
